@@ -1,0 +1,8 @@
+{
+  "fields": [
+    {
+      "type": "byte", 
+      "name": "data"
+    }
+  ]
+}

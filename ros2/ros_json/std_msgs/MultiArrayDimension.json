@@ -1,0 +1,16 @@
+{
+  "fields": [
+    {
+      "type": "string", 
+      "name": "label"
+    }, 
+    {
+      "type": "uint32", 
+      "name": "size"
+    }, 
+    {
+      "type": "uint32", 
+      "name": "stride"
+    }
+  ]
+}

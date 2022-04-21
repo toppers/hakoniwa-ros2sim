@@ -1,0 +1,8 @@
+{
+  "fields": [
+    {
+      "type": "float64", 
+      "name": "data"
+    }
+  ]
+}

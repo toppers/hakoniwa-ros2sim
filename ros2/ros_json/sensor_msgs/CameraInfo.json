@@ -1,0 +1,48 @@
+{
+  "fields": [
+    {
+      "type": "std_msgs/Header", 
+      "name": "header"
+    }, 
+    {
+      "type": "uint32", 
+      "name": "height"
+    }, 
+    {
+      "type": "uint32", 
+      "name": "width"
+    }, 
+    {
+      "type": "string", 
+      "name": "distortion_model"
+    }, 
+    {
+      "type": "float64[]", 
+      "name": "d"
+    }, 
+    {
+      "type": "float64[9]", 
+      "name": "k"
+    }, 
+    {
+      "type": "float64[9]", 
+      "name": "r"
+    }, 
+    {
+      "type": "float64[12]", 
+      "name": "p"
+    }, 
+    {
+      "type": "uint32", 
+      "name": "binning_x"
+    }, 
+    {
+      "type": "uint32", 
+      "name": "binning_y"
+    }, 
+    {
+      "type": "RegionOfInterest", 
+      "name": "roi"
+    }
+  ]
+}

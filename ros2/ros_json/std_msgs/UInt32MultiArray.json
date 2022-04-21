@@ -1,0 +1,12 @@
+{
+  "fields": [
+    {
+      "type": "MultiArrayLayout", 
+      "name": "layout"
+    }, 
+    {
+      "type": "uint32[]", 
+      "name": "data"
+    }
+  ]
+}

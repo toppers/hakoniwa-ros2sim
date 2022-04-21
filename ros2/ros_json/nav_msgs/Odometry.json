@@ -1,0 +1,20 @@
+{
+  "fields": [
+    {
+      "type": "std_msgs/Header", 
+      "name": "header"
+    }, 
+    {
+      "type": "string", 
+      "name": "child_frame_id"
+    }, 
+    {
+      "type": "geometry_msgs/PoseWithCovariance", 
+      "name": "pose"
+    }, 
+    {
+      "type": "geometry_msgs/TwistWithCovariance", 
+      "name": "twist"
+    }
+  ]
+}

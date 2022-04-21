@@ -1,0 +1,8 @@
+{
+  "fields": [
+    {
+      "type": "uint16", 
+      "name": "data"
+    }
+  ]
+}
