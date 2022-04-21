@@ -1,0 +1,3 @@
+[submodule "third-party/ros2/ros_tcp_endpoint"]
+	path = third-party/ros2/ros_tcp_endpoint
+	url = git@github.com:Unity-Technologies/ROS-TCP-Endpoint.git
