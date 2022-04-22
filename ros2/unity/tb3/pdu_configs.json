@@ -1,0 +1,166 @@
+[
+  {
+    "pdu_type_name": "builtin_interfaces/Time", 
+    "pdu_data_field_path": "../../ros_json/builtin_interfaces/Time.json"
+  }, 
+  {
+    "pdu_type_name": "Time", 
+    "pdu_data_field_path": "../../ros_json/builtin_interfaces/Time.json"
+  }, 
+  {
+    "pdu_type_name": "geometry_msgs/Point", 
+    "pdu_data_field_path": "../../ros_json/geometry_msgs/Point.json"
+  }, 
+  {
+    "pdu_type_name": "Point", 
+    "pdu_data_field_path": "../../ros_json/geometry_msgs/Point.json"
+  }, 
+  {
+    "pdu_type_name": "geometry_msgs/Pose", 
+    "pdu_data_field_path": "../../ros_json/geometry_msgs/Pose.json"
+  }, 
+  {
+    "pdu_type_name": "Pose", 
+    "pdu_data_field_path": "../../ros_json/geometry_msgs/Pose.json"
+  }, 
+  {
+    "pdu_type_name": "geometry_msgs/PoseWithCovariance", 
+    "pdu_data_field_path": "../../ros_json/geometry_msgs/PoseWithCovariance.json"
+  }, 
+  {
+    "pdu_type_name": "PoseWithCovariance", 
+    "pdu_data_field_path": "../../ros_json/geometry_msgs/PoseWithCovariance.json"
+  }, 
+  {
+    "pdu_type_name": "geometry_msgs/Quaternion", 
+    "pdu_data_field_path": "../../ros_json/geometry_msgs/Quaternion.json"
+  }, 
+  {
+    "pdu_type_name": "Quaternion", 
+    "pdu_data_field_path": "../../ros_json/geometry_msgs/Quaternion.json"
+  }, 
+  {
+    "pdu_type_name": "geometry_msgs/Transform", 
+    "pdu_data_field_path": "../../ros_json/geometry_msgs/Transform.json"
+  }, 
+  {
+    "pdu_type_name": "Transform", 
+    "pdu_data_field_path": "../../ros_json/geometry_msgs/Transform.json"
+  }, 
+  {
+    "pdu_type_name": "geometry_msgs/TransformStamped", 
+    "pdu_data_field_path": "../../ros_json/geometry_msgs/TransformStamped.json"
+  }, 
+  {
+    "pdu_type_name": "TransformStamped", 
+    "pdu_data_field_path": "../../ros_json/geometry_msgs/TransformStamped.json"
+  }, 
+  {
+    "pdu_type_name": "geometry_msgs/Twist", 
+    "pdu_data_field_path": "../../ros_json/geometry_msgs/Twist.json"
+  }, 
+  {
+    "pdu_type_name": "Twist", 
+    "pdu_data_field_path": "../../ros_json/geometry_msgs/Twist.json"
+  }, 
+  {
+    "pdu_type_name": "geometry_msgs/TwistWithCovariance", 
+    "pdu_data_field_path": "../../ros_json/geometry_msgs/TwistWithCovariance.json"
+  }, 
+  {
+    "pdu_type_name": "TwistWithCovariance", 
+    "pdu_data_field_path": "../../ros_json/geometry_msgs/TwistWithCovariance.json"
+  }, 
+  {
+    "pdu_type_name": "geometry_msgs/Vector3", 
+    "pdu_data_field_path": "../../ros_json/geometry_msgs/Vector3.json"
+  }, 
+  {
+    "pdu_type_name": "Vector3", 
+    "pdu_data_field_path": "../../ros_json/geometry_msgs/Vector3.json"
+  }, 
+  {
+    "pdu_type_name": "nav_msgs/Odometry", 
+    "pdu_data_field_path": "../../ros_json/nav_msgs/Odometry.json"
+  }, 
+  {
+    "pdu_type_name": "Odometry", 
+    "pdu_data_field_path": "../../ros_json/nav_msgs/Odometry.json"
+  }, 
+  {
+    "pdu_type_name": "sensor_msgs/CameraInfo", 
+    "pdu_data_field_path": "../../ros_json/sensor_msgs/CameraInfo.json"
+  }, 
+  {
+    "pdu_type_name": "CameraInfo", 
+    "pdu_data_field_path": "../../ros_json/sensor_msgs/CameraInfo.json"
+  }, 
+  {
+    "pdu_type_name": "sensor_msgs/CompressedImage", 
+    "pdu_data_field_path": "../../ros_json/sensor_msgs/CompressedImage.json"
+  }, 
+  {
+    "pdu_type_name": "CompressedImage", 
+    "pdu_data_field_path": "../../ros_json/sensor_msgs/CompressedImage.json"
+  }, 
+  {
+    "pdu_type_name": "sensor_msgs/Image", 
+    "pdu_data_field_path": "../../ros_json/sensor_msgs/Image.json"
+  }, 
+  {
+    "pdu_type_name": "Image", 
+    "pdu_data_field_path": "../../ros_json/sensor_msgs/Image.json"
+  }, 
+  {
+    "pdu_type_name": "sensor_msgs/Imu", 
+    "pdu_data_field_path": "../../ros_json/sensor_msgs/Imu.json"
+  }, 
+  {
+    "pdu_type_name": "Imu", 
+    "pdu_data_field_path": "../../ros_json/sensor_msgs/Imu.json"
+  }, 
+  {
+    "pdu_type_name": "sensor_msgs/JointState", 
+    "pdu_data_field_path": "../../ros_json/sensor_msgs/JointState.json"
+  }, 
+  {
+    "pdu_type_name": "JointState", 
+    "pdu_data_field_path": "../../ros_json/sensor_msgs/JointState.json"
+  }, 
+  {
+    "pdu_type_name": "sensor_msgs/LaserScan", 
+    "pdu_data_field_path": "../../ros_json/sensor_msgs/LaserScan.json"
+  }, 
+  {
+    "pdu_type_name": "LaserScan", 
+    "pdu_data_field_path": "../../ros_json/sensor_msgs/LaserScan.json"
+  }, 
+  {
+    "pdu_type_name": "sensor_msgs/RegionOfInterest", 
+    "pdu_data_field_path": "../../ros_json/sensor_msgs/RegionOfInterest.json"
+  }, 
+  {
+    "pdu_type_name": "RegionOfInterest", 
+    "pdu_data_field_path": "../../ros_json/sensor_msgs/RegionOfInterest.json"
+  }, 
+  {
+    "pdu_type_name": "std_msgs/Header", 
+    "pdu_data_field_path": "../../ros_json/std_msgs/Header.json"
+  }, 
+  {
+    "pdu_type_name": "Header", 
+    "pdu_data_field_path": "../../ros_json/std_msgs/Header.json"
+  }, 
+  {
+    "pdu_type_name": "tf2_msgs/TFMessage", 
+    "pdu_data_field_path": "../../ros_json/tf2_msgs/TFMessage.json"
+  }, 
+  {
+    "pdu_type_name": "TFMessage", 
+    "pdu_data_field_path": "../../ros_json/tf2_msgs/TFMessage.json"
+  }, 
+  {
+    "pdu_type_name": "time", 
+    "pdu_data_field_path": "../../ros_json/builtin_interfaces/Time.json"
+  }
+]

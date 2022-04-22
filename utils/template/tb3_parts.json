@@ -1,0 +1,24 @@
+{
+  "imu": {
+    "path": "base_footprint/imu_link",
+    "update_cycle": 1
+  },
+  "scan": {
+    "path": "base_footprint/imu_link/base_link/base_scan/Scan",
+    "update_cycle": 1
+  },
+  "motors": [
+    {
+      "path": "base_footprint/imu_link/wheel_right_link/Wheel",
+      "update_cycle": 1
+    },
+    {
+      "path": "base_footprint/imu_link/wheel_left_link/Wheel",
+      "update_cycle": 1
+    }
+  ],
+  "camera": {
+    "path": "base_footprint/imu_link/Body/CameraBody/CameraCase",
+    "update_cycle": 100
+  }
+}

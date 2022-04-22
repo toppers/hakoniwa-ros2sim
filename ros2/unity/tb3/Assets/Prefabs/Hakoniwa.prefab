@@ -1,0 +1,114 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5516504671602720919
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5516504671602720913}
+  - component: {fileID: 5516504671602720918}
+  - component: {fileID: 5516504671602720912}
+  m_Layer: 0
+  m_Name: Hakoniwa
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5516504671602720913
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5516504671602720919}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6.813293, y: -1.318305, z: -8.967505}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5516504671602720918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5516504671602720919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d6f832d28be2004a87ce6b1a3c12b87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxDiffTime: 20000
+  waitCount: 0
+  diff_time: 
+  dbgMiconStimeSec: []
+  dbgDiffTimeMsec: []
+  isConnected: 1
+  canStep: 1
+--- !u!114 &5516504671602720912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5516504671602720919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71274c16fb603284fb372d1e64373e41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sensor_params:
+  - name: motor_angle_a
+    off: 256
+    size: 4
+  - name: motor_angle_b
+    off: 260
+    size: 4
+  - name: sensor_reflect
+    off: 12
+    size: 4
+  - name: sensor_ultrasonic
+    off: 88
+    size: 4
+  - name: sensor_gyroscope
+    off: 28
+    size: 16
+  - name: sensor_rgb_r
+    off: 16
+    size: 4
+  - name: sensor_rgb_g
+    off: 20
+    size: 4
+  - name: sensor_rgb_b
+    off: 24
+    size: 4
+  - name: sensor_color
+    off: 8
+    size: 4
+  actuator_params:
+  - name: motor_power_a
+    off: 4
+    size: 4
+  - name: motor_power_b
+    off: 8
+    size: 4
+  - name: motor_stop_a
+    off: 20
+    size: 4
+  - name: motor_stop_b
+    off: 24
+    size: 4
+  - name: motor_reset_angle_a
+    off: 36
+    size: 4
+  - name: motor_reset_angle_b
+    off: 40
+    size: 4
+  base_sensor_offset: 32
+  base_actuator_offset: 32

@@ -1,0 +1,24 @@
+{
+  "fields": [
+    {
+      "type": "std_msgs/Header", 
+      "name": "header"
+    }, 
+    {
+      "type": "string[]", 
+      "name": "name"
+    }, 
+    {
+      "type": "float64[]", 
+      "name": "position"
+    }, 
+    {
+      "type": "float64[]", 
+      "name": "velocity"
+    }, 
+    {
+      "type": "float64[]", 
+      "name": "effort"
+    }
+  ]
+}

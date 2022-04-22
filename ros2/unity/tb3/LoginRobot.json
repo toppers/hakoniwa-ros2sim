@@ -1,0 +1,6 @@
+{
+  "robos" : [
+    { "roboname": "tb3_1", "robotype": "TB3RoboModel", { "x": 0, "y": 10, "z": 0 } },
+    { "roboname": "tb3_2", "robotype": "TB3RoboModel", { "x": 2, "y": 10, "z": 0 } }
+  ]
+}

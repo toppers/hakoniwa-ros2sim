@@ -1,0 +1,58 @@
+[
+  {
+    "name": "TB3RoboModel_imuPdu", 
+    "class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.ROS.RosTopicPduWriter", 
+    "conv_class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.ROS.TB3.RosTopicPduWriterConverter", 
+    "topic_message_name": "TB3RoboModel_imu", 
+    "pdu_config_name": "sensor_msgs/Imu"
+  }, 
+  {
+    "name": "TB3RoboModel_odomPdu", 
+    "class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.ROS.RosTopicPduWriter", 
+    "conv_class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.ROS.TB3.RosTopicPduWriterConverter", 
+    "topic_message_name": "TB3RoboModel_odom", 
+    "pdu_config_name": "nav_msgs/Odometry"
+  }, 
+  {
+    "name": "TB3RoboModel_tfPdu", 
+    "class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.ROS.RosTopicPduWriter", 
+    "conv_class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.ROS.TB3.RosTopicPduWriterConverter", 
+    "topic_message_name": "TB3RoboModel_tf", 
+    "pdu_config_name": "tf2_msgs/TFMessage"
+  }, 
+  {
+    "name": "TB3RoboModel_joint_statesPdu", 
+    "class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.ROS.RosTopicPduWriter", 
+    "conv_class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.ROS.TB3.RosTopicPduWriterConverter", 
+    "topic_message_name": "TB3RoboModel_joint_states", 
+    "pdu_config_name": "sensor_msgs/JointState"
+  }, 
+  {
+    "name": "TB3RoboModel_imagePdu", 
+    "class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.ROS.RosTopicPduWriter", 
+    "conv_class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.ROS.TB3.RosTopicPduWriterConverter", 
+    "topic_message_name": "TB3RoboModel_image", 
+    "pdu_config_name": "sensor_msgs/Image"
+  }, 
+  {
+    "name": "TB3RoboModel_image/compressedPdu", 
+    "class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.ROS.RosTopicPduWriter", 
+    "conv_class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.ROS.TB3.RosTopicPduWriterConverter", 
+    "topic_message_name": "TB3RoboModel_image/compressed", 
+    "pdu_config_name": "sensor_msgs/CompressedImage"
+  }, 
+  {
+    "name": "TB3RoboModel_camera_infoPdu", 
+    "class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.ROS.RosTopicPduWriter", 
+    "conv_class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.ROS.TB3.RosTopicPduWriterConverter", 
+    "topic_message_name": "TB3RoboModel_camera_info", 
+    "pdu_config_name": "sensor_msgs/CameraInfo"
+  }, 
+  {
+    "name": "TB3RoboModel_scanPdu", 
+    "class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.ROS.RosTopicPduWriter", 
+    "conv_class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.ROS.TB3.RosTopicPduWriterConverter", 
+    "topic_message_name": "TB3RoboModel_scan", 
+    "pdu_config_name": "sensor_msgs/LaserScan"
+  }
+]

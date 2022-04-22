@@ -1,0 +1,32 @@
+{
+  "fields": [
+    {
+      "type": "std_msgs/Header", 
+      "name": "header"
+    }, 
+    {
+      "type": "geometry_msgs/Quaternion", 
+      "name": "orientation"
+    }, 
+    {
+      "type": "float64[9]", 
+      "name": "orientation_covariance"
+    }, 
+    {
+      "type": "geometry_msgs/Vector3", 
+      "name": "angular_velocity"
+    }, 
+    {
+      "type": "float64[9]", 
+      "name": "angular_velocity_covariance"
+    }, 
+    {
+      "type": "geometry_msgs/Vector3", 
+      "name": "linear_acceleration"
+    }, 
+    {
+      "type": "float64[9]", 
+      "name": "linear_acceleration_covariance"
+    }
+  ]
+}

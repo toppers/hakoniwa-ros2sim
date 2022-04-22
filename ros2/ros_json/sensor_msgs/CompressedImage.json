@@ -1,0 +1,16 @@
+{
+  "fields": [
+    {
+      "type": "std_msgs/Header", 
+      "name": "header"
+    }, 
+    {
+      "type": "string", 
+      "name": "format"
+    }, 
+    {
+      "type": "uint8[]", 
+      "name": "data"
+    }
+  ]
+}

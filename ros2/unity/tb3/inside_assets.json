@@ -1,0 +1,18 @@
+[
+  {
+    "name": "TB3RoboModel", 
+    "pdu_writer_names": [
+      "TB3RoboModel_imuPdu", 
+      "TB3RoboModel_odomPdu", 
+      "TB3RoboModel_tfPdu", 
+      "TB3RoboModel_joint_statesPdu", 
+      "TB3RoboModel_imagePdu", 
+      "TB3RoboModel_image/compressedPdu", 
+      "TB3RoboModel_camera_infoPdu", 
+      "TB3RoboModel_scanPdu"
+    ], 
+    "pdu_reader_names": [
+      "TB3RoboModel_cmd_velPdu"
+    ]
+  }
+]

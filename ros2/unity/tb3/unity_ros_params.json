@@ -1,0 +1,9 @@
+{
+  "connection_startup": true, 
+  "ip_address": "172.29.57.121", 
+  "portno": 10000, 
+  "show_hud": false, 
+  "keep_alive_time": 10, 
+  "network_timeout": 2, 
+  "sleep_time": 0.01
+}

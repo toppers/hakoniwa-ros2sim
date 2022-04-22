@@ -1,0 +1,7 @@
+[
+  {
+    "name": "reader_connector0", 
+    "pdu_name": "TB3RoboModel_cmd_velPdu", 
+    "method_name": "ros_topic_io"
+  }
+]

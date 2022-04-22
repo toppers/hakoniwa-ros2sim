@@ -1,0 +1,52 @@
+{
+  "fields": [
+    {
+      "type": "uint8", 
+      "name": "INT8"
+    }, 
+    {
+      "type": "uint8", 
+      "name": "UINT8"
+    }, 
+    {
+      "type": "uint8", 
+      "name": "INT16"
+    }, 
+    {
+      "type": "uint8", 
+      "name": "UINT16"
+    }, 
+    {
+      "type": "uint8", 
+      "name": "INT32"
+    }, 
+    {
+      "type": "uint8", 
+      "name": "UINT32"
+    }, 
+    {
+      "type": "uint8", 
+      "name": "FLOAT32"
+    }, 
+    {
+      "type": "uint8", 
+      "name": "FLOAT64"
+    }, 
+    {
+      "type": "string", 
+      "name": "name"
+    }, 
+    {
+      "type": "uint32", 
+      "name": "offset"
+    }, 
+    {
+      "type": "uint8", 
+      "name": "datatype"
+    }, 
+    {
+      "type": "uint32", 
+      "name": "count"
+    }
+  ]
+}

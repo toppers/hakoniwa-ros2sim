@@ -1,0 +1,24 @@
+{
+  "fields": [
+    {
+      "type": "uint32", 
+      "name": "x_offset"
+    }, 
+    {
+      "type": "uint32", 
+      "name": "y_offset"
+    }, 
+    {
+      "type": "uint32", 
+      "name": "height"
+    }, 
+    {
+      "type": "uint32", 
+      "name": "width"
+    }, 
+    {
+      "type": "bool", 
+      "name": "do_rectify"
+    }
+  ]
+}
