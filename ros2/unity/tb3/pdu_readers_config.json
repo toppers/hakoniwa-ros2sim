@@ -1,0 +1,9 @@
+[
+  {
+    "name": "TB3RoboModel_cmd_velPdu", 
+    "class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.ROS.RosTopicPduReader", 
+    "conv_class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.ROS.TB3.RosTopicPduReaderConverter", 
+    "topic_message_name": "TB3RoboModel_cmd_vel", 
+    "pdu_config_name": "geometry_msgs/Twist"
+  }
+]

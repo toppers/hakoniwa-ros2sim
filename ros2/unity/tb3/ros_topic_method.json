@@ -1,0 +1,5 @@
+{
+  "name": "ros_topic_io", 
+  "class_name": "Hakoniwa.PluggableAsset.Communication.Method.ROS.TB3.RosTopicIo", 
+  "parameters": "./unity_ros_params.json"
+}
