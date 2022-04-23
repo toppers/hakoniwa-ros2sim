@@ -1,4 +1,4 @@
-FROM ros:foxy as hakoniwa-ros2-builder
+FROM ros:foxy as hakoniwa-ros-simulator
 
 ARG DEBIAN_FRONTEND=noninteractive
 
