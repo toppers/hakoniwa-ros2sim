@@ -31,7 +31,8 @@
 
 ### 本リポジトリのclone
 
-ターミナルで下記を実行して本リポジトリをcloneしてください．
+ターミナルで下記を実行して本リポジトリをcloneしてください．  
+Windows 環境の場合は，WSL 2のファイルシステム配下（`/home/${USER}/` または `\\wsl$`）ではなくWindowsファイルシステム配下（`/mnt/c/` または `C:\`）で実行してください．
 
 ```
 $ git clone --recursive https://github.com/toppers/hakoniwa-ros2sim.git
