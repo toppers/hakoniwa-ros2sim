@@ -58,3 +58,10 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+
+#
+# From here, setting for Hakoniwa
+#
+
+# python byte code
+*.pyc
