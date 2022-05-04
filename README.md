@@ -22,10 +22,9 @@
 
 ## Unity 環境
 
-* Unity Hub
-  * Unity Hub 3.1.1
-* Unity
-  * Unity 2021.3.0f1
+* Unity Hub 3.1.1 以降
+* Unity Editor 2021.3.0f1
+  * Unity Hub の「Installs > Install Editor」画面に本バージョンが表示されない場合は，[Unity Dowonload Archive](https://unity3d.com/get-unity/download/archive) の本バージョンの "Unity Hub" をクリックしてインストールできます． 
 
 ## PC環境の準備
 
