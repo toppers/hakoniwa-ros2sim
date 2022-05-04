@@ -6,7 +6,7 @@ then
 fi
 ETHER=${1}
 IPADDR=`ifconfig | grep -A1 ${ETHER} | grep netmask | awk '{print $2}'`
-DOCKER_IMAGE=hakoniwa-ros2-builder
+DOCKER_IMAGE=hakoniwa-ros2sim
 
 HAKONIWA_TOP_DIR=$(cd ../.. && pwd)
 DOCKER_IMAGE=${DOCKER_IMAGE}:v1.0.0
