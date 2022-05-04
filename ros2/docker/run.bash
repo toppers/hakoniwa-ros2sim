@@ -1,9 +1,7 @@
 #!/bin/bash
 
-DOCKER_IMAGE=hakoniwa-ros2sim
-
 HAKONIWA_TOP_DIR=$(cd ../.. && pwd)
-DOCKER_IMAGE=${DOCKER_IMAGE}:v1.0.0
+DOCKER_IMAGE=`cat image_name.txt`
 
 sudo docker ps > /dev/null
 if [ $? -ne 0 ]
