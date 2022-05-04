@@ -61,7 +61,24 @@ $ bash utils/install-docker.bash
 
 ## シミュレータの導入手順
 
-### Dockerイメージの作成
+### Dockerイメージの展開
+
+シミュレータの実行環境は，ビルド済みのDocker imageをDocker Hubにて公開しています．
+
+https://hub.docker.com/r/toppersjp/hakoniwa-ros2sim
+
+現在の最新版は **v1.0.0** です．
+「[バージョン情報・更新履歴](/appendix/version.md)」も参照してください（バージョン番号は[Git/GitHubのtag/release](https://github.com/toppers/hakoniwa-ros2sim/releases)および[Docker Hubのtag番号](https://hub.docker.com/r/toppersjp/hakoniwa-ros2sim/tags)に対応しています）
+
+次のコマンドを実行してください．Dockerを立ち上げて，imageのpullと展開を行います．
+
+```
+$ sudo service docker start
+$ cd ros2/docker
+$ bash pull-image.bash
+```
+
+\[開発者向け情報\] Dockerイメージの作成
 
 #### Windows環境
 

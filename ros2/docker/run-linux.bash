@@ -1,9 +1,7 @@
 #!/bin/bash
 
-DOCKER_IMAGE=hakoniwa-ros2sim
-
 HAKONIWA_TOP_DIR=$(cd ../.. && pwd)
-DOCKER_IMAGE=${DOCKER_IMAGE}:v1.0.0
+DOCKER_IMAGE=`cat image_name.txt`
 
 docker run -v ${HAKONIWA_TOP_DIR}:/root/workspace/hakoniwa-ros-samples \
 		-e CORE_IPADDR=127.0.0.1 \

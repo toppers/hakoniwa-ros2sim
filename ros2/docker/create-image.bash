@@ -1,7 +1,6 @@
 #!/bin/bash
 
-DOCKER_IMAGE=hakoniwa-ros2sim
+DOCKER_IMAGE=`cat image_name.txt`
 DOCKER_FILE=Dockerfile
-DOCKER_TAG=v1.0.0
-sudo docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} -f ${DOCKER_FILE} .
+sudo docker build -t ${DOCKER_IMAGE} -f ${DOCKER_FILE} .
 
