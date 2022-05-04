@@ -76,40 +76,40 @@ fi
 PKG_NAME=$(echo "${SETTING_FOLDER}" | sed -e 's/\// /g' | awk '{print $NF}')
 UNITY_DST_DIR=${UNITY_PRJ_DIR}/Assets/Scripts/Hakoniwa/PluggableAsset/Communication
 
-rm -rf input
-rm -rf output
-
-mkdir input
-mkdir output
-
 if [ "${PHASE}" = "all" ] || [ "${PHASE}" = "msg" ]
 then
-	echo "###Phase1: Parsing ros_msgs from ${SETTING_FOLDER}/RosTopics.json"
+	echo "###Phase1(msg): Parsing ros_msgs from ${SETTING_FOLDER}/RosTopics.json"
 	bash utils/create_all_ros_msgs.bash "${SETTING_FOLDER}"/"${ROS_VERSION}"_search_file_path.txt "${SETTING_FOLDER}"/RosTopics.json | tee "${SETTING_FOLDER}"/ros_msgs.txt
 	if [ "${ROS_VERSION}" = "ros1" ]
 	then
 		echo "builtin_interfaces/Time" | tee -a "${SETTING_FOLDER}"/ros_msgs.txt
 	fi
-	echo "###Phase1: Succless"
+	echo "###Phase1(msg): Success"
 fi
 
 if [ "${PHASE}" = "all" ] || [ "${PHASE}" = "json" ]
 then
-	echo "###Phase2: Creating ros_json from ${SETTING_FOLDER}/ros_msgs.txt"
+	echo "###Phase2(json): Creating ros_json from ${SETTING_FOLDER}/ros_msgs.txt"
 	bash utils/convert_rosmsg2json.bash "${SETTING_FOLDER}"/"${ROS_VERSION}"_search_file_path.txt "${SETTING_FOLDER}"/ros_msgs.txt "${ROS_JSON_DIR}"
-	echo "###Phase2: Succless"
+	echo "###Phase2(json): Success"
 fi
 
 if [ "${PHASE}" = "all" ] || [ "${PHASE}" = "config" ]
 then
-	echo "###Phase3: Creating core_config"
+	echo "###Phase3(config): Creating core_config"
 	bash utils/core_config/all.bash "${ROS_VERSION}" "${UNITY_PRJ_DIR}" "${SETTING_FOLDER}"
-	echo "###Phase3: Succless"
+	echo "###Phase3(json): Success"
 fi
 
 if [ "${PHASE}" = "all" ] || [ "${PHASE}" = "code" ]
 then
-	echo "###Phase4: Creating Unity Scripts"
+	echo "###Phase4(code): Creating Unity Scripts"
+
+	rm -rf input
+	rm -rf output
+
+	mkdir input
+	mkdir output
 
 	if [ -f "${SETTING_FOLDER}"/ros_msgs.txt ]
 	then
@@ -161,10 +161,10 @@ then
 	done
 
 
-	#rm -rf input
-	#rm -rf output
+	rm -rf input
+	rm -rf output
 
-	echo "###Phase4: Succless"
+	echo "###Phase4(code): Success"
 fi
 
 
