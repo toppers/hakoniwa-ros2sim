@@ -34,7 +34,7 @@
 ターミナルで下記を実行して本リポジトリをcloneしてください．
 
 ```
-$ git clone --recursive https://github.com/toppers/hakoniwa-ros-simulator.git
+$ git clone --recursive https://github.com/toppers/hakoniwa-ros2sim.git
 ```
 
 
@@ -189,14 +189,14 @@ Unityのシミュレーション開始ボタンをクリックすると，以下
 
 ## Contributing
 
-本リポジトリで公開している「箱庭 ROS シミュレータ」について，ご意見や改善の提案などをぜひ [こちらのGitHub Discussions](https://github.com/toppers/hakoniwa/discussions/categories/idea-request) でお知らせください．改修提案の [Pull Requests](https://github.com/toppers/hakoniwa-ros-simulator/pulls) も歓迎いたします．
+本リポジトリで公開している「箱庭 ROS シミュレータ」について，ご意見や改善の提案などをぜひ [こちらのGitHub Discussions](https://github.com/toppers/hakoniwa/discussions/categories/idea-request) でお知らせください．改修提案の [Pull Requests](https://github.com/toppers/hakoniwa-ros2sim/pulls) も歓迎いたします．
 
 ## TODO
 
 
 ## 謝辞
-* TurtleBot3 の Unity パッケージの設計と作成にあたっては,宝塚大学 東京メディア芸術学部 吉岡章夫准教授および学部生の杉崎涼志さん,木村明美さんにご協力いただきました.
-* TurtleBot3 のUnity アセットは,株式会社ロボティズ様より提供いただいたデータを基に作成しています.ご協力いただき深く感謝いたします.
+* TurtleBot3 の Unity パッケージの設計と作成にあたっては，宝塚大学 東京メディア芸術学部 吉岡章夫准教授および学部生の杉崎涼志さん，木村明美さんにご協力いただきました．
+* TurtleBot3 のUnity アセットは，株式会社ロボティズ様より提供いただいたデータを基に作成しています．ご協力いただき深く感謝いたします．
 
 ## ライセンス
 

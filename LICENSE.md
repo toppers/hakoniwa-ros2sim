@@ -1,4 +1,4 @@
-hakoniwa-ros-simulator 
+hakoniwa-ros2sim
 
 Copyright (C) 2021- by Hakoniwa Working-Group, TOPPERS Project
 
@@ -45,7 +45,7 @@ PURPOSE. IN NO EVENT SHALL THE ABOVE COPYRIGHT HOLDERS AND THE
 TOPPERS PROJECT BE LIABLE FOR ANY TYPE OF DAMAGE DIRECTLY OR
 INDIRECTLY CAUSED FROM THE USE OF THIS SOFTWARE.
 
-hakoniwa-ros-simulator  
+hakoniwa-ros2sim
 
 Copyright (C) 2021- by TOPPERSプロジェクト箱庭ワーキンググループ
 
