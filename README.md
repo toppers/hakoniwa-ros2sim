@@ -7,40 +7,22 @@
 
 ## 想定する PC 環境
 
-* Windows 環境
-  * Windows 10/11
-    * WSL2/WSLg/Ubuntu 20.04 LTS
-    * Docker Engine
-* Linux 環境
-  * Ubuntu 20.04 LTS
-  * Docker Engine
-* Mac 環境
-  * MacBook Air
-    * macOS Catalina ver.10.15.7
-    * Docker for Mac
+* Windows 環境: Windows 10/11
+  * Ubuntu 20.04 LTS on WSL2/WSLg
+* Linux 環境: Ubuntu 20.04 LTS
+* Mac 環境: macOS Catalina ver.10.15.7
 
+### Docker 環境
 
-## Unity 環境
+本シミュレータは Docker を利用します．
 
-* Unity Hub 3.1.1 以降
-* Unity Editor 2021.3.0f1
-  * Unity Hub の「Installs > Install Editor」画面に本バージョンが表示されない場合は，[Unity Dowonload Archive](https://unity3d.com/get-unity/download/archive) の本バージョンの "Unity Hub" をクリックしてインストールできます． 
+#### Mac 環境の場合
 
-## PC環境の準備
+[Docker Desktop for Mac](https://docs.docker.com/desktop/mac/install/) の利用を推奨します．
 
-### 本リポジトリのclone
+#### Windows/WSL2 または Linux 環境の場合
 
-ターミナルで下記を実行して本リポジトリをcloneしてください．  
-Windows 環境の場合は，WSL 2のファイルシステム配下（`/home/${USER}/` または `\\wsl$`）ではなくWindowsファイルシステム配下（`/mnt/c/` または `C:\`）で実行してください．
-
-```
-$ git clone --recursive https://github.com/toppers/hakoniwa-ros2sim.git
-```
-
-
-### Windows 向け Docker Engineのインストール
-
-本シミュレータは，WSL2にDocker Engineがインストールされている必要があります．WSL2のターミナルで下記のコマンドの結果が同じように出力されていれば，すでにインストール済みです．
+Docker Engineがインストールされている必要があります．WSL2のターミナルで下記のコマンドの結果が同じように出力されていれば，すでにインストール済みです．
 
 ```
 $ which docker
@@ -56,6 +38,39 @@ Docker Engineのインストールはやや手数が多いため，本リポジ�
 
 ```
 $ bash utils/install-docker.bash
+```
+
+`$ service docker status` の結果が " * Docker is not running " の場合は，Dockerを起動してください．
+
+```
+$ sudo service docker start
+ * Starting Docker: docker                           [ OK ] 
+```
+
+また，ユーザが `docker` のグループに所属していることを想定しています．そうでない場合は，次のコマンドを実行してください．
+
+```
+$ sudo gpasswd -a $USER docker
+$ sudo service docker restart
+```
+
+上記のコマンド実行結果は，ターミナルに再ログインしてから有効となります．
+
+## Unity 環境
+
+* Unity Hub 3.1.1 以降
+* Unity Editor 2021.3.0f1
+  * Unity Hub の「Installs > Install Editor」画面に本バージョンが表示されない場合は，[Unity Dowonload Archive](https://unity3d.com/get-unity/download/archive) の本バージョンの "Unity Hub" をクリックしてインストールできます． 
+
+## PC環境の準備
+
+### 本リポジトリのclone
+
+ターミナルで下記を実行して本リポジトリをcloneしてください．  
+Windows 環境の場合は，WSL 2のファイルシステム配下（`/home/${USER}/` あるいは `\\wsl$`）ではなくWindowsファイルシステム配下（`/mnt/c/` あるいは `C:\`）で実行してください．
+
+```
+$ git clone --recursive https://github.com/toppers/hakoniwa-ros2sim.git
 ```
 
 ## シミュレータの導入手順
