@@ -4,71 +4,79 @@
 
 本リポジトリでは，箱庭上で ROS 2 プログラムのシミュレーションを簡単にお試しできる環境を公開しています．
 
+本ページでは，ネイティブのLinux環境（WSL2含む）での動作手順を示します．Docker 環境での利用手順は [README.md](/README.md) をご参照ください．
 
 ## 想定する PC 環境
 
-* Windows 環境: Windows 10/11
-  * Ubuntu 20.04 LTS on WSL2/WSLg
+* Windows 環境: Windows 10/11 with Ubuntu 20.04 LTS on WSL2/WSLg
 * Linux 環境: Ubuntu 20.04 LTS
-* Mac 環境: macOS Catalina ver.10.15.7
 
-### Docker 環境
+## PC環境の準備
 
-本シミュレータは Docker を利用します．
+### ROS 2 Foxy のインストール
 
-実験的にネイティブのLinux環境（WSL2含む）での動作を試行しています．ネイティブ環境での動作手順は [appendix/native.md](/appendix/native.md) をご参照ください．
+次のページに従って ROS 2 Foxy をインストールしてください．
 
-#### Mac 環境の場合
+https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html
 
-[Docker Desktop for Mac](https://docs.docker.com/desktop/mac/install/) の利用を推奨します．
+### 箱庭環境のインストール
 
-#### Windows/WSL2 または Linux 環境の場合
-
-Docker Engineがインストールされている必要があります．WSL2またはLinuxのターミナルで下記のコマンドの結果が同じように出力されていれば，すでにインストール済みです．
+必要なパッケージをインストールします．
 
 ```
-$ which docker
-/usr/bin/docker
-$ service --status-all |& grep docker
- [ + ]  docker   # または " [ - ]  docker "
-$ service docker status
- * Docker is running   # または " * Docker is not running "
+$ sudo apt-get update
+$ sudo apt-get install -y \
+	git	build-essential	wget gcc g++ ruby vim libssl-dev make \
+	autoconf automake pkg-config curl cmake
+
+# Install grpc for Ruby
+sudo gem install grpc grpc-tools
+# Install Jinja2 for Python
+sudo pip install jinja2
 ```
 
-Docker Engineのインストールはやや手数が多いため，本リポジトリの [`docker/install-docker.bash`](/utils/install-docker.bash) にまとめてあります（「[Install Docker Engine on Ubuntu | Docker Documentation](https://docs.docker.com/engine/install/ubuntu/)」を参考に作成しました）．  
-下記のように実行してください．
+[gRPC](https://github.com/grpc/grpc) をソースビルドし，環境変数に設定します．
 
 ```
-$ bash utils/install-docker.bash
+$ git clone --recurse-submodules -b v1.35.0 https://github.com/grpc/grpc.git
+$ cd grpc
+$ mkdir -p cmake/build
+$ cd cmake/build
+$ cmake ../.. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local/grpc -DgRPC_BUILD_CSHARP_EXT=OFF -DOPENSSL_ROOT_DIR=/usr/local/boringssl -DCMAKE_PREFIX_PATH="/usr/local/cares;/usr/local/protobuf;/usr/local/zlib"
+$ make -j4
+$ sudo make install
+$ echo "export PATH=/usr/local/grpc/bin:${PATH}" >> ~/.bashrc
 ```
 
-`$ service docker status` の結果が " * Docker is not running " の場合は，Dockerを起動してください．
+[箱庭コア](https://github.com/toppers/hakoniwa-core) をソースビルドし，環境変数に設定します．
 
 ```
-$ sudo service docker start
- * Starting Docker: docker                           [ OK ] 
+$ git clone --recurse-submodules https://github.com/toppers/hakoniwa-core.git
+
+$ cd hakoniwa-core/impl/asset/client/build
+$ git checkout 35c47fe
+$ bash build.bash cpp
+$ chmod +x ../cpp/bin/*
+$ echo "export PATH=${PWD}/../cpp/bin:${PATH}" >> ~/.bashrc
 ```
 
-また，ユーザが `docker` のグループに所属していることを想定しています．そうでない場合は，次のコマンドを実行してください．
+mqtt をインストールします．
 
 ```
-$ sudo gpasswd -a $USER docker
-$ sudo service docker restart
+sudo apt-get install -y software-properties-common
+sudo add-apt-repository ppa:mosquitto-dev/mosquitto-ppa
+sudo apt-get install -y libmosquitto-dev
 ```
 
-上記のコマンド実行結果は，ターミナルに再ログインしてから有効となります．
-
-## Unity 環境
+### Unity 環境
 
 * Unity Hub 3.1.1 以降
 * Unity Editor 2021.3.0f1
   * Unity Hub の「Installs > Install Editor」画面に本バージョンが表示されない場合は，[Unity Dowonload Archive](https://unity3d.com/get-unity/download/archive) の本バージョンの "Unity Hub" をクリックしてインストールできます． 
 
-## PC環境の準備
+### 本リポジトリのclone
 
 Windows 環境では，操作は全てWSL2/Linuxのシェル上で行います．WSL2のファイルシステム配下（`/home/${USER}/`以下）ではなくWindowsファイルシステム配下（`/mnt/c/`以下）で実行してください．
-
-### 本リポジトリのclone
 
 ターミナルで下記を実行して本リポジトリをcloneしてください．
 
@@ -78,44 +86,13 @@ $ git clone --recursive https://github.com/toppers/hakoniwa-ros2sim.git
 
 ## シミュレータの導入手順
 
-### Dockerイメージの展開
-
-シミュレータの実行環境は，ビルド済みのDocker imageをDocker Hubにて公開しています．
-
-https://hub.docker.com/r/toppersjp/hakoniwa-ros2sim
-
-現在の最新版は **v1.1.0** です．
-「[バージョン情報・更新履歴](/appendix/version.md)」も参照してください（バージョン番号は[Git/GitHubのtag/release](https://github.com/toppers/hakoniwa-ros2sim/releases)および[Docker Hubのtag番号](https://hub.docker.com/r/toppersjp/hakoniwa-ros2sim/tags)に対応しています）
-
-次のコマンドを実行してください．Dockerイメージののpullと展開を行います．
-
-```
-$ bash docker/pull-image.bash
-```
-
-\[補足：開発者向け情報\] Dockerイメージの作成用に `docker/create-image.bash` があります．
-
-### dockerを起動する
-
 ターミナルを2個起動します（以降の説明では，ターミナルAおよびターミナルBと呼びます）．
 
-ターミナルAでdockerコンテナを起動します．
+ターミナルAでROS 2のワークスペースに移動し，箱庭のROS環境をインストールします．
 
 ```
-$ bash docker/run.bash
-```
-
-Mac環境の場合は，ネットワークポート名（例："en0"）を引数に指定する必要があります．
-ポート名は `ifconfig` コマンド等で確認できます．
-
-```
-$ bash docker/run.bash <port>
-```
-
-### 起動した dockerコンテナ上で箱庭のROS環境をインストール
-
-```
-# bash hako-install.bash
+$ cd ros2/workspace
+$ bash hako-install.bash
 ```
 
 ### Unity プロジェクトを開く
@@ -151,26 +128,13 @@ Unity Hubを起動し，右上の「開く」をクリックして、先ほど�
 
 ### 準備
 
-ターミナルAとBの両方ででdockerコンテナに入ります．
-
-ターミナルAで Dockerコンテナを終了させていた場合は，改めて起動してください，
-
-```
-$ bash docker/run.bash
-```
-
-ターミナルB側は，以下のコマンドで入ります．
-
-```
-$ bash docker/attach.bash
-```
-
 ### ターミナルAでの操作
 
 ターミナルAでROS-TCP-ENDPOINTを起動しましょう．
 
 ```
-# bash launch.bash
+$ cd ros2/workspace
+$ bash launch.bash
 ```
 
 ### ターミナルBでの操作
@@ -178,7 +142,8 @@ $ bash docker/attach.bash
 ターミナルBでROS2プログラムを起動しましょう．
 
 ```
-# bash run.bash tb3 TB3RoboModel
+$ cd ros2/workspace
+$ bash run.bash tb3 TB3RoboModel
 ```
 
 ### Unityのシミュレーション開始する
@@ -203,12 +168,6 @@ Unityのシミュレーション開始ボタンをクリックすると，以下
 ## Contributing
 
 本リポジトリで公開している「箱庭 ROS シミュレータ」について，ご意見や改善の提案などをぜひ [こちらのGitHub Discussions](https://github.com/toppers/hakoniwa/discussions/categories/idea-request) でお知らせください．改修提案の [Pull Requests](https://github.com/toppers/hakoniwa-ros2sim/pulls) も歓迎いたします．
-
-## TODO
-
-- [ ] Dockerを利用しないネイティブのLinux環境（WSL2を含む）での動作をサポート ([#18](https://github.com/toppers/hakoniwa-ros2sim/issues/18))
-- [ ] SLAMやNav2の動作例を示す ([#19](https://github.com/toppers/hakoniwa-ros2sim/issues/19))
-
 
 ## 謝辞
 * TurtleBot3 の Unity パッケージの設計と作成にあたっては，宝塚大学 東京メディア芸術学部 吉岡章夫准教授および学部生の杉崎涼志さん，木村明美さんにご協力いただきました．
