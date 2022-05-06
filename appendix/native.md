@@ -25,47 +25,7 @@ https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html
 
 ```
 $ sudo apt-get update
-$ sudo apt-get install -y \
-	git build-essential wget gcc g++ ruby vim libssl-dev make \
-	autoconf automake pkg-config curl cmake python pip
-
-# Install colcon for ROS 2
-$ sudo apt install python3-colcon-common-extensions
-# Install grpc for Ruby
-$ sudo gem install grpc grpc-tools
-# Install Jinja2 for Python
-$ sudo pip install jinja2
-```
-
-[gRPC](https://github.com/grpc/grpc) をソースビルドし，パスを設定します．
-
-```
-$ cd ~	# 適当な場所に移動
-$ git clone --recurse-submodules -b v1.35.0 https://github.com/grpc/grpc.git
-$ cd grpc
-$ mkdir -p cmake/build
-$ cd cmake/build
-$ cmake ../.. -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=/usr/local/grpc -DgRPC_BUILD_CSHARP_EXT=OFF -DOPENSSL_ROOT_DIR=/usr/local/boringssl -DCMAKE_PREFIX_PATH="/usr/local/cares;/usr/local/protobuf;/usr/local/zlib"
-$ make -j4
-$ sudo make install
-
-$ echo "export PATH=/usr/local/grpc/bin:${PATH}" >> ~/.bashrc
-$ source ~/.bashrc
-```
-
-[箱庭コア](https://github.com/toppers/hakoniwa-core) をソースビルドし，パスを設定します．
-
-```
-$ cd ~	# 適当な場所に移動
-$ git clone --recurse-submodules https://github.com/toppers/hakoniwa-core.git
-
-$ cd hakoniwa-core/impl/asset/client/build
-$ git checkout 35c47fe
-$ bash build.bash cpp
-$ chmod +x ../cpp/bin/*
-
-$ echo "export PATH=${PWD}/../cpp/bin:${PATH}" >> ~/.bashrc
-$ source ~/.bashrc
+$ sudo apt-get install -y g++ python3-colcon-common-extensions
 ```
 
 ### Unity 環境
