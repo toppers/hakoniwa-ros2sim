@@ -68,11 +68,6 @@ RUN apt update &&  apt install -y python && \
 	python get-pip.py && \
 	pip install jinja2
 
-#install mqtt
-RUN apt-get install -y software-properties-common
-RUN add-apt-repository ppa:mosquitto-dev/mosquitto-ppa
-RUN apt-get install -y libmosquitto-dev
-
 WORKDIR /root/workspace/hakoniwa-ros2sim/ros2/workspace
 RUN chmod +x /root/workspace/hakoniwa-core/impl/asset/client/build/cpp/hako-*
 ENV CORE_PORTNO 50051
