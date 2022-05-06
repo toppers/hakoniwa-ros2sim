@@ -84,7 +84,7 @@ $ git clone --recursive https://github.com/toppers/hakoniwa-ros2sim.git
 
 https://hub.docker.com/r/toppersjp/hakoniwa-ros2sim
 
-現在の最新版は **v1.1.0** です．
+現在の最新版は **v1.1.1** です．
 「[バージョン情報・更新履歴](/appendix/version.md)」も参照してください（バージョン番号は[Git/GitHubのtag/release](https://github.com/toppers/hakoniwa-ros2sim/releases)および[Docker Hubのtag番号](https://hub.docker.com/r/toppersjp/hakoniwa-ros2sim/tags)に対応しています）
 
 次のコマンドを実行してください．Dockerイメージののpullと展開を行います．
@@ -206,7 +206,6 @@ Unityのシミュレーション開始ボタンをクリックすると，以下
 
 ## TODO
 
-- [ ] Dockerを利用しないネイティブのLinux環境（WSL2を含む）での動作をサポート ([#18](https://github.com/toppers/hakoniwa-ros2sim/issues/18))
 - [ ] SLAMやNav2の動作例を示す ([#19](https://github.com/toppers/hakoniwa-ros2sim/issues/19))
 
 

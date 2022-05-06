@@ -13,11 +13,18 @@
     - 箱庭アセット技術（各リポジトリ）の更新
     - 大幅な機能の修正
     - シミュレータ本体の新たな機能の追加　など
-- Revison (`Z`): 
+- Revision (`Z`): 
     - 軽微な機能の修正・バグの対応
     - ドキュメントの更新　など
 
 ## 更新履歴
+
+### v1.1.1 @ 2022/05/06
+
+- ネイティブのLinux環境（WSL2含む）での動作手順の追加
+- Docker image の改善
+- 箱庭アセットとバージョン (commit hash) 情報
+    - [hakoniwa-core](https://github.com/toppers/hakoniwa-core) / sha: [35c47fe42af58f37a4843e5e789e5f749acfbf0b](https://github.com/toppers/hakoniwa-core/tree/35c47fe42af58f37a4843e5e789e5f749acfbf0b)
 
 ### v1.1.0 @ 2022/05/06
 
