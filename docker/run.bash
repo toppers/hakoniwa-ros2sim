@@ -1,7 +1,10 @@
 #!/bin/bash
 
 HAKONIWA_TOP_DIR=`pwd`
-DOCKER_IMAGE=`cat docker/image_name.txt`
+IMAGE_NAME=`cat docker/image_name.txt`
+IMAGE_TAG=`cat appendix/latest_version.txt`
+DOCKER_IMAGE=${IMAGE_NAME}:${IMAGE_TAG}
+
 
 OS_TYPE=`bash utils/detect_os_type.bash`
 
