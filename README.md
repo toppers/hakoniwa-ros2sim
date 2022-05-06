@@ -84,59 +84,33 @@ https://hub.docker.com/r/toppersjp/hakoniwa-ros2sim
 現在の最新版は **v1.0.0** です．
 「[バージョン情報・更新履歴](/appendix/version.md)」も参照してください（バージョン番号は[Git/GitHubのtag/release](https://github.com/toppers/hakoniwa-ros2sim/releases)および[Docker Hubのtag番号](https://hub.docker.com/r/toppersjp/hakoniwa-ros2sim/tags)に対応しています）
 
-次のコマンドを実行してください．Dockerを立ち上げて，imageのpullと展開を行います．
+次のコマンドを実行してください．Dockerイメージののpullと展開を行います．
 
 ```
-$ sudo service docker start
-$ cd ros2/docker
-$ bash pull-image.bash
+$ bash docker/pull-image.bash
 ```
 
 \[開発者向け情報\] Dockerイメージの作成
 
-#### Windows環境
-
 ```
-$ sudo service docker start
-$ cd ros2/docker
-$ bash create-image.bash
-```
-
-#### Linux環境
-
-```
-$ cd ros2/docker
-$ bash create-image-linux.bash
-```
-
-#### Mac環境
-
-```
-$ cd ros2/docker
-$ bash create-image.bash
+$ bash docker/create-image.bash
 ```
 
 ### dockerを起動する
-端末を２個(端末A，端末B)起動して，端末Aでdockerコンテナを起動します．
 
-#### Windows環境
+ターミナルを2個起動します（以降の説明では，ターミナルAおよびターミナルBと呼びます）．
 
-```
-$ bash run.bash
-```
-
-#### Linux環境
+ターミナルAでdockerコンテナを起動します．
 
 ```
-$ bash run-linux.bash
+$ bash docker/run.bash
 ```
 
-#### Mac環境
-Mac環境の場合は，イーサーネット名を引数に指定してください．
-イーサーネット名は，ifconfigコマンドで確認できます．
+Mac環境の場合は，イーサネット名（例："eth0"）を引数に指定する必要があります．
+イーサネット名は `ifconfig` コマンド等で確認できます．
 
 ```
-$ bash run-mac.bash <ether>
+$ bash docker/run.bash <ether>
 ```
 
 ### 起動した dockerコンテナ上で箱庭のROS環境をインストール
@@ -177,24 +151,32 @@ Unity Hubを起動し，右上の「開く」をクリックして、先ほど�
 
 
 ### 準備
-端末Aと端末Bでdockerコンテナに入ります．
-端末B側は，以下のコマンドで入ります．
+
+ターミナルAとBの両方ででdockerコンテナに入ります．
+
+ターミナルAで Dockerコンテナを終了させていた場合は，改めて起動してください，
 
 ```
-$ bash attach.bash
+$ bash docker/run.bash
 ```
 
-### 端末A
+ターミナルB側は，以下のコマンドで入ります．
 
-端末AでROS-TCP-ENDPOINTを起動しましょう．
+```
+$ bash docker/attach.bash
+```
+
+### ターミナルAでの操作
+
+ターミナルAでROS-TCP-ENDPOINTを起動しましょう．
 
 ```
 # bash launch.bash
 ```
 
-### 端末B
+### ターミナルBでの操作
 
-端末BでROSプログラムを起動しましょう．
+ターミナルBでROS2プログラムを起動しましょう．
 
 ```
 # bash run.bash tb3 TB3RoboModel
@@ -214,8 +196,8 @@ Unityのシミュレーション開始ボタンをクリックすると，以下
 
 この動画の各ウィンドウは，それぞれ次の通り対応しています．
 
-- 右上：端末A
-- 右下：端末B
+- 右上：ターミナルA
+- 右下：ターミナルB
 - 左：Unity
 
 
