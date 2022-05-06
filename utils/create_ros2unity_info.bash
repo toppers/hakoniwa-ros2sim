@@ -28,14 +28,17 @@ then
 	export ROS_IPADDR=127.0.0.1
 elif [ "${ROS_VERSION}" = "ros2" ]
 then
-  NETWORK_INTERFACE=$(route | grep '^default' | grep -o '[^ ]*$' | tr -d '\n')
-  IP_ADDR=$(ifconfig "${NETWORK_INTERFACE}" | grep netmask | awk '{print $2}')
+	NETWORK_INTERFACE=$(route | grep '^default' | grep -o '[^ ]*$' | tr -d '\n')
+	IP_ADDR=$(ifconfig "${NETWORK_INTERFACE}" | grep netmask | awk '{print $2}')
 	export ROS_IPADDR=$IP_ADDR
 else
   exit 1
 fi
 
-export ROS_UNITY_IPADDR=${ROS_IPADDR}
+if [ -z "${ROS_UNITY_IPADDR}" ]
+then
+	export ROS_UNITY_IPADDR=${ROS_IPADDR}
+fi
 
 if [ -d "${ROS_JSON_DIR}" ]
 then

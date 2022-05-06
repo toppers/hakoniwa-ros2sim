@@ -48,6 +48,7 @@ docker run -v ${HAKONIWA_TOP_DIR}:/root/workspace/hakoniwa-ros-samples \
 	-it --rm \
 	--ip ${IPADDR} -p 10000:10000 \
 	-e CORE_IPADDR=${IPADDR} \
+	-e ROS_UNITY_IPADDR=${IPADDR} \
 	-e OS_TYPE=${OS_TYPE} \
 	--name hakoniwa-ros-sim ${DOCKER_IMAGE} 
 fi
