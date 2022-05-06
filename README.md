@@ -106,8 +106,8 @@ $ bash docker/create-image.bash
 $ bash docker/run.bash
 ```
 
-Mac環境の場合は，イーサネット名（例："eth0"）を引数に指定する必要があります．
-イーサネット名は `ifconfig` コマンド等で確認できます．
+Mac環境の場合は，ネットワークポート名（例："en0"）を引数に指定する必要があります．
+ポート名は `ifconfig` コマンド等で確認できます．
 
 ```
 $ bash docker/run.bash <ether>

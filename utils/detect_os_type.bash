@@ -1,9 +1,9 @@
 #!/bin/bash
 
-if [[ $(uname -a | grep -q microsoft) -eq 0 ]]
+if [[ "$(uname -r)" == *microsoft* ]]
 then
     OS_TYPE=wsl2
-elif [[ $(uname -a | grep -q Dawrin) -eq 0 ]]
+elif [[ "$(uname)" == "Darwin" ]]
 then
     OS_TYPE=Mac
 else
