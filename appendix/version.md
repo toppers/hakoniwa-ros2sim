@@ -19,6 +19,17 @@
 
 ## 更新履歴
 
+### v1.1.0 @ 2022/05/06
+
+- リポジトリ名の変更
+- README の作成と改善
+- Docker image の公開
+- ユーザ利便性の改善
+    - submodule の URL を https に変更
+    - Docker 操作のスクリプトを全プラットフォームで共通化
+- 箱庭アセットとバージョン (commit hash) 情報
+    - [hakoniwa-core](https://github.com/toppers/hakoniwa-core) / sha: [35c47fe42af58f37a4843e5e789e5f749acfbf0b](https://github.com/toppers/hakoniwa-core/tree/35c47fe42af58f37a4843e5e789e5f749acfbf0b)
+
 ### v1.0.0 @ 2022/04/23
 
 - 最初のリリース

@@ -73,6 +73,6 @@ RUN apt-get install -y software-properties-common
 RUN add-apt-repository ppa:mosquitto-dev/mosquitto-ppa
 RUN apt-get install -y libmosquitto-dev
 
-WORKDIR /root/workspace/hakoniwa-ros-samples/ros2/workspace
+WORKDIR /root/workspace/hakoniwa-ros2sim/ros2/workspace
 RUN chmod +x /root/workspace/hakoniwa-core/impl/asset/client/build/cpp/hako-*
 ENV CORE_PORTNO 50051

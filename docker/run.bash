@@ -37,14 +37,14 @@ fi
 
 if [ ${OS_TYPE} != "Mac" ]
 then
-docker run -v ${HAKONIWA_TOP_DIR}:/root/workspace/hakoniwa-ros-samples \
+docker run -v ${HAKONIWA_TOP_DIR}:/root/workspace/hakoniwa-ros2sim \
 	-it --rm \
 	--net host \
 	-e CORE_IPADDR=${IPADDR} \
 	-e OS_TYPE=${OS_TYPE} \
 	--name hakoniwa-ros2sim ${DOCKER_IMAGE} 
 else
-docker run -v ${HAKONIWA_TOP_DIR}:/root/workspace/hakoniwa-ros-samples \
+docker run -v ${HAKONIWA_TOP_DIR}:/root/workspace/hakoniwa-ros2sim \
 	-it --rm \
 	--ip ${IPADDR} -p 10000:10000 \
 	-e CORE_IPADDR=${IPADDR} \
