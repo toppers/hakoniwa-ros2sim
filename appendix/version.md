@@ -22,3 +22,5 @@
 ### v1.0.0 @ 2022/04/23
 
 - 最初のリリース
+- 箱庭アセットとバージョン (commit hash) 情報
+    - [hakoniwa-core](https://github.com/toppers/hakoniwa-core) / sha: [2628fdbed6f49f44bc988e65b08858bf67424b79](https://github.com/toppers/hakoniwa-core/tree/2628fdbed6f49f44bc988e65b08858bf67424b79)
