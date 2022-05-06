@@ -82,7 +82,7 @@ $ git clone --recursive https://github.com/toppers/hakoniwa-ros2sim.git
 
 https://hub.docker.com/r/toppersjp/hakoniwa-ros2sim
 
-現在の最新版は **v1.0.0** です．
+現在の最新版は **v1.1.0** です．
 「[バージョン情報・更新履歴](/appendix/version.md)」も参照してください（バージョン番号は[Git/GitHubのtag/release](https://github.com/toppers/hakoniwa-ros2sim/releases)および[Docker Hubのtag番号](https://hub.docker.com/r/toppersjp/hakoniwa-ros2sim/tags)に対応しています）
 
 次のコマンドを実行してください．Dockerイメージののpullと展開を行います．
