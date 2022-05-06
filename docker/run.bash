@@ -26,7 +26,7 @@ elif [ ${OS_TYPE} = "Mac" ]
 then
 	if [ $# -ne 1 ]
 	then
-		echo "Usage: $0 <eth>"
+		echo "Usage: $0 <port>"
 		exit 1
 	fi
 	ETHER=${1}
