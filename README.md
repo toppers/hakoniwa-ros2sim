@@ -2,7 +2,7 @@
 
 [TOPPERSプロジェクト箱庭WG](https://toppers.github.io/hakoniwa)では，IoT／クラウドロボティクス時代の仮想シミュレーション環境である『箱庭』の研究開発を進めています．
 
-本リポジトリでは，箱庭上で ROS プログラムを簡単にお試しできる環境を公開しています．
+本リポジトリでは，箱庭上で ROS 2 プログラムのシミュレーションを簡単にお試しできる環境を公開しています．
 
 
 ## 想定する PC 環境
@@ -22,7 +22,7 @@
 
 #### Windows/WSL2 または Linux 環境の場合
 
-Docker Engineがインストールされている必要があります．WSL2のターミナルで下記のコマンドの結果が同じように出力されていれば，すでにインストール済みです．
+Docker Engineがインストールされている必要があります．WSL2またはLinuxのターミナルで下記のコマンドの結果が同じように出力されていれば，すでにインストール済みです．
 
 ```
 $ which docker
@@ -64,10 +64,11 @@ $ sudo service docker restart
 
 ## PC環境の準備
 
+Windows 環境では，操作は全てWSL2/Linuxのシェル上で行います．WSL2のファイルシステム配下（`/home/${USER}/`以下）ではなくWindowsファイルシステム配下（`/mnt/c/`以下）で実行してください．
+
 ### 本リポジトリのclone
 
-ターミナルで下記を実行して本リポジトリをcloneしてください．  
-Windows 環境の場合は，WSL 2のファイルシステム配下（`/home/${USER}/` あるいは `\\wsl$`）ではなくWindowsファイルシステム配下（`/mnt/c/` あるいは `C:\`）で実行してください．
+ターミナルで下記を実行して本リポジトリをcloneしてください．
 
 ```
 $ git clone --recursive https://github.com/toppers/hakoniwa-ros2sim.git
@@ -90,7 +91,7 @@ https://hub.docker.com/r/toppersjp/hakoniwa-ros2sim
 $ bash docker/pull-image.bash
 ```
 
-\[開発者向け情報\] Dockerイメージの作成
+\[補足：開発者向け情報\] Dockerイメージの作成
 
 ```
 $ bash docker/create-image.bash
