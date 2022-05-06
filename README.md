@@ -2,45 +2,27 @@
 
 [TOPPERSプロジェクト箱庭WG](https://toppers.github.io/hakoniwa)では，IoT／クラウドロボティクス時代の仮想シミュレーション環境である『箱庭』の研究開発を進めています．
 
-本リポジトリでは，箱庭上で ROS プログラムを簡単にお試しできる環境を公開しています．
+本リポジトリでは，箱庭上で ROS 2 プログラムのシミュレーションを簡単にお試しできる環境を公開しています．
 
 
 ## 想定する PC 環境
 
-* Windows 環境
-  * Windows 10/11
-    * WSL2/WSLg/Ubuntu 20.04 LTS
-    * Docker Engine
-* Linux 環境
-  * Ubuntu 20.04 LTS
-  * Docker Engine
-* Mac 環境
-  * MacBook Air
-    * macOS Catalina ver.10.15.7
-    * Docker for Mac
+* Windows 環境: Windows 10/11
+  * Ubuntu 20.04 LTS on WSL2/WSLg
+* Linux 環境: Ubuntu 20.04 LTS
+* Mac 環境: macOS Catalina ver.10.15.7
 
+### Docker 環境
 
-## Unity 環境
+本シミュレータは Docker を利用します．
 
-* Unity Hub 3.1.1 以降
-* Unity Editor 2021.3.0f1
-  * Unity Hub の「Installs > Install Editor」画面に本バージョンが表示されない場合は，[Unity Dowonload Archive](https://unity3d.com/get-unity/download/archive) の本バージョンの "Unity Hub" をクリックしてインストールできます． 
+#### Mac 環境の場合
 
-## PC環境の準備
+[Docker Desktop for Mac](https://docs.docker.com/desktop/mac/install/) の利用を推奨します．
 
-### 本リポジトリのclone
+#### Windows/WSL2 または Linux 環境の場合
 
-ターミナルで下記を実行して本リポジトリをcloneしてください．  
-Windows 環境の場合は，WSL 2のファイルシステム配下（`/home/${USER}/` または `\\wsl$`）ではなくWindowsファイルシステム配下（`/mnt/c/` または `C:\`）で実行してください．
-
-```
-$ git clone --recursive https://github.com/toppers/hakoniwa-ros2sim.git
-```
-
-
-### Windows 向け Docker Engineのインストール
-
-本シミュレータは，WSL2にDocker Engineがインストールされている必要があります．WSL2のターミナルで下記のコマンドの結果が同じように出力されていれば，すでにインストール済みです．
+Docker Engineがインストールされている必要があります．WSL2またはLinuxのターミナルで下記のコマンドの結果が同じように出力されていれば，すでにインストール済みです．
 
 ```
 $ which docker
@@ -58,6 +40,40 @@ Docker Engineのインストールはやや手数が多いため，本リポジ�
 $ bash utils/install-docker.bash
 ```
 
+`$ service docker status` の結果が " * Docker is not running " の場合は，Dockerを起動してください．
+
+```
+$ sudo service docker start
+ * Starting Docker: docker                           [ OK ] 
+```
+
+また，ユーザが `docker` のグループに所属していることを想定しています．そうでない場合は，次のコマンドを実行してください．
+
+```
+$ sudo gpasswd -a $USER docker
+$ sudo service docker restart
+```
+
+上記のコマンド実行結果は，ターミナルに再ログインしてから有効となります．
+
+## Unity 環境
+
+* Unity Hub 3.1.1 以降
+* Unity Editor 2021.3.0f1
+  * Unity Hub の「Installs > Install Editor」画面に本バージョンが表示されない場合は，[Unity Dowonload Archive](https://unity3d.com/get-unity/download/archive) の本バージョンの "Unity Hub" をクリックしてインストールできます． 
+
+## PC環境の準備
+
+Windows 環境では，操作は全てWSL2/Linuxのシェル上で行います．WSL2のファイルシステム配下（`/home/${USER}/`以下）ではなくWindowsファイルシステム配下（`/mnt/c/`以下）で実行してください．
+
+### 本リポジトリのclone
+
+ターミナルで下記を実行して本リポジトリをcloneしてください．
+
+```
+$ git clone --recursive https://github.com/toppers/hakoniwa-ros2sim.git
+```
+
 ## シミュレータの導入手順
 
 ### Dockerイメージの展開
@@ -69,59 +85,33 @@ https://hub.docker.com/r/toppersjp/hakoniwa-ros2sim
 現在の最新版は **v1.0.0** です．
 「[バージョン情報・更新履歴](/appendix/version.md)」も参照してください（バージョン番号は[Git/GitHubのtag/release](https://github.com/toppers/hakoniwa-ros2sim/releases)および[Docker Hubのtag番号](https://hub.docker.com/r/toppersjp/hakoniwa-ros2sim/tags)に対応しています）
 
-次のコマンドを実行してください．Dockerを立ち上げて，imageのpullと展開を行います．
+次のコマンドを実行してください．Dockerイメージののpullと展開を行います．
 
 ```
-$ sudo service docker start
-$ cd ros2/docker
-$ bash pull-image.bash
+$ bash docker/pull-image.bash
 ```
 
-\[開発者向け情報\] Dockerイメージの作成
-
-#### Windows環境
+\[補足：開発者向け情報\] Dockerイメージの作成
 
 ```
-$ sudo service docker start
-$ cd ros2/docker
-$ bash create-image.bash
-```
-
-#### Linux環境
-
-```
-$ cd ros2/docker
-$ bash create-image-linux.bash
-```
-
-#### Mac環境
-
-```
-$ cd ros2/docker
-$ bash create-image.bash
+$ bash docker/create-image.bash
 ```
 
 ### dockerを起動する
-端末を２個(端末A，端末B)起動して，端末Aでdockerコンテナを起動します．
 
-#### Windows環境
+ターミナルを2個起動します（以降の説明では，ターミナルAおよびターミナルBと呼びます）．
 
-```
-$ bash run.bash
-```
-
-#### Linux環境
+ターミナルAでdockerコンテナを起動します．
 
 ```
-$ bash run-linux.bash
+$ bash docker/run.bash
 ```
 
-#### Mac環境
-Mac環境の場合は，イーサーネット名を引数に指定してください．
-イーサーネット名は，ifconfigコマンドで確認できます．
+Mac環境の場合は，ネットワークポート名（例："en0"）を引数に指定する必要があります．
+ポート名は `ifconfig` コマンド等で確認できます．
 
 ```
-$ bash run-mac.bash <ether>
+$ bash docker/run.bash <port>
 ```
 
 ### 起動した dockerコンテナ上で箱庭のROS環境をインストール
@@ -162,24 +152,32 @@ Unity Hubを起動し，右上の「開く」をクリックして、先ほど�
 
 
 ### 準備
-端末Aと端末Bでdockerコンテナに入ります．
-端末B側は，以下のコマンドで入ります．
+
+ターミナルAとBの両方ででdockerコンテナに入ります．
+
+ターミナルAで Dockerコンテナを終了させていた場合は，改めて起動してください，
 
 ```
-$ bash attach.bash
+$ bash docker/run.bash
 ```
 
-### 端末A
+ターミナルB側は，以下のコマンドで入ります．
 
-端末AでROS-TCP-ENDPOINTを起動しましょう．
+```
+$ bash docker/attach.bash
+```
+
+### ターミナルAでの操作
+
+ターミナルAでROS-TCP-ENDPOINTを起動しましょう．
 
 ```
 # bash launch.bash
 ```
 
-### 端末B
+### ターミナルBでの操作
 
-端末BでROSプログラムを起動しましょう．
+ターミナルBでROS2プログラムを起動しましょう．
 
 ```
 # bash run.bash tb3 TB3RoboModel
@@ -199,8 +197,8 @@ Unityのシミュレーション開始ボタンをクリックすると，以下
 
 この動画の各ウィンドウは，それぞれ次の通り対応しています．
 
-- 右上：端末A
-- 右下：端末B
+- 右上：ターミナルA
+- 右下：ターミナルB
 - 左：Unity
 
 

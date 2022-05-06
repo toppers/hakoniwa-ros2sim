@@ -1,7 +1,5 @@
 #!/bin/bash
 
-#!/bin/bash
-
 CURR=`pwd`
 
 cd tb3/Assets
@@ -31,5 +29,4 @@ else
 	mkdir -p Resources/Hakoniwa/Robots
 	cp -p Prefabs/Robots/TB3RoboModel.prefab*  Resources/Hakoniwa/Robots/
 fi
-
 
