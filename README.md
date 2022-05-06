@@ -91,11 +91,7 @@ https://hub.docker.com/r/toppersjp/hakoniwa-ros2sim
 $ bash docker/pull-image.bash
 ```
 
-\[補足：開発者向け情報\] Dockerイメージの作成
-
-```
-$ bash docker/create-image.bash
-```
+\[補足：開発者向け情報\] Dockerイメージの作成用に `docker/create-image.bash` があります．
 
 ### dockerを起動する
 
@@ -207,6 +203,9 @@ Unityのシミュレーション開始ボタンをクリックすると，以下
 本リポジトリで公開している「箱庭 ROS シミュレータ」について，ご意見や改善の提案などをぜひ [こちらのGitHub Discussions](https://github.com/toppers/hakoniwa/discussions/categories/idea-request) でお知らせください．改修提案の [Pull Requests](https://github.com/toppers/hakoniwa-ros2sim/pulls) も歓迎いたします．
 
 ## TODO
+
+- [ ] Dockerを利用しないネイティブのLinux環境（WSL2を含む）での動作をサポート ([#18](https://github.com/toppers/hakoniwa-ros2sim/issues/18))
+- [ ] SLAMやNav2の動作例を示す ([#19](https://github.com/toppers/hakoniwa-ros2sim/issues/19))
 
 
 ## 謝辞
