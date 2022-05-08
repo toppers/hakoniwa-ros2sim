@@ -12,9 +12,13 @@
 * Linux 環境: Ubuntu 20.04 LTS
 * Mac 環境: macOS Catalina ver.10.15.7
 
+Windows 環境では，操作は全てWSL2/Linuxのシェル上で行います．WSL2のファイルシステム配下（`/home/${USER}/`以下）ではなくWindowsファイルシステム配下（`/mnt/c/`以下）で実行してください．
+
+## PC環境の準備
+
 ### Docker 環境
 
-本シミュレータは Docker を利用します．
+本シミュレータでは Docker を利用します．
 
 実験的にネイティブのLinux環境（WSL2含む）での動作を試行しています．ネイティブ環境での動作手順は [appendix/native.md](/appendix/native.md) をご参照ください．
 
@@ -58,15 +62,16 @@ $ sudo service docker restart
 
 上記のコマンド実行結果は，ターミナルに再ログインしてから有効となります．
 
-## Unity 環境
+### Unity 環境のインストール
 
 * Unity Hub 3.1.1 以降
 * Unity Editor 2021.3.0f1
   * Unity Hub の「Installs > Install Editor」画面に本バージョンが表示されない場合は，[Unity Dowonload Archive](https://unity3d.com/get-unity/download/archive) の本バージョンの "Unity Hub" をクリックしてインストールできます． 
 
-## PC環境の準備
+## シミュレータの導入手順
 
-Windows 環境では，操作は全てWSL2/Linuxのシェル上で行います．WSL2のファイルシステム配下（`/home/${USER}/`以下）ではなくWindowsファイルシステム配下（`/mnt/c/`以下）で実行してください．
+現在の最新版は **v1.1.1** です．
+「[バージョン情報・更新履歴](/appendix/version.md)」も参照してください（バージョン番号は[Git/GitHubのtag/release](https://github.com/toppers/hakoniwa-ros2sim/releases)および[Docker Hubのtag番号](https://hub.docker.com/r/toppersjp/hakoniwa-ros2sim/tags)に対応しています）
 
 ### 本リポジトリのclone
 
@@ -76,16 +81,11 @@ Windows 環境では，操作は全てWSL2/Linuxのシェル上で行います�
 $ git clone --recursive https://github.com/toppers/hakoniwa-ros2sim.git
 ```
 
-## シミュレータの導入手順
-
 ### Dockerイメージの展開
 
 シミュレータの実行環境は，ビルド済みのDocker imageをDocker Hubにて公開しています．
 
 https://hub.docker.com/r/toppersjp/hakoniwa-ros2sim
-
-現在の最新版は **v1.1.1** です．
-「[バージョン情報・更新履歴](/appendix/version.md)」も参照してください（バージョン番号は[Git/GitHubのtag/release](https://github.com/toppers/hakoniwa-ros2sim/releases)および[Docker Hubのtag番号](https://hub.docker.com/r/toppersjp/hakoniwa-ros2sim/tags)に対応しています）
 
 次のコマンドを実行してください．Dockerイメージののpullと展開を行います．
 
