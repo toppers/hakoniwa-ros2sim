@@ -57,6 +57,7 @@ $ sudo service docker start
 
 ```
 $ sudo gpasswd -a $USER docker
+$ sudo chgrp docker /var/run/docker.sock
 $ sudo service docker restart
 ```
 
