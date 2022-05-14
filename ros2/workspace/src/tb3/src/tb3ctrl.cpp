@@ -74,7 +74,6 @@ static bool do_forward(void) {
   return is_stop;
 }
 
-#if 0
 static bool turn_left(void)
 {
   bool is_stop = false;
@@ -89,7 +88,6 @@ static bool turn_left(void)
   
   return is_stop;
 }
-#endif
 
 static bool turn_right(void) {
   bool is_stop = false;
@@ -149,7 +147,7 @@ int main(int argc, char **argv) {
 
   while (rclcpp::ok()) {
     if (mode == RoboMode_INIT) {
-      float d =   search_all();
+      float d = search_all();
       if (d > 0.0f && d <= 0.08f) {
         printf("d=%f MOVE\n", d);
         mode = RoboMode_RUN;
