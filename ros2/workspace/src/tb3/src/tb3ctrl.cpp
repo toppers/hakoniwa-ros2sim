@@ -37,6 +37,7 @@ static float get_foward_distance(void) {
   // printf("foward: %lf\n", min);
   return min;
 }
+
 static float get_right_distance(void) {
   int i;
   float min = 100.0f;
@@ -48,6 +49,7 @@ static float get_right_distance(void) {
   // printf("right: %lf\n", min);
   return min;
 }
+
 static float sarch_all(void) {
   int i;
   float min = 100.0f;
@@ -75,17 +77,17 @@ static bool do_foward(void) {
 #if 0
 static bool turn_left(void)
 {
-	bool is_stop = false;
-	cmd_vel.angular.z = 0;
-	if (get_right_distance() < 0.05f) {
-		cmd_vel.angular.z = 5;
-		is_stop = true;
-	}
-	else {
-		cmd_vel.angular.z = 0;
-	}
-	
-	return is_stop;
+  bool is_stop = false;
+  cmd_vel.angular.z = 0;
+  if (get_right_distance() < 0.05f) {
+    cmd_vel.angular.z = 5;
+    is_stop = true;
+  }
+  else {
+    cmd_vel.angular.z = 0;
+  }
+  
+  return is_stop;
 }
 #endif
 
@@ -111,27 +113,29 @@ static void do_control(void) {
   }
   return;
 }
+
 using namespace std::chrono_literals;
 
 typedef enum {
   RoboMode_INIT = 0,
   RoboMode_RUN,
 } RoboModeType;
+
 int main(int argc, char **argv) {
   RoboModeType mode = RoboMode_RUN;
   char buffer[3][4096];
 
   if (argc > 1) {
-	sprintf(buffer[0], "%s_tb3_node", argv[1]);
-	sprintf(buffer[1], "%s_cmd_vel", argv[1]);
-	sprintf(buffer[2], "%s_scan", argv[1]);
-  	printf("START: %s\n", argv[1]);
+  sprintf(buffer[0], "%s_tb3_node", argv[1]);
+  sprintf(buffer[1], "%s_cmd_vel", argv[1]);
+  sprintf(buffer[2], "%s_scan", argv[1]);
+    printf("START: %s\n", argv[1]);
   }
   else {
-	sprintf(buffer[0], "tb3_node");
-	sprintf(buffer[1], "cmd_vel");
-	sprintf(buffer[2], "scan");
-  	printf("START\n");
+  sprintf(buffer[0], "tb3_node");
+  sprintf(buffer[1], "cmd_vel");
+  sprintf(buffer[2], "scan");
+    printf("START\n");
   }
   rclcpp::init(argc, argv);
 
