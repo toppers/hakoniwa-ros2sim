@@ -79,7 +79,7 @@ $ sudo service docker restart
 ターミナルで下記を実行して本リポジトリをcloneしてください．
 
 ```
-$ git clone --recursive https://github.com/toppers/hakoniwa-ros2sim.git
+$ git clone --recursive -b v1.1.1 https://github.com/toppers/hakoniwa-ros2sim.git
 ```
 
 ### Dockerイメージの展開
