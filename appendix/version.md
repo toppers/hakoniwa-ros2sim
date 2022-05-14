@@ -19,6 +19,17 @@
 
 ## 更新履歴
 
+### v1.1.2 @ 2022/05/14
+
+* add robot arm stick parts for general purpose (fix #25) by @tmori in https://github.com/toppers/hakoniwa-ros2sim/pull/26
+* specify version on `git clone` by @takasehideki in https://github.com/toppers/hakoniwa-ros2sim/pull/29
+* add robot arm (fix #27) by @tmori in https://github.com/toppers/hakoniwa-ros2sim/pull/28
+* improve README to make it easier to copy command by @takasehideki in https://github.com/toppers/hakoniwa-ros2sim/pull/30
+* Refactor tb3ctrl by @s-hosoai in https://github.com/toppers/hakoniwa-ros2sim/pull/32
+
+- 箱庭アセットとバージョン (commit hash) 情報
+    - [hakoniwa-core](https://github.com/toppers/hakoniwa-core) / sha: [35c47fe42af58f37a4843e5e789e5f749acfbf0b](https://github.com/toppers/hakoniwa-core/tree/35c47fe42af58f37a4843e5e789e5f749acfbf0b)
+
 ### v1.1.1 @ 2022/05/06
 
 - ネイティブのLinux環境（WSL2含む）での動作手順の追加
