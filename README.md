@@ -24,7 +24,7 @@ Windows 環境では，操作は全てWSL2/Linuxのシェル上で行います�
 ターミナルで下記を実行して本リポジトリをcloneしてください．
 
 ```
-$ git clone --recursive -b v1.1.1 https://github.com/toppers/hakoniwa-ros2sim.git
+git clone --recursive -b v1.1.1 https://github.com/toppers/hakoniwa-ros2sim.git
 ```
 
 ### Docker 環境
@@ -39,7 +39,7 @@ $ git clone --recursive -b v1.1.1 https://github.com/toppers/hakoniwa-ros2sim.gi
 
 #### Windows/WSL2 または Linux 環境の場合
 
-Docker Engineがインストールされている必要があります．WSL2またはLinuxのターミナルで下記のコマンドの結果が同じように出力されていれば，すでにインストール済みです．
+Docker Engineがインストールされている必要があります．WSL2またはLinuxのターミナルで下記のコマンドの結果が同じように出力されていれば，すでにインストール済みです（`$`から始まる行は実行するコマンドを示しています）．
 
 ```
 $ which docker
@@ -54,22 +54,27 @@ Docker Engineのインストールはやや手数が多いため，本リポジ�
 下記のように実行してください．
 
 ```
-$ bash utils/install-docker.bash
+bash utils/install-docker.bash
 ```
 
-`$ service docker status` の結果が " * Docker is not running " の場合は，Dockerを起動してください．
+`service docker status` の結果が " * Docker is not running " の場合は，Dockerを起動してください．
 
 ```
-$ sudo service docker start
+sudo service docker start
+```
+
+次のように出力されていれば，Dockerが起動しています．
+
+```
  * Starting Docker: docker                           [ OK ] 
 ```
 
 また，ユーザが `docker` のグループに所属していることを想定しています．そうでない場合は，次のコマンドを実行してください．
 
 ```
-$ sudo gpasswd -a $USER docker
-$ sudo chgrp docker /var/run/docker.sock
-$ sudo service docker restart
+sudo gpasswd -a $USER docker
+sudo chgrp docker /var/run/docker.sock
+sudo service docker restart
 ```
 
 上記のコマンド実行結果は，ターミナルに再ログインしてから有効となります．
@@ -91,7 +96,7 @@ https://hub.docker.com/r/toppersjp/hakoniwa-ros2sim
 次のコマンドを実行してください．Dockerイメージののpullと展開を行います．
 
 ```
-$ bash docker/pull-image.bash
+bash docker/pull-image.bash
 ```
 
 \[補足：開発者向け情報\] Dockerイメージの作成用に `docker/create-image.bash` があります．
@@ -103,14 +108,14 @@ $ bash docker/pull-image.bash
 ターミナルAでdockerコンテナを起動します．
 
 ```
-$ bash docker/run.bash
+bash docker/run.bash
 ```
 
 Mac環境の場合は，ネットワークポート名（例："en0"）を引数に指定する必要があります．
 ポート名は `ifconfig` コマンド等で確認できます．
 
 ```
-$ bash docker/run.bash <port>
+bash docker/run.bash <port>
 ```
 
 ### 起動した dockerコンテナ上で箱庭のROS環境をインストール
@@ -157,13 +162,13 @@ Unity Hubを起動し，右上の「開く」をクリックして、先ほど�
 ターミナルAで Dockerコンテナを終了させていた場合は，改めて起動してください，
 
 ```
-$ bash docker/run.bash
+bash docker/run.bash
 ```
 
 ターミナルB側は，以下のコマンドで入ります．
 
 ```
-$ bash docker/attach.bash
+bash docker/attach.bash
 ```
 
 ### ターミナルAでの操作
