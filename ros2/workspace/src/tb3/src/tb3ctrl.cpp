@@ -21,7 +21,7 @@ static void scanCallback(const sensor_msgs::msg::LaserScan::SharedPtr msg) {
 
 static geometry_msgs::msg::Twist cmd_vel;
 
-static float get_foward_distance(void) {
+static float get_forward_distance(void) {
   int i;
   float min = 100.0f;
   for (i = 0; i < 15; i++) {
@@ -34,7 +34,7 @@ static float get_foward_distance(void) {
       min = scan_data.ranges[i];
     }
   }
-  // printf("foward: %lf\n", min);
+  // printf("forward: %lf\n", min);
   return min;
 }
 
@@ -50,7 +50,7 @@ static float get_right_distance(void) {
   return min;
 }
 
-static float sarch_all(void) {
+static float search_all(void) {
   int i;
   float min = 100.0f;
   for (i = 0; i < 360; i++) {
@@ -61,10 +61,10 @@ static float sarch_all(void) {
   return min;
 }
 
-static bool do_foward(void) {
+static bool do_forward(void) {
   bool is_stop = false;
   cmd_vel.linear.x = 0;
-  if (get_foward_distance() < 0.2f) {
+  if (get_forward_distance() < 0.2f) {
     cmd_vel.linear.x = 0;
     is_stop = true;
   } else {
@@ -105,7 +105,7 @@ static bool turn_right(void) {
 }
 
 static void do_control(void) {
-  (void)do_foward();
+  (void)do_forward();
   (void)turn_right();
 
   if (cmd_vel.linear.x == 0 && cmd_vel.angular.z == 0) {
@@ -149,7 +149,7 @@ int main(int argc, char **argv) {
 
   while (rclcpp::ok()) {
     if (mode == RoboMode_INIT) {
-      float d = sarch_all();
+      float d =   search_all();
       if (d > 0.0f && d <= 0.08f) {
         printf("d=%f MOVE\n", d);
         mode = RoboMode_RUN;
