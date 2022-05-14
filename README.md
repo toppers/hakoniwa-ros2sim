@@ -16,6 +16,17 @@ Windows 環境では，操作は全てWSL2/Linuxのシェル上で行います�
 
 ## PC環境の準備
 
+### 本リポジトリのclone
+
+現在の最新版は **v1.1.1** です．
+「[バージョン情報・更新履歴](/appendix/version.md)」も参照してください（バージョン番号は[Git/GitHubのtag/release](https://github.com/toppers/hakoniwa-ros2sim/releases)および[Docker Hubのtag番号](https://hub.docker.com/r/toppersjp/hakoniwa-ros2sim/tags)に対応しています）
+
+ターミナルで下記を実行して本リポジトリをcloneしてください．
+
+```
+$ git clone --recursive -b v1.1.1 https://github.com/toppers/hakoniwa-ros2sim.git
+```
+
 ### Docker 環境
 
 本シミュレータでは Docker を利用します．
@@ -70,17 +81,6 @@ $ sudo service docker restart
   * Unity Hub の「Installs > Install Editor」画面に本バージョンが表示されない場合は，[Unity Dowonload Archive](https://unity3d.com/get-unity/download/archive) の本バージョンの "Unity Hub" をクリックしてインストールできます． 
 
 ## シミュレータの導入手順
-
-現在の最新版は **v1.1.1** です．
-「[バージョン情報・更新履歴](/appendix/version.md)」も参照してください（バージョン番号は[Git/GitHubのtag/release](https://github.com/toppers/hakoniwa-ros2sim/releases)および[Docker Hubのtag番号](https://hub.docker.com/r/toppersjp/hakoniwa-ros2sim/tags)に対応しています）
-
-### 本リポジトリのclone
-
-ターミナルで下記を実行して本リポジトリをcloneしてください．
-
-```
-$ git clone --recursive -b v1.1.1 https://github.com/toppers/hakoniwa-ros2sim.git
-```
 
 ### Dockerイメージの展開
 
