@@ -50,17 +50,6 @@ static float get_right_distance(void) {
   return min;
 }
 
-static float search_all(void) {
-  int i;
-  float min = 100.0f;
-  for (i = 0; i < 360; i++) {
-    if (scan_data.ranges[i] < min) {
-      min = scan_data.ranges[i];
-    }
-  }
-  return min;
-}
-
 static bool do_forward(void) {
   bool is_stop = false;
   cmd_vel.linear.x = 0;
@@ -71,21 +60,6 @@ static bool do_forward(void) {
     cmd_vel.linear.x = 0.5f;
   }
 
-  return is_stop;
-}
-
-static bool turn_left(void)
-{
-  bool is_stop = false;
-  cmd_vel.angular.z = 0;
-  if (get_right_distance() < 0.05f) {
-    cmd_vel.angular.z = 5;
-    is_stop = true;
-  }
-  else {
-    cmd_vel.angular.z = 0;
-  }
-  
   return is_stop;
 }
 
@@ -114,13 +88,7 @@ static void do_control(void) {
 
 using namespace std::chrono_literals;
 
-typedef enum {
-  RoboMode_INIT = 0,
-  RoboMode_RUN,
-} RoboModeType;
-
 int main(int argc, char **argv) {
-  RoboModeType mode = RoboMode_RUN;
   char buffer[3][4096];
 
   if (argc > 1) {
@@ -146,18 +114,9 @@ int main(int argc, char **argv) {
   rclcpp::WallRate rate(10ms);
 
   while (rclcpp::ok()) {
-    if (mode == RoboMode_INIT) {
-      float d = search_all();
-      if (d > 0.0f && d <= 0.08f) {
-        printf("d=%f MOVE\n", d);
-        mode = RoboMode_RUN;
-      } else {
-        printf("WATING d=%f\n", d);
-      }
-    } else {
-      do_control();
-      publisher->publish(cmd_vel);
-    }
+    do_control();
+    publisher->publish(cmd_vel);
+
     rclcpp::spin_some(node);
     rate.sleep();
   }
