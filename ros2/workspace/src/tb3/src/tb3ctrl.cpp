@@ -92,15 +92,15 @@ int main(int argc, char **argv) {
   char buffer[3][4096];
 
   if (argc > 1) {
-  sprintf(buffer[0], "%s_tb3_node", argv[1]);
-  sprintf(buffer[1], "%s_cmd_vel", argv[1]);
-  sprintf(buffer[2], "%s_scan", argv[1]);
+    sprintf(buffer[0], "%s_tb3_node", argv[1]);
+    sprintf(buffer[1], "%s_cmd_vel", argv[1]);
+    sprintf(buffer[2], "%s_scan", argv[1]);
     printf("START: %s\n", argv[1]);
   }
   else {
-  sprintf(buffer[0], "tb3_node");
-  sprintf(buffer[1], "cmd_vel");
-  sprintf(buffer[2], "scan");
+    sprintf(buffer[0], "tb3_node");
+    sprintf(buffer[1], "cmd_vel");
+    sprintf(buffer[2], "scan");
     printf("START\n");
   }
   rclcpp::init(argc, argv);
