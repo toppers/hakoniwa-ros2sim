@@ -30,7 +30,7 @@ ROS_TOPIC_FILE_PATH=../../../${SETTING_FOLDER}/RosTopics.json
 OUT_DIR=${UNITY_PRJ_DIR}
 ROS_MSG_LIST=${SETTING_FOLDER}/ros_msgs.txt
 
-CUSTOM_FILE_PATH=${SETTING_FOLDER}/custom.json${SETTING_FOLDER}
+CUSTOM_FILE_PATH=${SETTING_FOLDER}/custom.json
 
 WORLD_SCALE=$(cat "${SETTING_FOLDER}"/world_scale.txt)
 
@@ -78,15 +78,15 @@ then
 	echo "####Creating proxy_param"
 	python2 utils/core_config/create_proxy_param.py  		"${CUSTOM_FILE_PATH}" 	"${CORE_IPADDR}"	"${ROS_VERSION}"/workspace
 
-	echo "####Downloading Hakoniwa.dll"
-	wget https://github.com/toppers/hakoniwa-core/releases/download/v1.0.0/Hakoniwa.dll
-	mv Hakoniwa.dll "${UNITY_PRJ_DIR}"/Assets/Plugin/
+	#echo "####Downloading Hakoniwa.dll"
+	#wget https://github.com/toppers/hakoniwa-core/releases/download/v1.0.0/Hakoniwa.dll
+	#mv Hakoniwa.dll "${UNITY_PRJ_DIR}"/Assets/Plugin/
 
 	echo "####Downloading MiconPdu.dll"
-	wget https://github.com/toppers/hakoniwa-core/releases/download/v1.0.0/MiconPdu.dll
+	wget https://github.com/toppers/hakoniwa-core/releases/download/v1.0.1/MiconPdu.dll
 	mv MiconPdu.dll "${UNITY_PRJ_DIR}"/
 
 	echo "####Downloading HakoniwaSimTime.json"
-	wget https://github.com/toppers/hakoniwa-core/releases/download/v1.0.0/HakoniwaSimTime.json
+	wget https://github.com/toppers/hakoniwa-core/releases/download/v1.0.1/HakoniwaSimTime.json
 	mv HakoniwaSimTime.json "${UNITY_PRJ_DIR}"/
 fi
