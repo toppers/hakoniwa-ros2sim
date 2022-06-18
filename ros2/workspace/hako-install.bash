@@ -1,5 +1,11 @@
 #!/bin/bash
 
+HAKO_CPP=None
+if [ $# -eq 1 -a "$1" = "cpp" ]
+then
+	HAKO_CPP=True
+fi
+
 CURDIR=`pwd`
 
 cd ../..
@@ -13,6 +19,10 @@ fi
 
 cd ros2/unity
 bash install.bash
+if [ ${HAKO_CPP} = "True" ]
+then
+	bash install-cpp.bash
+fi
 
 cd ${CURDIR}
 if [ -d src/ros_tcp_endpoint ]
