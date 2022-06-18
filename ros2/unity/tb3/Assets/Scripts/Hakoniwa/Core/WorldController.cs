@@ -131,5 +131,13 @@ namespace Hakoniwa.Core
                 throw e;
             }
         }
+        void OnApplicationQuit()
+        {
+            if (AssetConfigLoader.core_config.cpp_mode != null) {
+                Debug.Log("cpp_mode:" + AssetConfigLoader.core_config.cpp_mode);
+                Debug.Log("OnApplicationQuit:enter");
+                HakoCppWrapper.asset_unregister(new StringBuilder(AssetConfigLoader.core_config.cpp_asset_name));
+            }
+        }
     }
 }
