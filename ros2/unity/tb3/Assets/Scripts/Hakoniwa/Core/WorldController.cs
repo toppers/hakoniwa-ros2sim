@@ -10,6 +10,8 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using System.Text;
+using System.Runtime.InteropServices;
 
 namespace Hakoniwa.Core
 {
@@ -23,13 +25,23 @@ namespace Hakoniwa.Core
         {
             Physics.Simulate(Time.fixedDeltaTime);
         }
+        public long GetDeltaTimeUsec()
+        {
+            return (long)(Time.fixedDeltaTime * 1000000.0f);
+        }
     }
 
     public class WorldController : MonoBehaviour
     {
         private GameObject root;
         public long maxDelayTime = 20000; /* usec */
-        private SimulationController simulator = SimulationController.Get();
+        private static ISimulationController isim;
+        private static ISimulationAssetManager iasset;
+
+        public static ISimulationController Get()
+        {
+            return isim;
+        }
         private void InitHakoniwa()
         {
             this.root = GameObject.Find("Robot");
@@ -42,33 +54,25 @@ namespace Hakoniwa.Core
             string configPath = filePath + System.IO.Path.DirectorySeparatorChar + "core_config.json";
 
             AssetConfigLoader.Load(configPath);
-            Debug.Log("HakoniwaCore START");
-            RpcServer.StartServer(AssetConfigLoader.core_config.core_ipaddr, AssetConfigLoader.core_config.core_portno);
-            simulator.RegisterEnvironmentOperation(new UnityEnvironmentOperation());
-            simulator.SaveEnvironment();
-            simulator.GetLogger().SetFilePath(AssetConfigLoader.core_config.SymTimeMeasureFilePath);
-
-#if false
-            //ログインタイミングでインスタンス化する．
-            foreach (Transform child in this.root.transform)
-            {
-                Debug.Log("child=" + child.name);
-                GameObject obj = root.transform.Find(child.name).gameObject;
-                IInsideAssetController ctrl = obj.GetComponentInChildren<IInsideAssetController>();
-                ctrl.Initialize();
-                AssetConfigLoader.AddInsideAsset(ctrl);
-                simulator.RegisterInsideAsset(child.name);
+            if (AssetConfigLoader.core_config.cpp_mode != null) {
+                Debug.Log("cpp_mode:" + AssetConfigLoader.core_config.cpp_mode);
+                Debug.Log("cpp_asset_name:" + AssetConfigLoader.core_config.cpp_asset_name);
+                isim = SimulationControllerFactory.Get(AssetConfigLoader.core_config.cpp_asset_name);
             }
-#endif
-#if false
-            LoginRobotInfoType info = new LoginRobotInfoType();
-            info.roboname = "TB3RoboModel";
-            info.robotype = "TB3RoboModel";
-            info.pos.X = 0;
-            info.pos.Y = 0;
-            info.pos.Z = 0;
-            this.Login(info);
-#else
+            else {
+                Debug.Log("cpp_mode: None");
+                isim = SimulationControllerFactory.Get(null);
+                //RpcServer.StartServer(AssetConfigLoader.core_config.core_ipaddr, AssetConfigLoader.core_config.core_portno);
+                SimulationController.Get().SetSimulationWorldTime(
+                    this.maxDelayTime,
+                    (long)(Time.fixedDeltaTime * 1000000f));
+            }
+            Debug.Log("HakoniwaCore START");
+
+            iasset = isim.GetAssetManager();
+            isim.RegisterEnvironmentOperation(new UnityEnvironmentOperation());
+            isim.SaveEnvironment();
+
             try
             {
                 var login_robots = AssetConfigLoader.LoadJsonFile<LoginRobot>("../../../settings/tb3/PhotonLoginRobot.json");
@@ -82,11 +86,7 @@ namespace Hakoniwa.Core
                     this.Login(e);
                 }
             }
-#endif
-            simulator.SetSimulationWorldTime(
-                this.maxDelayTime,
-                (long)(Time.fixedDeltaTime * 1000000f));
-            simulator.SetInsideWorldSimulator(new UnitySimulator());
+            isim.SetInsideWorldSimulator(new UnitySimulator());
             Physics.autoSimulation = false;
         }
         public void Login(LoginRobotInfoType robo)
@@ -105,7 +105,7 @@ namespace Hakoniwa.Core
             IInsideAssetController ctrl = instance.GetComponentInChildren<IInsideAssetController>();
             ctrl.Initialize();
             AssetConfigLoader.AddInsideAsset(ctrl);
-            simulator.RegisterInsideAsset(robo.roboname);
+            iasset.RegisterInsideAsset(robo.roboname);
         }
         void Start()
         {
@@ -123,7 +123,7 @@ namespace Hakoniwa.Core
         {
             try
             {
-                this.simulator.Execute();
+                isim.Execute();
             }
             catch (Exception e)
             {
