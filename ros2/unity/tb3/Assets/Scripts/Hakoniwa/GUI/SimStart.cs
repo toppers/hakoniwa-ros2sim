@@ -37,7 +37,7 @@ namespace Hakoniwa.GUI
         }
         void Update()
         {
-            SimulationController simulator = SimulationController.Get();
+            ISimulationController simulator = WorldController.Get();
             var state = simulator.GetState();
 #if false
             if (cmd_status == SimCommandStatus.Stop)
@@ -64,7 +64,8 @@ namespace Hakoniwa.GUI
             }
 #else
             //button enabler
-            int count = simulator.RefOutsideAssetListCount();
+            //int count = simulator.RefOutsideAssetListCount();
+            int count = 0;
             if (count == 0)
             {
                 if (AssetConfigLoader.core_config.outside_assets == null)
@@ -117,7 +118,7 @@ namespace Hakoniwa.GUI
         }
         public void OnButtonClick()
         {
-            SimulationController simulator = SimulationController.Get();
+            ISimulationController simulator = WorldController.Get();
             switch (cmd_status)
             {
                 case SimCommandStatus.WaitStop:
