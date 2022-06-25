@@ -2,7 +2,7 @@
 
 # Hakoniwa ROS Simulator
 
-The [TOPPERS Project Hokoniwa WG](https://toppers.github.io/hakoniwa) develops  "Hakoniwa," a virtual simulation environment for the age of IoT/Cloud Robotics.
+The [TOPPERS Project Hokoniwa WG](https://toppers.github.io/hakoniwa) develops "Hakoniwa," a virtual simulation environment for the age of IoT/Cloud Robotics.
 
 This repository provides an environment where you can quickly try simulations of ROS 2 programs on Hakoniwa.
 
@@ -21,7 +21,7 @@ Please execute under the Windows file system (under `/mnt/c/`), not under the WS
 ### Clone this repository
 
 The latest version is **v1.1.2**.
-See also "[version information/update history](/appendix/version.md)" (the version number corresponds to [tag/release in Git/GitHub](https://github.com/toppers/hakoniwa-ros2sim/ releases](https://hub.docker.com/r/toppersjp/hakoniwa-ros2sim/tags) and [Docker Hub tag number](https://hub.docker.com/r/toppersjp/hakoniwa-ros2sim/tags))
+See also "[version information/update history](/appendix/version.md)" (the version number corresponds to [tag/release in Git/GitHub](https://github.com/toppers/hakoniwa-ros2sim/releases) and [Docker Hub tag number](https://hub.docker.com/r/toppersjp/hakoniwa-ros2sim/tags).
 
 Clone this repository with the following command in the terminal.
 
@@ -90,7 +90,7 @@ The results of the above command execution will take effect after you re-login t
 
 * Unity Hub 3.1.1 or later
 * Unity Editor 2021.3.0f1
-  If you do not see this version on the "Installs > Install Editor" screen of Unity Hub, you can install it by clicking on "Unity Hub" in the [Unity Dowonload Archive](https://unity3d.com/get-unity/download/archive).  
+  * If you do not see this version on the "Installs > Install Editor" screen of Unity Hub, you can install it by clicking on "Unity Hub" in the [Unity Dowonload Archive](https://unity3d.com/get-unity/download/archive).  
 
 ## Simulator Installation Procedure
 
@@ -211,7 +211,7 @@ Each window in this video corresponds to the following.
 
 ## Contributing
 
-Please let us know your comments and suggestions for improvement of the "Hakoniwa ROS Simulator" in the GitHub Discussions](https://github.com/toppers/hakoniwa/discussions/categories/idea-request). We also welcome [Pull Requests](https://github.com/toppers/hakoniwa-ros2sim/pulls) for modification proposals.
+Please let us know your comments and suggestions for improvement of the "Hakoniwa ROS Simulator" in the [GitHub Discussions](https://github.com/toppers/hakoniwa/discussions/categories/idea-request). We also welcome [Pull Requests](https://github.com/toppers/hakoniwa-ros2sim/pulls) for modification proposals.
 
 ## TODO
 
@@ -226,4 +226,4 @@ Please let us know your comments and suggestions for improvement of the "Hakoniw
 
 It is released under [TOPPERS license](https://www.toppers.jp/license.html).  
 The copyright holder is TOPPERS Project Hakoniwa Working Group. 
-Please refer to [LICENSE.md](. /LICENSE.md) for details.
+Please refer to [LICENSE.md](./LICENSE.md) for details.

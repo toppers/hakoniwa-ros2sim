@@ -26,8 +26,8 @@ https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html
 必要なパッケージをインストールします．
 
 ```
-$ sudo apt-get update
-$ sudo apt-get install -y g++ python3-colcon-common-extensions
+sudo apt-get update
+sudo apt-get install -y g++ python3-colcon-common-extensions
 ```
 
 ### Unity 環境
@@ -43,7 +43,7 @@ Windows 環境では，操作は全てWSL2/Linuxのシェル上で行います�
 ターミナルで下記を実行して本リポジトリをcloneしてください．
 
 ```
-$ git clone --recursive https://github.com/toppers/hakoniwa-ros2sim.git
+git clone --recursive https://github.com/toppers/hakoniwa-ros2sim.git
 ```
 
 ## シミュレータの導入手順
@@ -53,8 +53,8 @@ $ git clone --recursive https://github.com/toppers/hakoniwa-ros2sim.git
 ターミナルAでROS 2のワークスペースに移動し，箱庭のROS環境をインストールします．
 
 ```
-$ cd ros2/workspace
-$ bash hako-install.bash
+cd ros2/workspace
+bash hako-install.bash
 ```
 
 ### Unity プロジェクトを開く
@@ -95,8 +95,8 @@ Unity Hubを起動し，右上の「開く」をクリックして、先ほど�
 ターミナルAでROS-TCP-ENDPOINTを起動しましょう．
 
 ```
-$ cd ros2/workspace
-$ bash launch.bash
+cd ros2/workspace
+bash launch.bash
 ```
 
 ### ターミナルBでの操作
@@ -104,8 +104,8 @@ $ bash launch.bash
 ターミナルBでROS2プログラムを起動しましょう．
 
 ```
-$ cd ros2/workspace
-$ bash run.bash tb3 TB3RoboModel
+cd ros2/workspace
+bash run.bash tb3 TB3RoboModel
 ```
 
 ### Unityのシミュレーション開始する

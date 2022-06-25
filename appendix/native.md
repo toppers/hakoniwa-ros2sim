@@ -2,11 +2,11 @@
 
 # Hakoniwa ROS Simulator
 
-The [TOPPERS Project Hokoniwa WG](https://toppers.github.io/hakoniwa) develops  "Hakoniwa," a virtual simulation environment for the age of IoT/Cloud Robotics.
+The [TOPPERS Project Hokoniwa WG](https://toppers.github.io/hakoniwa) develops "Hakoniwa," a virtual simulation environment for the age of IoT/Cloud Robotics.
 
 This repository provides an environment where you can quickly try simulations of ROS 2 programs on Hakoniwa.
 
-This page shows how to use the system in native Linux environment (including WSL2); please refer to [README.md](/README.md) for how to use the system in Docker environment.
+This page shows how to use the system in native Linux environment (including WSL2). Please also refer to [README.md](/README.md) for how to use the system in Docker environment.
 
 ## Requirements
 
@@ -26,15 +26,15 @@ https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html
 Install the required packages.
 
 ```
-$ sudo apt-get update
-$ sudo apt-get install -y g++ python3-colcon-common-extensions
+sudo apt-get update
+sudo apt-get install -y g++ python3-colcon-common-extensions
 ```
 
 ### Unity Environment
 
 * Unity Hub 3.1.1 or later
 * Unity Editor 2021.3.0f1
-  If you do not see this version on the "Installs > Install Editor" screen of Unity Hub, you can install it by clicking on "Unity Hub" in the [Unity Dowonload Archive](https://unity3d.com/get-unity/download/archive).  
+  * If you do not see this version on the "Installs > Install Editor" screen of Unity Hub, you can install it by clicking on "Unity Hub" in the [Unity Dowonload Archive](https://unity3d.com/get-unity/download/archive).  
 
 ### Clone this repository
 
@@ -46,7 +46,7 @@ Please execute under the Windows file system (under `/mnt/c/`), not under the WS
 Clone this repository with the following command in the terminal.
 
 ```
-$ git clone --recursive https://github.com/toppers/hakoniwa-ros2sim.git
+git clone --recursive https://github.com/toppers/hakoniwa-ros2sim.git
 ```
 
 ## Simulator Installation Procedure
@@ -56,8 +56,8 @@ We recommend using two terminals to run this simulator.
 Go to the ROS 2 workspace in Terminal A and install the Hakoniwa ROS environment.
 
 ```
-$ cd ros2/workspace
-$ bash hako-install.bash
+cd ros2/workspace
+bash hako-install.bash
 ```
 
 ### Open Unity project
@@ -96,8 +96,8 @@ I will illustrate the procedure with the following example.
 Start ROS-TCP-ENDPOINT with the following command.
 
 ```
-$ cd ros2/workspace
-$ bash launch.bash
+cd ros2/workspace
+bash launch.bash
 ```
 
 ### Operations on Terminal B
@@ -105,8 +105,8 @@ $ bash launch.bash
 Start the ROS2 program with the following command.
 
 ```
-$ cd ros2/workspace
-$ bash run.bash tb3 TB3RoboModel
+cd ros2/workspace
+bash run.bash tb3 TB3RoboModel
 ```
 
 ###  Start Unity simulation.
@@ -141,4 +141,4 @@ Please let us know your comments and suggestions for improvement of the "Hakoniw
 
 It is released under [TOPPERS license](https://www.toppers.jp/license.html).  
 The copyright holder is TOPPERS Project Hakoniwa Working Group. 
-Please refer to [LICENSE.md](. /LICENSE.md) for details.
+Please refer to [LICENSE.md](./LICENSE.md) for details.
