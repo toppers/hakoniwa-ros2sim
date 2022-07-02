@@ -1,0 +1,44 @@
+{
+  "fields": [
+    {
+      "type": "Ev3PduSensorHeader", 
+      "name": "head"
+    }, 
+    {
+      "type": "uint8[1]", 
+      "name": "buttons"
+    }, 
+    {
+      "type": "Ev3PduColorSensor[2]", 
+      "name": "color_sensors"
+    }, 
+    {
+      "type": "Ev3PduTouchSensor[2]", 
+      "name": "touch_sensors"
+    }, 
+    {
+      "type": "uint32[3]", 
+      "name": "motor_angle"
+    }, 
+    {
+      "type": "int32", 
+      "name": "gyro_degree"
+    }, 
+    {
+      "type": "int32", 
+      "name": "gyro_degree_rate"
+    }, 
+    {
+      "type": "uint32", 
+      "name": "sensor_ultrasonic"
+    }, 
+    {
+      "type": "float64", 
+      "name": "gps_lat"
+    }, 
+    {
+      "type": "float64", 
+      "name": "gps_lon"
+    }
+  ]
+}

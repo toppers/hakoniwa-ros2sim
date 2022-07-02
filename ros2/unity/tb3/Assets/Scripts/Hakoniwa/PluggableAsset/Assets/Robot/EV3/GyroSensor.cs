@@ -2,11 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Globalization;
+using Hakoniwa.PluggableAsset.Communication.Pdu;
+using Hakoniwa.PluggableAsset.Communication.Connector;
+using Hakoniwa.PluggableAsset.Assets.Robot.Parts;
+using System;
 
 namespace Hakoniwa.PluggableAsset.Assets.Robot.EV3
 {
-    public class GyroSensor : MonoBehaviour, IRobotGyroSensor
+    public class GyroSensor : MonoBehaviour, IRobotPartsSensor
     {
+        private string root_name;
+        private IPduWriter pdu_writer;
+        private PduIoConnector pdu_io;
+
         private GameObject obj;
         private Vector3 baseRotation;
         private Vector3 prevRotation; 
@@ -14,13 +22,22 @@ namespace Hakoniwa.PluggableAsset.Assets.Robot.EV3
         private float deltaTime;
         private bool hasResetEvent;
 
-        public void Initialize(System.Object root)
+        public void Initialize(GameObject root)
         {
             if (this.obj != null)
             {
+                this.ClearDegree();
                 return;
             }
-            this.obj = (GameObject)root;
+            this.obj = root;
+            this.root_name = string.Copy(this.obj.transform.name);
+            this.pdu_io = PduIoConnector.Get(this.root_name);
+            this.pdu_writer = this.pdu_io.GetWriter(this.root_name + "_ev3_sensorPdu");
+            if (this.pdu_writer == null)
+            {
+                throw new ArgumentException("can not found ev3_sensor pdu:" + this.root_name + "_ev3_sensorPdu");
+            }
+
             this.baseRotation = this.obj.transform.eulerAngles;
             this.prevRotation = this.baseRotation;
             this.deg_rate = 0.0f;
@@ -50,16 +67,6 @@ namespace Hakoniwa.PluggableAsset.Assets.Robot.EV3
 
             return diff;
 
-            /*
-            if (diff <= 180.0f)
-            {
-                return (diff);
-            }
-            else
-            {
-                return (diff - 360.0f);
-            }
-            */
         }
 
         public float GetDegreeRate()
@@ -67,7 +74,7 @@ namespace Hakoniwa.PluggableAsset.Assets.Robot.EV3
             return this.deg_rate;
         }
 
-        public void UpdateSensorValues()
+        private void UpdateSensorValuesLocal()
         {
             if (this.hasResetEvent)
             {
@@ -82,7 +89,19 @@ namespace Hakoniwa.PluggableAsset.Assets.Robot.EV3
 
         public RosTopicMessageConfig[] getRosConfig()
         {
-            throw new System.NotImplementedException();
+            return null;
+        }
+
+        public bool isAttachedSpecificController()
+        {
+            return false;
+        }
+
+        public void UpdateSensorValues()
+        {
+            this.UpdateSensorValuesLocal();
+            this.pdu_writer.GetWriteOps().SetData("gyro_degree", (int)this.GetDegree());
+            this.pdu_writer.GetWriteOps().SetData("gyro_degree_rate", (int)this.GetDegreeRate());
         }
     }
 }

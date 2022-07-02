@@ -89,6 +89,7 @@ public class HakoniwaEditor : EditorWindow
         IRobotParts[] robot_assets = root.GetComponentsInChildren<IRobotParts>();
         if (robot_assets == null)
         {
+            Debug.Log("No robots");
             return;
         }
         UnityEngine.Object prefab = PrefabUtility.GetCorrespondingObjectFromSource(root);
@@ -98,6 +99,9 @@ public class HakoniwaEditor : EditorWindow
         robo.pos.X = root.transform.position.x;
         robo.pos.Y = root.transform.position.y;
         robo.pos.Z = root.transform.position.z;
+        robo.angle.X = root.transform.localEulerAngles.x;
+        robo.angle.Y = root.transform.localEulerAngles.y;
+        robo.angle.Z = root.transform.localEulerAngles.z;
         int index = login_robots.robos.Length;
         Array.Resize(ref login_robots.robos, index + 1);
         login_robots.robos[index] = robo;
@@ -106,6 +110,7 @@ public class HakoniwaEditor : EditorWindow
         Debug.Log("pos=" + root.transform.position);
         foreach (var asset in robot_assets)
         {
+            Debug.Log("robot:" + asset.ToString());
             var configs = asset.getRosConfig();
             if (configs == null)
             {

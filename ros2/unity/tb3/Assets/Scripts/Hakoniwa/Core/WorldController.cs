@@ -101,6 +101,7 @@ namespace Hakoniwa.Core
             var instance = Instantiate(p, pos, Quaternion.identity) as GameObject;
             instance.name = robo.roboname;
             instance.transform.parent = this.root.transform;
+            instance.transform.Rotate(new Vector3(robo.angle.X, robo.angle.Y, robo.angle.Z));
 
             IInsideAssetController ctrl = instance.GetComponentInChildren<IInsideAssetController>();
             ctrl.Initialize();

@@ -1,0 +1,20 @@
+{
+  "fields": [
+    {
+      "type": "Ev3PduActuatorHeader", 
+      "name": "head"
+    }, 
+    {
+      "type": "uint8[1]", 
+      "name": "leds"
+    }, 
+    {
+      "type": "Ev3PduMotor[3]", 
+      "name": "motors"
+    }, 
+    {
+      "type": "uint32", 
+      "name": "gyro_reset"
+    }
+  ]
+}

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Hakoniwa.PluggableAsset.Communication.Pdu.Accessor
 {
-    class Ev3PduMotorAccessor
+    public class Ev3PduMotorAccessor
     {
         private Pdu pdu;
         
