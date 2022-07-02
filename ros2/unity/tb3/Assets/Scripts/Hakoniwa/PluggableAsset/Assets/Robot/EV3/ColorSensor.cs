@@ -16,9 +16,9 @@ namespace Hakoniwa.PluggableAsset.Assets.Robot.EV3
 
         public int colorSensorNo;
         public Camera dispCamera;
-        public float lightValue;
+        private float lightValue;
         private GameObject obj = null;
-        private Color rgb;
+        public Color rgb;
         private float rgb_r;
         private float rgb_g;
         private float rgb_b;
@@ -46,7 +46,7 @@ namespace Hakoniwa.PluggableAsset.Assets.Robot.EV3
                 throw new ArgumentException("can not found ev3_sensor pdu:" + this.root_name + "_ev3_sensorPdu");
             }
 
-            this.dispCamera = obj.GetComponentInChildren<Camera>();
+            this.dispCamera = this.GetComponentInChildren<Camera>();
             this.dispCamera.targetTexture = new RenderTexture(32, 32, 24, RenderTextureFormat.BGRA32);
             var tex = dispCamera.targetTexture;
             targetTexture = new Texture2D(tex.width, tex.height, TextureFormat.ARGB32, false);

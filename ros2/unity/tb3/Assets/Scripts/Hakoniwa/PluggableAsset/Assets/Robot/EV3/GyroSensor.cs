@@ -15,7 +15,7 @@ namespace Hakoniwa.PluggableAsset.Assets.Robot.EV3
         private IPduWriter pdu_writer;
         private PduIoConnector pdu_io;
 
-        private GameObject obj;
+        private GameObject root;
         private Vector3 baseRotation;
         private Vector3 prevRotation; 
         private float deg_rate;
@@ -24,13 +24,13 @@ namespace Hakoniwa.PluggableAsset.Assets.Robot.EV3
 
         public void Initialize(GameObject root)
         {
-            if (this.obj != null)
+            if (this.root != null)
             {
                 this.ClearDegree();
                 return;
             }
-            this.obj = root;
-            this.root_name = string.Copy(this.obj.transform.name);
+            this.root = root;
+            this.root_name = string.Copy(this.root.transform.name);
             this.pdu_io = PduIoConnector.Get(this.root_name);
             this.pdu_writer = this.pdu_io.GetWriter(this.root_name + "_ev3_sensorPdu");
             if (this.pdu_writer == null)
@@ -38,7 +38,7 @@ namespace Hakoniwa.PluggableAsset.Assets.Robot.EV3
                 throw new ArgumentException("can not found ev3_sensor pdu:" + this.root_name + "_ev3_sensorPdu");
             }
 
-            this.baseRotation = this.obj.transform.eulerAngles;
+            this.baseRotation = this.transform.eulerAngles;
             this.prevRotation = this.baseRotation;
             this.deg_rate = 0.0f;
             this.deltaTime = Time.deltaTime;
@@ -55,7 +55,7 @@ namespace Hakoniwa.PluggableAsset.Assets.Robot.EV3
         {
 
             //Debug.LogFormat("current : {0}, base :  {1}", this.obj.transform.eulerAngles.y, this.baseRotation.y);
-            float diff = this.obj.transform.eulerAngles.y - this.baseRotation.y;
+            float diff = this.transform.eulerAngles.y - this.baseRotation.y;
 
             if (diff > 180) {
                 diff -= 360f;
@@ -78,12 +78,12 @@ namespace Hakoniwa.PluggableAsset.Assets.Robot.EV3
         {
             if (this.hasResetEvent)
             {
-                this.baseRotation = this.obj.transform.eulerAngles;
+                this.baseRotation = this.transform.eulerAngles;
                 this.hasResetEvent = false;
             }
-            float diff = this.obj.transform.eulerAngles.y - this.prevRotation.y;
+            float diff = this.transform.eulerAngles.y - this.prevRotation.y;
             this.deg_rate = diff / this.deltaTime;
-            this.prevRotation = this.obj.transform.eulerAngles;
+            this.prevRotation = this.transform.eulerAngles;
             //Debug.Log("deg=" + (int)this.GetDegree() + ":deg_rate=" + (int)this.deg_rate);
         }
 

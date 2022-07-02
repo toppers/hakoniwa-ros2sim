@@ -15,18 +15,18 @@ namespace Hakoniwa.PluggableAsset.Assets.Robot.EV3
         private IPduWriter pdu_writer;
         private PduIoConnector pdu_io;
 
-        private GameObject mypos;
+        private GameObject root;
         private Vector3 pos;
 
         public void Initialize(GameObject root)
         {
-            if (this.mypos != null)
+            if (this.root != null)
             {
                 return;
             }
-            this.mypos = root;
+            this.root = root;
 
-            this.root_name = string.Copy(this.mypos.transform.name);
+            this.root_name = string.Copy(this.root.transform.name);
             this.pdu_io = PduIoConnector.Get(this.root_name);
             this.pdu_writer = this.pdu_io.GetWriter(this.root_name + "_ev3_sensorPdu");
             if (this.pdu_writer == null)
@@ -53,7 +53,7 @@ namespace Hakoniwa.PluggableAsset.Assets.Robot.EV3
 
         public void UpdateSensorValuesLocal()
         {
-            pos = new Vector3(this.mypos.transform.position.x, this.mypos.transform.position.y, this.mypos.transform.position.z);
+            pos = new Vector3(this.transform.position.x, this.transform.position.y, this.transform.position.z);
             //Debug.Log("x=" + pos.x + " y=" + pos.y);
             return;
         }

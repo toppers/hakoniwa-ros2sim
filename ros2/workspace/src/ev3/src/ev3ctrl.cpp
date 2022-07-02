@@ -225,7 +225,8 @@ static void do_practice_2_first(void) {
 static void do_practice_2_second(void) {
   check_ultrasonic_sensor();
   check_color_sensor();
-  if (ultrasonic_value > 10) {
+  printf("ultrasonic_value=%d\n", ultrasonic_value);
+  if (ultrasonic_value > 20) {
     do_foward(5);
     return;
   }
@@ -270,7 +271,7 @@ static void do_practice_2_Fourth(void) {
 }
 static void do_practice_2_Fifh(void) {
   check_ultrasonic_sensor();
-  if (ultrasonic_value < 10) {
+  if (ultrasonic_value < 15) {
     do_stop();
     printf("GOAL!!\n");
     Practice2_Phase = Practice2_Phase_Sixth;
@@ -365,15 +366,29 @@ static void topic_callback(const ev3_msgs::msg::Ev3PduSensor::SharedPtr msg) {
 }
 
 int main(int argc, char **argv) {
+  char buffer[3][4096];
+
+  if (argc > 1) {
+    sprintf(buffer[0], "%s_ev3_node", argv[1]);
+    sprintf(buffer[1], "%s_ev3_actuator", argv[1]);
+    sprintf(buffer[2], "%s_ev3_sensor", argv[1]);
+    printf("START: %s\n", argv[1]);
+  }
+  else {
+    sprintf(buffer[0], "ev3_node");
+    sprintf(buffer[1], "ev3_actuator");
+    sprintf(buffer[2], "ev3_sensor");
+    printf("START\n");
+  }
   rclcpp::init(argc, argv);
 
-  auto node = rclcpp::Node::make_shared("ev3_pubnode");
+  auto node = rclcpp::Node::make_shared(buffer[0]);
   auto publisher =
-      node->create_publisher<ev3_msgs::msg::Ev3PduActuator>("ev3_actuator", 1);
+      node->create_publisher<ev3_msgs::msg::Ev3PduActuator>(buffer[1], 1);
   auto subscriber = node->create_subscription<ev3_msgs::msg::Ev3PduSensor>(
-      "ev3_sensor", 1, topic_callback);
+      buffer[2], 1, topic_callback);
 
-  rclcpp::WallRate rate(100ms);
+  rclcpp::WallRate rate(20ms);
 
   auto ros_actuator_data = ev3_msgs::msg::Ev3PduActuator();
   while (rclcpp::ok()) {

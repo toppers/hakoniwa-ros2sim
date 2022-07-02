@@ -21287,7 +21287,6 @@ GameObject:
   - component: {fileID: 6636187096843815115}
   - component: {fileID: 6636187096843815117}
   - component: {fileID: 6636187096843815114}
-  - component: {fileID: 6636187096843815118}
   - component: {fileID: 6636187096843815113}
   - component: {fileID: 6636187096843815110}
   - component: {fileID: 5985472852039520800}
@@ -21431,18 +21430,6 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &6636187096843815118
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6636187096843815112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3e7d53cc8f6454418288ec8f21ee1d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &6636187096843815113
 MonoBehaviour:
   m_ObjectHideFlags: 0
