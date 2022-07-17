@@ -22,25 +22,22 @@ custom = json.load(file)
 
 
 container = list()
-for robo in custom['proxies']:
-
-	#writer
+for robo in custom['robots']:
+	## Robo
+	#WRITER
 	entry = OrderedDict()
-	entry['method_name'] = robo['robot_name'] + 'Proxy_UdpWriter'
-	if robo['proxy_sync']['ipaddr'] != None:
-		entry['ipaddr'] = robo['proxy_sync']['ipaddr']
-	else:
-		entry['ipaddr'] = '127.0.0.1'
-	entry['portno'] = robo['proxy_sync']['tx_udp_portno']
+	entry['method_name'] = hakoniwa_utils.get_custom_udp_writer_method_name(robo)
+	entry['ipaddr'] = robo['udp_proxy']['ipaddr']
+	entry['portno'] = robo['udp_proxy']['rx_port']
 	entry['iosize'] = 1024
 	entry['is_read'] = False
 	container.append(entry)
 
-	#reader
+	#READER
 	entry = OrderedDict()
-	entry['method_name'] = robo['robot_name'] + 'Proxy_UdpReader'
+	entry['method_name'] = hakoniwa_utils.get_custom_udp_reader_method_name(robo)
 	entry['ipaddr'] = core_ipaddr
-	entry['portno'] = robo['proxy_sync']['rx_udp_portno']
+	entry['portno'] = robo['udp_proxy']['tx_port']
 	entry['iosize'] = 1024
 	entry['is_read'] = True
 	container.append(entry)

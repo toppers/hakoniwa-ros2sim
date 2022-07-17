@@ -51,22 +51,24 @@ for e in ros_topics['fields']:
 		container.append(entry)
 
 if custom != None:
-	for e in custom['proxies']:
+	for e in custom['robots']:
 		entry = OrderedDict()
 		if rw_type == 'r':
-			entry['name'] = e['robot_name'] + 'Proxy_HakoniwaAssetTimePduReader'
-			entry['class_name'] = 'Hakoniwa.PluggableAsset.Communication.Pdu.Micon.SimpleMiconPduReader'
-			entry['conv_class_name'] = 'Hakoniwa.PluggableAsset.Communication.Pdu.Micon.SimpleMiconPduReaderRawConverter'
-			entry['path'] = './MiconPdu.dll'
-			entry['conv_path'] = './MiconPdu.dll'
-			entry['pdu_config_name'] = 'HakoniwaSimTime'
+			for e_list_entry in e['pdu_readers']:
+				entry['name'] = hakoniwa_utils.get_custom_pdu_name(e_list_entry)
+				entry['class_name'] = e_list_entry['class']
+				entry['conv_class_name'] = e_list_entry['conv_class']
+				entry['path'] = e_list_entry['class_path']
+				entry['conv_path'] = e_list_entry['conv_class_path']
+				entry['pdu_config_name'] = e_list_entry['type']
 		else:
-			entry['name'] = e['robot_name'] + 'Proxy_HakoniwaAssetTimePduWriter'
-			entry['class_name'] = 'Hakoniwa.PluggableAsset.Communication.Pdu.Micon.SimpleMiconPduWriter'
-			entry['conv_class_name'] = 'Hakoniwa.PluggableAsset.Communication.Pdu.Micon.SimpleMiconPduWriterRawConverter'
-			entry['path'] = './MiconPdu.dll'
-			entry['conv_path'] = './MiconPdu.dll'
-			entry['pdu_config_name'] = 'HakoniwaSimTime'
+			for e_list_entry in e['pdu_writers']:
+				entry['name'] = hakoniwa_utils.get_custom_pdu_name(e_list_entry)
+				entry['class_name'] = e_list_entry['class']
+				entry['conv_class_name'] = e_list_entry['conv_class']
+				entry['path'] = e_list_entry['class_path']
+				entry['conv_path'] = e_list_entry['conv_class_path']
+				entry['pdu_config_name'] = e_list_entry['type']
 		container.append(entry)
 
 with open(out_dir + '/' + out_filename, mode='wt') as out_file:

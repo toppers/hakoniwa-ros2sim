@@ -68,18 +68,18 @@ for e in ros_topics['fields']:
 
 custom_index = 0
 if custom != None:
-	for e in custom['proxies']:
+	for e in custom['robots']:
 		entry = OrderedDict()
 		if rw_type == 'r':
 			entry['name'] = 'custom_reader_connector' + str(custom_index)
-			entry['pdu_name'] = e['robot_name'] + 'Proxy_HakoniwaAssetTimePduReader'
-			entry['method_name'] = e['robot_name'] + 'Proxy_UdpReader'
+			entry['pdu_name'] = hakoniwa_utils.get_custom_pdu_name(e)
+			entry['method_name'] = hakoniwa_utils.get_custom_udp_reader_method_name(e)
 		elif rw_type == 'w':
 			entry['name'] = 'custom_writer_connector' + str(custom_index)
-			entry['pdu_name'] = e['robot_name'] + 'Proxy_HakoniwaAssetTimePduWriter'
-			entry['method_name'] = e['robot_name'] + 'Proxy_UdpWriter'
+			entry['pdu_name'] = hakoniwa_utils.get_custom_pdu_name(e)
+			entry['method_name'] = hakoniwa_utils.get_custom_udp_writer_method_name(e)
 		else:
-			entry['outside_asset_name'] = e['robot_name'] + 'Proxy'
+			entry['outside_asset_name'] = hakoniwa_utils.get_custom_asset_name(e)
 			entry['reader_connector_name'] = 'custom_reader_connector' + str(custom_index)
 			entry['writer_connector_name'] = 'custom_writer_connector' + str(custom_index)
 		custom_index = custom_index + 1
