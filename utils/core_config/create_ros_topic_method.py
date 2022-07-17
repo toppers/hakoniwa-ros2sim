@@ -7,11 +7,17 @@ import re
 from collections import OrderedDict
 
 if len(sys.argv) != 3:
-	print "Usage: " + sys.argv[0] + " <pkg_name> <out_dir>"
+	print "Usage: " + sys.argv[0] + " <ros_tpics> <pkg_name> <out_dir>"
 	sys.exit()
 
-pkg_name=sys.argv[1]
-out_dir=sys.argv[2]
+in_file=sys.argv[1]
+pkg_name=sys.argv[2]
+out_dir=sys.argv[3]
+
+file = open(in_file)
+ros_topics = json.load(file)
+if len(ros_topics['fields']) == 0:
+	sys.exit()
 
 out_data = OrderedDict()
 
