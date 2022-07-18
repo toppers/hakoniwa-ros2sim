@@ -165,8 +165,11 @@ public class HakoniwaEditor : EditorWindow
         AssetConfigLoader.SaveJsonFile<LoginRobot>("../../../settings/tb3/LoginRobot.json", login_robots);
         File.WriteAllText("../../../settings/tb3/RosTopics.json", ConvertToJson(ros_topic_container));
 
-        micon_settings_json.Add(new JProperty("robots", micon_settings_json_array));
-        File.WriteAllText("../../../settings/tb3/MiconConfig.json", micon_settings_json.ToString());
+        if (micon_settings_json_array.Count > 0)
+        {
+            micon_settings_json.Add(new JProperty("robots", micon_settings_json_array));
+            File.WriteAllText("../../../settings/tb3/MiconConfig.json", micon_settings_json.ToString());
+        }
     }
     [MenuItem("Window/Hakoniwa/GeneratePhoton")]
     static void PhotonAssetsUpdate()
