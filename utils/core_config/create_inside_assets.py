@@ -30,6 +30,8 @@ robo_list = hakoniwa_utils.get_robolist(ros_topics)
 
 container = list()
 for robo in robo_list:
+	if hakoniwa_utils.is_exit_robot(custom, robo):
+		continue
 	e_list = hakoniwa_utils.get_entry(ros_topics, 'robot_name', robo)
 	entry = OrderedDict()
 	entry['name'] = robo
@@ -47,10 +49,10 @@ if custom != None:
 		entry = OrderedDict()
 		entry['name'] = e['name']
 		entry['pdu_reader_names'] = list()
-		for e_list_entry in e['pdu_readers']:
+		for e_list_entry in e['udp_pdu_readers']:
 			entry['pdu_reader_names'].append(hakoniwa_utils.get_custom_pdu_name(e_list_entry))
 		entry['pdu_writer_names'] = list()
-		for e_list_entry in e['pdu_writers']:
+		for e_list_entry in e['udp_pdu_writers']:
 			entry['pdu_writer_names'].append(hakoniwa_utils.get_custom_pdu_name(e_list_entry))
 		container.append(entry)
 

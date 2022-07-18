@@ -76,8 +76,11 @@ then
 	echo "####Creating udp_methods"
 	python2 utils/core_config/create_udp_methods.py  		"${CUSTOM_FILE_PATH}" 	"${CORE_IPADDR}"	"${OUT_DIR}"
 
-	echo "####Creating proxy_param"
-	python2 utils/core_config/create_proxy_param.py  		"${PROXY_CONFIG_FILE_PATH}" 	"${CORE_IPADDR}"
+	if [ -f ${PROXY_CONFIG_FILE_PATH} ]
+	then
+		echo "####Creating proxy_param"
+		python2 utils/core_config/create_proxy_param.py  		"${PROXY_CONFIG_FILE_PATH}" 	"${CORE_IPADDR}"
+	fi
 
 	if [ -f ${UNITY_PRJ_DIR}/MiconPdu.dll ]
 	then

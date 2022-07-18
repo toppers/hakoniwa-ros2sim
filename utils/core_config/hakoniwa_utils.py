@@ -26,6 +26,14 @@ def get_entry(ros_topics, type, name):
 			tmp_list.append( e )
 	return tmp_list
 
+def is_exit_robot(micon_robots, name):
+	if micon_robots == None:
+		return False
+	for e in micon_robots['robots']:
+		if e['name'] == name:
+			return True
+	return False
+
 def get_pdu_name(e):
 	return e['topic_message_name'] + 'Pdu'
 

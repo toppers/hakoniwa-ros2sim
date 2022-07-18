@@ -131,16 +131,23 @@ public class HakoniwaEditor : EditorWindow
         IMiconSettings micon_settings = root.GetComponentInChildren<IMiconSettings>();
         if ((micon_settings != null) && (micon_settings.isEnabled()))
         {
-            var str = micon_settings.GetSettings();
+            var str = micon_settings.GetSettings(robo.roboname);
             var json_data = JObject.Parse(str);
             micon_settings_json_array.Add(new JObject(json_data));
         }
+    }
+    static void Init()
+    {
+        micon_settings_json_array = new JArray();
+        micon_settings_json = new JObject();
+
     }
 
 
     [MenuItem("Window/Hakoniwa/Generate")]
     static void AssetsUpdate()
     {
+        Init();
         Debug.Log("assets");
         int root_num = GetHakoAssetRoots();
         GetHakoAssets(root_num);
@@ -168,7 +175,7 @@ public class HakoniwaEditor : EditorWindow
         if (micon_settings_json_array.Count > 0)
         {
             micon_settings_json.Add(new JProperty("robots", micon_settings_json_array));
-            File.WriteAllText("../../../settings/tb3/MiconConfig.json", micon_settings_json.ToString());
+            File.WriteAllText("../../../settings/tb3/custom.json", micon_settings_json.ToString());
         }
     }
     [MenuItem("Window/Hakoniwa/GeneratePhoton")]

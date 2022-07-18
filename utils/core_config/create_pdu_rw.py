@@ -35,6 +35,9 @@ ros_topics = json.load(file)
 
 container = list()
 for e in ros_topics['fields']:
+	if hakoniwa_utils.is_exit_robot(custom, e['robot_name']):
+		continue
+
 	is_add = False
 	if rw_type == 'r':
 		is_add = (e['sub'] == True)
@@ -54,20 +57,24 @@ if custom != None:
 	for e in custom['robots']:
 		entry = OrderedDict()
 		if rw_type == 'r':
-			for e_list_entry in e['pdu_readers']:
+			for e_list_entry in e['udp_pdu_readers']:
 				entry['name'] = hakoniwa_utils.get_custom_pdu_name(e_list_entry)
-				entry['class_name'] = e_list_entry['class']
-				entry['conv_class_name'] = e_list_entry['conv_class']
-				entry['path'] = e_list_entry['class_path']
-				entry['conv_path'] = e_list_entry['conv_class_path']
+				entry['class_name'] = e_list_entry['class_name']
+				entry['conv_class_name'] = e_list_entry['conv_class_name']
+				if len(e_list_entry['class_path']) > 0:
+					entry['path'] = e_list_entry['class_path']
+				if (len(e_list_entry['conv_class_path']) > 0):
+					entry['conv_path'] = e_list_entry['conv_class_path']
 				entry['pdu_config_name'] = e_list_entry['type']
 		else:
-			for e_list_entry in e['pdu_writers']:
+			for e_list_entry in e['udp_pdu_writers']:
 				entry['name'] = hakoniwa_utils.get_custom_pdu_name(e_list_entry)
-				entry['class_name'] = e_list_entry['class']
-				entry['conv_class_name'] = e_list_entry['conv_class']
-				entry['path'] = e_list_entry['class_path']
-				entry['conv_path'] = e_list_entry['conv_class_path']
+				entry['class_name'] = e_list_entry['class_name']
+				entry['conv_class_name'] = e_list_entry['conv_class_name']
+				if len(e_list_entry['class_path']) > 0:
+					entry['path'] = e_list_entry['class_path']
+				if (len(e_list_entry['conv_class_path']) > 0):
+					entry['conv_path'] = e_list_entry['conv_class_path']
 				entry['pdu_config_name'] = e_list_entry['type']
 		container.append(entry)
 

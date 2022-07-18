@@ -6,7 +6,7 @@ import glob
 import re
 from collections import OrderedDict
 
-if len(sys.argv) != 3:
+if len(sys.argv) != 4:
 	print "Usage: " + sys.argv[0] + " <ros_tpics> <pkg_name> <out_dir>"
 	sys.exit()
 
