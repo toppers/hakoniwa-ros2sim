@@ -4,8 +4,9 @@ using System.IO;
 using Newtonsoft.Json;
 using Hakoniwa.PluggableAsset.Assets.Environment;
 using Hakoniwa.PluggableAsset;
-using Hakoniwa.PluggableAsset.Assets.Robot.Parts;
 using System;
+using Newtonsoft.Json.Linq;
+using Hakoniwa.PluggableAsset.Assets.Robot.Parts;
 
 public class HakoniwaEditor : EditorWindow
 {
@@ -14,6 +15,8 @@ public class HakoniwaEditor : EditorWindow
     private static GameObject[] hako_asset_roots;
     private static GameObject[] hako_assets;
     private static LoginRobot login_robots;
+    private static JArray micon_settings_json_array = new JArray();
+    private static JObject micon_settings_json = new JObject();
 
     static string ConvertToJson(RosTopicMessageConfigContainer cfg)
     {
@@ -125,6 +128,13 @@ public class HakoniwaEditor : EditorWindow
                 asset_num++;
             }
         }
+        IMiconSettings micon_settings = root.GetComponentInChildren<IMiconSettings>();
+        if ((micon_settings != null) && (micon_settings.isEnabled()))
+        {
+            var str = micon_settings.GetSettings();
+            var json_data = JObject.Parse(str);
+            micon_settings_json_array.Add(new JObject(json_data));
+        }
     }
 
 
@@ -154,6 +164,9 @@ public class HakoniwaEditor : EditorWindow
         }
         AssetConfigLoader.SaveJsonFile<LoginRobot>("../../../settings/tb3/LoginRobot.json", login_robots);
         File.WriteAllText("../../../settings/tb3/RosTopics.json", ConvertToJson(ros_topic_container));
+
+        micon_settings_json.Add(new JProperty("robots", micon_settings_json_array));
+        File.WriteAllText("../../../settings/tb3/MiconConfig.json", micon_settings_json.ToString());
     }
     [MenuItem("Window/Hakoniwa/GeneratePhoton")]
     static void PhotonAssetsUpdate()
