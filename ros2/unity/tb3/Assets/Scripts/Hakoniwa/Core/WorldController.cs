@@ -62,7 +62,7 @@ namespace Hakoniwa.Core
             else {
                 Debug.Log("cpp_mode: None");
                 isim = SimulationControllerFactory.Get(null);
-                //RpcServer.StartServer(AssetConfigLoader.core_config.core_ipaddr, AssetConfigLoader.core_config.core_portno);
+                RpcServer.StartServer(AssetConfigLoader.core_config.core_ipaddr, AssetConfigLoader.core_config.core_portno);
                 SimulationController.Get().SetSimulationWorldTime(
                     this.maxDelayTime,
                     (long)(Time.fixedDeltaTime * 1000000f));
