@@ -44,7 +44,6 @@ public class HakoniwaEditor : EditorWindow
     static private void GetHakoAssets(int root_num)
     {
         hako_assets = GameObject.FindGameObjectsWithTag("HakoAsset");
-        ros_topic_container = new RosTopicMessageConfigContainer();
         int len = 0;
         foreach(var e in hako_assets)
         {
@@ -84,7 +83,7 @@ public class HakoniwaEditor : EditorWindow
                 e.robot_name = root.name;
                 ros_topic_container.fields[asset_num] = e;
                 asset_num++;
-            }
+                ros_topic_container.hakoenv_num++;            }
         }
     }
     static private void GetRobotAssetConfig(GameObject root)
@@ -119,6 +118,7 @@ public class HakoniwaEditor : EditorWindow
             {
                 continue;
             }
+            ros_topic_container.robot_num++;
             foreach ( var e in configs)
             {
                 e.topic_message_name = root.name + "_" + e.topic_message_name;
@@ -138,6 +138,9 @@ public class HakoniwaEditor : EditorWindow
     }
     static void Init()
     {
+        ros_topic_container = new RosTopicMessageConfigContainer();
+        ros_topic_container.robot_num = 0;
+        ros_topic_container.hakoenv_num = 0;
         micon_settings_json_array = new JArray();
         micon_settings_json = new JObject();
 
@@ -160,6 +163,7 @@ public class HakoniwaEditor : EditorWindow
             GetRobotAssetConfig(root);
             GetHakoAssetConfigs(root);
         }
+        ros_topic_container.ros_robot_num = ros_topic_container.robot_num - micon_settings_json_array.Count;
         Debug.Log("json:" + ConvertToJson(ros_topic_container));
         try
         {

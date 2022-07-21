@@ -38,7 +38,11 @@ def get_pdu_name(e):
 	return e['topic_message_name'] + 'Pdu'
 
 def get_custom_asset_name(e):
-	return e['name'] + "_" + e['udp_proxy']['name'] + 'Proxy'
+	return 'Athrill'
+	# For now, the name is Athrill only.
+	# The below name will be accepted when the single-robot 
+	# device_config.txt template is updated. 
+	# return e['name'] + "_" + e['udp_proxy']['name'] + 'Proxy'
 
 def get_custom_pdu_name(e):
 	return e['name'] + 'Pdu'

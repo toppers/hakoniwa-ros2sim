@@ -36,7 +36,7 @@ PROXY_CONFIG_FILE_PATH=${SETTING_FOLDER}/proxy/proxy_config.json
 WORLD_SCALE=$(cat "${SETTING_FOLDER}"/world_scale.txt)
 
 echo "####Creating core_config"
-python2 utils/core_config/create_core_config.py			"${ROS_TOPIC_FILE_PATH}" 	"${CORE_IPADDR}"  "${OUT_DIR}"
+python2 utils/core_config/create_core_config.py			"${ROS_TOPIC_FILE_PATH}" "${ROS_TOPIC_FILE}"	"${CORE_IPADDR}"  "${OUT_DIR}"
 echo "####Creating ros_topic_method"
 python2 utils/core_config/create_ros_topic_method.py	"${ROS_TOPIC_FILE}" 	"${PKG_NAME}"			"${OUT_DIR}"
 echo "####Creating inside_assets"
