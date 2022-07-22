@@ -17,6 +17,19 @@ public class HakoniwaEditor : EditorWindow
     private static LoginRobot login_robots;
     private static JArray micon_settings_json_array = new JArray();
     private static JObject micon_settings_json = new JObject();
+    static void Init()
+    {
+        asset_num = 0;
+        hako_asset_roots = null;
+        hako_assets = null;
+        login_robots = null;
+        ros_topic_container = new RosTopicMessageConfigContainer();
+        ros_topic_container.robot_num = 0;
+        ros_topic_container.hakoenv_num = 0;
+        micon_settings_json_array = new JArray();
+        micon_settings_json = new JObject();
+
+    }
 
     static string ConvertToJson(RosTopicMessageConfigContainer cfg)
     {
@@ -94,6 +107,8 @@ public class HakoniwaEditor : EditorWindow
             Debug.Log("No robots");
             return;
         }
+        ros_topic_container.robot_num++;
+
         UnityEngine.Object prefab = PrefabUtility.GetCorrespondingObjectFromSource(root);
         var robo = new LoginRobotInfoType();
         robo.roboname = root.transform.name;
@@ -118,7 +133,6 @@ public class HakoniwaEditor : EditorWindow
             {
                 continue;
             }
-            ros_topic_container.robot_num++;
             foreach ( var e in configs)
             {
                 e.topic_message_name = root.name + "_" + e.topic_message_name;
@@ -135,15 +149,6 @@ public class HakoniwaEditor : EditorWindow
             var json_data = JObject.Parse(str);
             micon_settings_json_array.Add(new JObject(json_data));
         }
-    }
-    static void Init()
-    {
-        ros_topic_container = new RosTopicMessageConfigContainer();
-        ros_topic_container.robot_num = 0;
-        ros_topic_container.hakoenv_num = 0;
-        micon_settings_json_array = new JArray();
-        micon_settings_json = new JObject();
-
     }
 
 
@@ -180,6 +185,10 @@ public class HakoniwaEditor : EditorWindow
         {
             micon_settings_json.Add(new JProperty("robots", micon_settings_json_array));
             File.WriteAllText("../../../settings/tb3/custom.json", micon_settings_json.ToString());
+        }
+        else
+        {
+            File.Delete("../../../settings/tb3/custom.json");
         }
     }
     [MenuItem("Window/Hakoniwa/GeneratePhoton")]

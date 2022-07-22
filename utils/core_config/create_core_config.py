@@ -25,7 +25,12 @@ out_data['core_ipaddr'] = ipaddr
 out_data['core_portno'] = 50051
 out_data['asset_timeout'] = 3
 out_data['inside_assets_path'] = './inside_assets.json'
-out_data['outside_assets_path'] = './outside_assets.json'
+
+if ros_topics['robot_num'] == ros_topics['ros_robot_num']:
+    out_data['outside_assets_path'] = None
+else:
+    out_data['outside_assets_path'] = './outside_assets.json'
+
 out_data['pdu_writers_path'] = './pdu_writers_config.json'
 out_data['pdu_readers_path'] = './pdu_readers_config.json'
 out_data['pdu_configs_path'] = './pdu_configs.json'
