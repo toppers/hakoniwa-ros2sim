@@ -23313,7 +23313,6 @@ Transform:
   - {fileID: 4265869616306039178}
   - {fileID: 4265869617372467880}
   - {fileID: 4265869617870006281}
-  - {fileID: 8627986946857141212}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -33406,61 +33405,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!1 &5183312608973593373
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8627986946857141212}
-  - component: {fileID: 7005185655903959965}
-  m_Layer: 0
-  m_Name: MiconSettings
-  m_TagString: HakoMicon
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8627986946857141212
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5183312608973593373}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4265869616754223590}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7005185655903959965
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5183312608973593373}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e761d997b55a4b43a2c237204963ab2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  on: 1
-  settings:
-    name: 
-    udp_proxy:
-      name: Athrill
-      class_name: Hakoniwa.PluggableAsset.Assets.Micon.EV3.Ev3MiconAssetController
-      ipaddr: 127.0.0.1
-      tx_port: 54001
-      rx_port: 54002
-    udp_pdu_readers: []
-    udp_pdu_writers: []
 --- !u!1 &7528017438139034039
 GameObject:
   m_ObjectHideFlags: 0
