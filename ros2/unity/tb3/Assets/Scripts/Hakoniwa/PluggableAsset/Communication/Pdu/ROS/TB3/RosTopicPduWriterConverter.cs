@@ -236,60 +236,6 @@ namespace Hakoniwa.PluggableAsset.Communication.Pdu.ROS.TB3
                 ConvertToMessage(src, ros_topic);
                 return ros_topic;
             }
-            if (type.Equals("sensor_msgs/Imu"))
-            {
-            	ImuMsg ros_topic = new ImuMsg();
-                ConvertToMessage(src, ros_topic);
-                return ros_topic;
-            }
-            if (type.Equals("nav_msgs/Odometry"))
-            {
-            	OdometryMsg ros_topic = new OdometryMsg();
-                ConvertToMessage(src, ros_topic);
-                return ros_topic;
-            }
-            if (type.Equals("tf2_msgs/TFMessage"))
-            {
-            	TFMessageMsg ros_topic = new TFMessageMsg();
-                ConvertToMessage(src, ros_topic);
-                return ros_topic;
-            }
-            if (type.Equals("sensor_msgs/JointState"))
-            {
-            	JointStateMsg ros_topic = new JointStateMsg();
-                ConvertToMessage(src, ros_topic);
-                return ros_topic;
-            }
-            if (type.Equals("geometry_msgs/Twist"))
-            {
-            	TwistMsg ros_topic = new TwistMsg();
-                ConvertToMessage(src, ros_topic);
-                return ros_topic;
-            }
-            if (type.Equals("sensor_msgs/Image"))
-            {
-            	ImageMsg ros_topic = new ImageMsg();
-                ConvertToMessage(src, ros_topic);
-                return ros_topic;
-            }
-            if (type.Equals("sensor_msgs/CompressedImage"))
-            {
-            	CompressedImageMsg ros_topic = new CompressedImageMsg();
-                ConvertToMessage(src, ros_topic);
-                return ros_topic;
-            }
-            if (type.Equals("sensor_msgs/CameraInfo"))
-            {
-            	CameraInfoMsg ros_topic = new CameraInfoMsg();
-                ConvertToMessage(src, ros_topic);
-                return ros_topic;
-            }
-            if (type.Equals("sensor_msgs/LaserScan"))
-            {
-            	LaserScanMsg ros_topic = new LaserScanMsg();
-                ConvertToMessage(src, ros_topic);
-                return ros_topic;
-            }
             throw new InvalidCastException("Can not find ros message type:" + type);
         }
         

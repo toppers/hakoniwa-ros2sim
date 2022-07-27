@@ -7,6 +7,8 @@ TagManager:
   - robot
   - HakoAsset
   - HakoAssetRoot
+  - Bullet
+  - HakoMicon
   layers:
   - Default
   - TransparentFX

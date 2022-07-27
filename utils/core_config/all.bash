@@ -31,15 +31,16 @@ OUT_DIR=${UNITY_PRJ_DIR}
 ROS_MSG_LIST=${SETTING_FOLDER}/ros_msgs.txt
 
 CUSTOM_FILE_PATH=${SETTING_FOLDER}/custom.json
+PROXY_CONFIG_FILE_PATH=${SETTING_FOLDER}/proxy/proxy_config.json
 
 WORLD_SCALE=$(cat "${SETTING_FOLDER}"/world_scale.txt)
 
 echo "####Creating core_config"
-python2 utils/core_config/create_core_config.py			"${ROS_TOPIC_FILE_PATH}" 	"${CORE_IPADDR}"  "${OUT_DIR}"
+python2 utils/core_config/create_core_config.py			"${ROS_TOPIC_FILE_PATH}" "${ROS_TOPIC_FILE}"	"${CORE_IPADDR}"  "${OUT_DIR}"
 echo "####Creating ros_topic_method"
-python2 utils/core_config/create_ros_topic_method.py		"${PKG_NAME}"			"${OUT_DIR}"
+python2 utils/core_config/create_ros_topic_method.py	"${ROS_TOPIC_FILE}" 	"${PKG_NAME}"			"${OUT_DIR}"
 echo "####Creating inside_assets"
-python2 utils/core_config/create_inside_assets.py  		"${ROS_TOPIC_FILE}" 	"${OUT_DIR}"
+python2 utils/core_config/create_inside_assets.py  		"${ROS_TOPIC_FILE}" 	"${OUT_DIR}" "${CUSTOM_FILE_PATH}"
 
 echo "####Creating pdu_readers"
 python2 utils/core_config/create_pdu_rw.py  				"${ROS_TOPIC_FILE}" 	"${OUT_DIR}" "${PKG_NAME}" r "${CUSTOM_FILE_PATH}"
@@ -75,18 +76,27 @@ then
 	echo "####Creating udp_methods"
 	python2 utils/core_config/create_udp_methods.py  		"${CUSTOM_FILE_PATH}" 	"${CORE_IPADDR}"	"${OUT_DIR}"
 
-	echo "####Creating proxy_param"
-	python2 utils/core_config/create_proxy_param.py  		"${CUSTOM_FILE_PATH}" 	"${CORE_IPADDR}"	"${ROS_VERSION}"/workspace
+	if [ -f ${PROXY_CONFIG_FILE_PATH} ]
+	then
+		echo "####Creating proxy_param"
+		python2 utils/core_config/create_proxy_param.py  		"${PROXY_CONFIG_FILE_PATH}" 	"${CORE_IPADDR}"
+	fi
 
-	#echo "####Downloading Hakoniwa.dll"
-	#wget https://github.com/toppers/hakoniwa-core/releases/download/v1.0.0/Hakoniwa.dll
-	#mv Hakoniwa.dll "${UNITY_PRJ_DIR}"/Assets/Plugin/
+	if [ -f ${UNITY_PRJ_DIR}/MiconPdu.dll ]
+	then
+		:
+	else
+		echo "####Downloading MiconPdu.dll"
+		wget https://github.com/toppers/hakoniwa-core/releases/download/v1.0.1/MiconPdu.dll
+		mv MiconPdu.dll "${UNITY_PRJ_DIR}"/
+	fi
 
-	echo "####Downloading MiconPdu.dll"
-	wget https://github.com/toppers/hakoniwa-core/releases/download/v1.0.1/MiconPdu.dll
-	mv MiconPdu.dll "${UNITY_PRJ_DIR}"/
-
-	echo "####Downloading HakoniwaSimTime.json"
-	wget https://github.com/toppers/hakoniwa-core/releases/download/v1.0.1/HakoniwaSimTime.json
-	mv HakoniwaSimTime.json "${UNITY_PRJ_DIR}"/
+	if [ -f ${UNITY_PRJ_DIR}/HakoniwaSimTime.json ]
+	then
+		:
+	else
+		echo "####Downloading HakoniwaSimTime.json"
+		wget https://github.com/toppers/hakoniwa-core/releases/download/v1.0.1/HakoniwaSimTime.json
+		mv HakoniwaSimTime.json "${UNITY_PRJ_DIR}"/
+	fi
 fi

@@ -40,6 +40,9 @@ r_index=0
 index=0
 container = list()
 for e in ros_topics['fields']:
+	if hakoniwa_utils.is_exit_robot(custom, e['robot_name']):
+		continue
+
 	is_add = False
 	if (e['sub'] == True):
 		index = r_index
@@ -66,27 +69,36 @@ for e in ros_topics['fields']:
 			entry[head_name+'_connector_name'] = head_name + '_connector' + str(index)
 		container.append(entry)
 
-custom_index = 0
 if custom != None:
-	for e in custom['proxies']:
-		entry = OrderedDict()
+	for e in custom['robots']:
 		if rw_type == 'r':
-			entry['name'] = 'custom_reader_connector' + str(custom_index)
-			entry['pdu_name'] = e['robot_name'] + 'Proxy_HakoniwaAssetTimePduReader'
-			entry['method_name'] = e['robot_name'] + 'Proxy_UdpReader'
+			custom_index = 0
+			for p in e['udp_pdu_readers']:
+				entry = OrderedDict()
+				entry['name'] = 'custom_reader_connector_' + str(custom_index)
+				entry['pdu_name'] = hakoniwa_utils.get_custom_pdu_name(p)
+				entry['method_name'] = hakoniwa_utils.get_custom_udp_reader_method_name(e)
+				custom_index = custom_index + 1
+				container.append(entry)
 		elif rw_type == 'w':
-			entry['name'] = 'custom_writer_connector' + str(custom_index)
-			entry['pdu_name'] = e['robot_name'] + 'Proxy_HakoniwaAssetTimePduWriter'
-			entry['method_name'] = e['robot_name'] + 'Proxy_UdpWriter'
+			custom_index = 0
+			for p in e['udp_pdu_writers']:
+				entry = OrderedDict()
+				entry['name'] = 'custom_writer_connector_' + str(custom_index)
+				entry['pdu_name'] = hakoniwa_utils.get_custom_pdu_name(p)
+				entry['method_name'] = hakoniwa_utils.get_custom_udp_writer_method_name(e)
+				custom_index = custom_index + 1
+				container.append(entry)
 		else:
-			entry['outside_asset_name'] = e['robot_name'] + 'Proxy'
-			entry['reader_connector_name'] = 'custom_reader_connector' + str(custom_index)
-			entry['writer_connector_name'] = 'custom_writer_connector' + str(custom_index)
-		custom_index = custom_index + 1
-		container.append(entry)
-
-
-
+			#NOTICE: must be same size read and write!!
+			custom_index = 0
+			for p in e['udp_pdu_readers']:
+				entry = OrderedDict()
+				entry['outside_asset_name'] = hakoniwa_utils.get_custom_asset_name(e)
+				entry['reader_connector_name'] = 'custom_reader_connector_' + str(custom_index)
+				entry['writer_connector_name'] = 'custom_writer_connector_' + str(custom_index)
+				custom_index = custom_index + 1
+				container.append(entry)
 
 with open(out_dir + '/' + out_filename, mode='wt') as out_file:
   json.dump(container, out_file, ensure_ascii=False, indent=2)

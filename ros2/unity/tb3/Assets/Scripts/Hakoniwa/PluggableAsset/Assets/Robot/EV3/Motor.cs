@@ -1,11 +1,24 @@
-﻿using System.Collections;
+﻿using Hakoniwa.PluggableAsset.Assets.Robot.Parts;
+using Hakoniwa.PluggableAsset.Communication.Connector;
+using Hakoniwa.PluggableAsset.Communication.Pdu;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Hakoniwa.PluggableAsset.Assets.Robot.EV3
 {
-    public class Motor : MonoBehaviour, IRobotMotor, IRobotMotorSensor
+    public class Motor : MonoBehaviour, IRobotPartsController, IRobotPartsSensor
     {
+        public int motorNo;
+        public int powerConst = 10;
+        public int motorPower = 100;
+
+        private IPduReader pdu_reader;
+        private IPduWriter pdu_writer;
+        private string root_name;
+        private PduIoConnector pdu_io;
+
         private GameObject obj;
         private HingeJoint joint;
         private JointMotor motor;
@@ -16,7 +29,7 @@ namespace Hakoniwa.PluggableAsset.Assets.Robot.EV3
         private float deg;
         private Rigidbody rigid_body;
 
-        public void Initialize(System.Object root)
+        public void Initialize(GameObject root)
         {
             if (this.obj != null)
             {
@@ -24,11 +37,25 @@ namespace Hakoniwa.PluggableAsset.Assets.Robot.EV3
                 this.deg = 0.0f;
                 return;
             }
-            this.obj = (GameObject)root;
-            this.rigid_body = this.obj.GetComponent<Rigidbody>();
+            this.obj = root;
+            this.root_name = string.Copy(this.obj.transform.name);
+            this.pdu_io = PduIoConnector.Get(this.root_name);
+            this.pdu_reader = this.pdu_io.GetReader(this.root_name + "_ev3_actuatorPdu");
+            if (this.pdu_reader == null)
+            {
+                throw new ArgumentException("can not found _ev3_actuator pdu:" + this.root_name + "_ev3_actuatorPdu");
+            }
+            this.pdu_writer = this.pdu_io.GetWriter(this.root_name + "_ev3_sensorPdu");
+            if (this.pdu_writer == null)
+            {
+                throw new ArgumentException("can not found ev3_sensor pdu:" + this.root_name + "_ev3_sensorPdu");
+            }
+
+            this.rigid_body = this.GetComponent<Rigidbody>();
             this.isStop = false;
-            this.joint = this.obj.GetComponent<HingeJoint>();
-            this.prevRotation = this.obj.transform.localRotation;
+            this.joint = this.GetComponent<HingeJoint>();
+            this.prevRotation = this.transform.localRotation;
+            this.SetForce(this.motorPower);
         }
 
         public void SetForce(int force)
@@ -91,14 +118,23 @@ namespace Hakoniwa.PluggableAsset.Assets.Robot.EV3
 
             return degree - 360.0f;
         }
-        public void UpdateSensorValues()
+        public void UpdateSensorValuesLocal()
         {
             float diff;
-            var diff_rot = this.obj.transform.localRotation * Quaternion.Inverse(this.prevRotation);
+            var diff_rot = this.transform.localRotation * Quaternion.Inverse(this.prevRotation);
             diff = Map360To180(diff_rot.eulerAngles.x);
-            this.prevRotation = this.obj.transform.localRotation;
+            this.prevRotation = this.transform.localRotation;
             this.deg += diff;
 
+        }
+        public void UpdateSensorValues()
+        {
+            this.UpdateSensorValuesLocal();
+
+            var motor_angle = (uint)this.GetDegree();
+            uint[] motor_angles = this.pdu_writer.GetReadOps().GetDataUInt32Array("motor_angle");
+            motor_angles[this.motorNo] = motor_angle;
+            this.pdu_writer.GetWriteOps().SetData("motor_angle", motor_angles);
         }
 
         public void SetTargetVelicty(float targetVelocity)
@@ -123,7 +159,19 @@ namespace Hakoniwa.PluggableAsset.Assets.Robot.EV3
 
         public RosTopicMessageConfig[] getRosConfig()
         {
-            throw new System.NotImplementedException();
+            return null;
+        }
+
+        public void DoControl()
+        {
+            var power = this.pdu_reader.GetReadOps().Refs("motors")[this.motorNo].GetDataInt32("power");
+            this.SetTargetVelicty(power * this.powerConst);
+        }
+
+
+        public bool isAttachedSpecificController()
+        {
+            return true;
         }
     }
 }

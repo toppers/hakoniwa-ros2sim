@@ -64,8 +64,8 @@ namespace Hakoniwa.GUI
             }
 #else
             //button enabler
-            //int count = simulator.RefOutsideAssetListCount();
-            int count = 0;
+            int count = simulator.RefOutsideAssetListCount();
+            //int count = 0;
             if (count == 0)
             {
                 if (AssetConfigLoader.core_config.outside_assets == null)

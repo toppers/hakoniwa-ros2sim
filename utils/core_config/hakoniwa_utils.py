@@ -26,8 +26,32 @@ def get_entry(ros_topics, type, name):
 			tmp_list.append( e )
 	return tmp_list
 
+def is_exit_robot(micon_robots, name):
+	if micon_robots == None:
+		return False
+	for e in micon_robots['robots']:
+		if e['name'] == name:
+			return True
+	return False
+
 def get_pdu_name(e):
 	return e['topic_message_name'] + 'Pdu'
+
+def get_custom_asset_name(e):
+	return 'Athrill'
+	# For now, the name is Athrill only.
+	# The below name will be accepted when the single-robot 
+	# device_config.txt template is updated. 
+	# return e['name'] + "_" + e['udp_proxy']['name'] + 'Proxy'
+
+def get_custom_pdu_name(e):
+	return e['name'] + 'Pdu'
+
+def get_custom_udp_reader_method_name(e):
+	return e['name'] + 'UdpReader'
+
+def get_custom_udp_writer_method_name(e):
+	return e['name'] + 'UdpWriter'
 
 def get_pdu_type_name(e):
 	return e['topic_type_name']

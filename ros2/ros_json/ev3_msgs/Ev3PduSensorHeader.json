@@ -1,0 +1,24 @@
+{
+  "fields": [
+    {
+      "type": "string", 
+      "name": "name"
+    }, 
+    {
+      "type": "uint32", 
+      "name": "version"
+    }, 
+    {
+      "type": "int64", 
+      "name": "hakoniwa_time"
+    }, 
+    {
+      "type": "uint32", 
+      "name": "ext_off"
+    }, 
+    {
+      "type": "uint32", 
+      "name": "ext_size"
+    }
+  ]
+}

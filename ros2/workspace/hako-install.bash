@@ -6,15 +6,21 @@ then
 	HAKO_CPP=True
 fi
 
+OPT=config
+if [ $# -eq 2 -a "$1" = "opt" ]
+then
+	OPT=${2}
+fi
+
 CURDIR=`pwd`
 
 cd ../..
 
 if [ ${OS_TYPE} = "Mac" ]
 then
-	bash utils/create_ros2unity_info.bash ros2 ros2/unity/tb3 settings/tb3 config
+	bash utils/create_ros2unity_info.bash ros2 ros2/unity/tb3 settings/tb3 ${OPT}
 else
-	bash utils/create_ros2unity_info_wsl2.bash ros2 ros2/unity/tb3 settings/tb3 config
+	bash utils/create_ros2unity_info_wsl2.bash ros2 ros2/unity/tb3 settings/tb3 ${OPT}
 fi
 
 cd ros2/unity

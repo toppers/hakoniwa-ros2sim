@@ -1,3 +1,5 @@
+using Hakoniwa.PluggableAsset.Assets.Robot.Parts;
+using Hakoniwa.PluggableAsset.Communication.Connector;
 using Hakoniwa.PluggableAsset.Communication.Pdu;
 using System;
 using System.Collections;
@@ -6,71 +8,81 @@ using UnityEngine;
 
 namespace Hakoniwa.PluggableAsset.Assets.Robot.EV3
 {
-    public class ButtonSensor
+    public class ButtonSensor : MonoBehaviour, IRobotPartsSensor
     {
+        private string root_name;
+        private IPduWriter pdu_writer;
+        private PduIoConnector pdu_io;
+
         private GameObject root;
-        private string roboname;
-        private IRobotTouchSensor button_left;
-        private IRobotTouchSensor button_right;
-        private IRobotTouchSensor button_up;
-        private IRobotTouchSensor button_down;
-        private IRobotTouchSensor button_enter;
-        private IRobotTouchSensor button_back;
 
-        public ButtonSensor(GameObject obj, string name)
+
+        public GameObject left;
+        public GameObject right;
+        public GameObject up;
+        public GameObject down;
+        public GameObject enter;
+        public GameObject back;
+
+        private IRobotPartsTouchSensor button_left;
+        private IRobotPartsTouchSensor button_right;
+        private IRobotPartsTouchSensor button_up;
+        private IRobotPartsTouchSensor button_down;
+        private IRobotPartsTouchSensor button_enter;
+        private IRobotPartsTouchSensor button_back;
+
+        private IRobotPartsTouchSensor GetTouchSensor(GameObject parent)
         {
-            this.root = obj;
-            this.roboname = name;
+            var ret = parent.GetComponentInChildren<IRobotPartsTouchSensor>();
+            if (ret == null)
+            {
+                throw new ArgumentException("can not found button_left:" + parent.name);
+            }
+            ret.Initialize(this.root);
+            return ret;
         }
 
-        internal void Initialize(IEV3Parts parts)
+        public void Initialize(GameObject root)
         {
-            GameObject obj;
-            string subParts = parts.getButtonSensor(ButtonSensorType.BUTTON_SENSOR_LEFT);
-            if (subParts != null)
+            if (this.root != null)
             {
-                obj = root.transform.Find(this.roboname + "/" + subParts).gameObject;
-                this.button_left = obj.GetComponentInChildren<IRobotTouchSensor>();
-                this.button_left.Initialize(obj);
+                return;
             }
-            subParts = parts.getButtonSensor(ButtonSensorType.BUTTON_SENSOR_RIGHT);
-            if (subParts != null)
+            this.root = root;
+
+            this.root_name = string.Copy(this.root.transform.name);
+            this.pdu_io = PduIoConnector.Get(this.root_name);
+            this.pdu_writer = this.pdu_io.GetWriter(this.root_name + "_ev3_sensorPdu");
+            if (this.pdu_writer == null)
             {
-                obj = root.transform.Find(this.roboname + "/" + subParts).gameObject;
-                this.button_right = obj.GetComponentInChildren<IRobotTouchSensor>();
-                this.button_right.Initialize(obj);
+                throw new ArgumentException("can not found ev3_sensor pdu:" + this.root_name + "_ev3_sensorPdu");
             }
-            subParts = parts.getButtonSensor(ButtonSensorType.BUTTON_SENSOR_UP);
-            if (subParts != null)
-            {
-                obj = root.transform.Find(this.roboname + "/" + subParts).gameObject;
-                this.button_up = obj.GetComponentInChildren<IRobotTouchSensor>();
-                this.button_up.Initialize(obj);
-            }
-            subParts = parts.getButtonSensor(ButtonSensorType.BUTTON_SENSOR_DOWN);
-            if (subParts != null)
-            {
-                obj = root.transform.Find(this.roboname + "/" + subParts).gameObject;
-                this.button_down = obj.GetComponentInChildren<IRobotTouchSensor>();
-                this.button_down.Initialize(obj);
-            }
-            subParts = parts.getButtonSensor(ButtonSensorType.BUTTON_SENSOR_ENTER);
-            if (subParts != null)
-            {
-                obj = root.transform.Find(this.roboname + "/" + subParts).gameObject;
-                this.button_enter = obj.GetComponentInChildren<IRobotTouchSensor>();
-                this.button_enter.Initialize(obj);
-            }
-            subParts = parts.getButtonSensor(ButtonSensorType.BUTTON_SENSOR_BACK);
-            if (subParts != null)
-            {
-                obj = root.transform.Find(this.roboname + "/" + subParts).gameObject;
-                this.button_back = obj.GetComponentInChildren<IRobotTouchSensor>();
-                this.button_back.Initialize(obj);
-            }
+            this.button_left = GetTouchSensor(left);
+            this.button_right = GetTouchSensor(right);
+            this.button_up = GetTouchSensor(up);
+            this.button_down = GetTouchSensor(down);
+            this.button_enter = GetTouchSensor(enter);
+            this.button_back = GetTouchSensor(back);
+
         }
 
-        internal void UpdateSensorValues(IPduWriter pdu_writer)
+        public RosTopicMessageConfig[] getRosConfig()
+        {
+            return null;
+        }
+
+
+        public bool isAttachedSpecificController()
+        {
+            return false;
+        }
+
+        public void UpdateSensorValues()
+        {
+            this.UpdateSensorValuesLocal();
+        }
+
+        private void UpdateSensorValuesLocal()
         {
             byte[] button_value = new byte[1];
             button_value[0] = 0;

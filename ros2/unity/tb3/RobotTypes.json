@@ -1,7 +1,0 @@
-{
-  "robotype" : [
-    "TB3RoboModel",
-    "TB3RoboModel_URDF",
-    "TB3RoboModel_waffle"
-  ]
-}

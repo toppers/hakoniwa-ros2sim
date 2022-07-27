@@ -1,4 +1,7 @@
 {
+  "robot_num": 1,
+  "ros_robot_num": 1,
+  "hakoenv_num": 0,
   "fields": [
     {
       "topic_message_name": "TB3RoboModel_imu",

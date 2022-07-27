@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Hakoniwa.PluggableAsset.Communication.Pdu.Accessor
 {
-    class Ev3PduSensorAccessor
+    public class Ev3PduSensorAccessor
     {
         private Pdu pdu;
 		private Ev3PduSensorHeaderAccessor pdu_head_accessor;

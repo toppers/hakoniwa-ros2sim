@@ -21,11 +21,10 @@ custom = json.load(file)
 
 
 container = list()
-for robo in custom['proxies']:
+for robo in custom['robots']:
 	entry = OrderedDict()
-	entry['name'] = robo['robot_name'] + 'Proxy'
-	entry['class_name'] ='Hakoniwa.PluggableAsset.Assets.Micon.SimpleMiconAssetController'
-	entry['path'] = './MiconPdu.dll'
+	entry['name'] = hakoniwa_utils.get_custom_asset_name(robo)
+	entry['class_name'] = robo['udp_proxy']['class_name']
 	container.append(entry)
 
 with open(out_dir + '/' + out_filename, mode='wt') as out_file:

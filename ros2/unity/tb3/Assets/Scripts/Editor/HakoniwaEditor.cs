@@ -4,8 +4,9 @@ using System.IO;
 using Newtonsoft.Json;
 using Hakoniwa.PluggableAsset.Assets.Environment;
 using Hakoniwa.PluggableAsset;
-using Hakoniwa.PluggableAsset.Assets.Robot.Parts;
 using System;
+using Newtonsoft.Json.Linq;
+using Hakoniwa.PluggableAsset.Assets.Robot.Parts;
 
 public class HakoniwaEditor : EditorWindow
 {
@@ -14,6 +15,21 @@ public class HakoniwaEditor : EditorWindow
     private static GameObject[] hako_asset_roots;
     private static GameObject[] hako_assets;
     private static LoginRobot login_robots;
+    private static JArray micon_settings_json_array = new JArray();
+    private static JObject micon_settings_json = new JObject();
+    static void Init()
+    {
+        asset_num = 0;
+        hako_asset_roots = null;
+        hako_assets = null;
+        login_robots = null;
+        ros_topic_container = new RosTopicMessageConfigContainer();
+        ros_topic_container.robot_num = 0;
+        ros_topic_container.hakoenv_num = 0;
+        micon_settings_json_array = new JArray();
+        micon_settings_json = new JObject();
+
+    }
 
     static string ConvertToJson(RosTopicMessageConfigContainer cfg)
     {
@@ -41,7 +57,6 @@ public class HakoniwaEditor : EditorWindow
     static private void GetHakoAssets(int root_num)
     {
         hako_assets = GameObject.FindGameObjectsWithTag("HakoAsset");
-        ros_topic_container = new RosTopicMessageConfigContainer();
         int len = 0;
         foreach(var e in hako_assets)
         {
@@ -81,7 +96,7 @@ public class HakoniwaEditor : EditorWindow
                 e.robot_name = root.name;
                 ros_topic_container.fields[asset_num] = e;
                 asset_num++;
-            }
+                ros_topic_container.hakoenv_num++;            }
         }
     }
     static private void GetRobotAssetConfig(GameObject root)
@@ -89,8 +104,11 @@ public class HakoniwaEditor : EditorWindow
         IRobotParts[] robot_assets = root.GetComponentsInChildren<IRobotParts>();
         if (robot_assets == null)
         {
+            Debug.Log("No robots");
             return;
         }
+        ros_topic_container.robot_num++;
+
         UnityEngine.Object prefab = PrefabUtility.GetCorrespondingObjectFromSource(root);
         var robo = new LoginRobotInfoType();
         robo.roboname = root.transform.name;
@@ -98,6 +116,9 @@ public class HakoniwaEditor : EditorWindow
         robo.pos.X = root.transform.position.x;
         robo.pos.Y = root.transform.position.y;
         robo.pos.Z = root.transform.position.z;
+        robo.angle.X = root.transform.localEulerAngles.x;
+        robo.angle.Y = root.transform.localEulerAngles.y;
+        robo.angle.Z = root.transform.localEulerAngles.z;
         int index = login_robots.robos.Length;
         Array.Resize(ref login_robots.robos, index + 1);
         login_robots.robos[index] = robo;
@@ -106,6 +127,7 @@ public class HakoniwaEditor : EditorWindow
         Debug.Log("pos=" + root.transform.position);
         foreach (var asset in robot_assets)
         {
+            Debug.Log("robot:" + asset.ToString());
             var configs = asset.getRosConfig();
             if (configs == null)
             {
@@ -120,12 +142,20 @@ public class HakoniwaEditor : EditorWindow
                 asset_num++;
             }
         }
+        IMiconSettings micon_settings = root.GetComponentInChildren<IMiconSettings>();
+        if ((micon_settings != null) && (micon_settings.isEnabled()))
+        {
+            var str = micon_settings.GetSettings(robo.roboname);
+            var json_data = JObject.Parse(str);
+            micon_settings_json_array.Add(new JObject(json_data));
+        }
     }
 
 
     [MenuItem("Window/Hakoniwa/Generate")]
     static void AssetsUpdate()
     {
+        Init();
         Debug.Log("assets");
         int root_num = GetHakoAssetRoots();
         GetHakoAssets(root_num);
@@ -138,6 +168,7 @@ public class HakoniwaEditor : EditorWindow
             GetRobotAssetConfig(root);
             GetHakoAssetConfigs(root);
         }
+        ros_topic_container.ros_robot_num = ros_topic_container.robot_num - micon_settings_json_array.Count;
         Debug.Log("json:" + ConvertToJson(ros_topic_container));
         try
         {
@@ -149,6 +180,16 @@ public class HakoniwaEditor : EditorWindow
         }
         AssetConfigLoader.SaveJsonFile<LoginRobot>("../../../settings/tb3/LoginRobot.json", login_robots);
         File.WriteAllText("../../../settings/tb3/RosTopics.json", ConvertToJson(ros_topic_container));
+
+        if (micon_settings_json_array.Count > 0)
+        {
+            micon_settings_json.Add(new JProperty("robots", micon_settings_json_array));
+            File.WriteAllText("../../../settings/tb3/custom.json", micon_settings_json.ToString());
+        }
+        else
+        {
+            File.Delete("../../../settings/tb3/custom.json");
+        }
     }
     [MenuItem("Window/Hakoniwa/GeneratePhoton")]
     static void PhotonAssetsUpdate()

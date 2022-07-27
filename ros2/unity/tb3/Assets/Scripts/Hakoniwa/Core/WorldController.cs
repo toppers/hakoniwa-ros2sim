@@ -62,7 +62,7 @@ namespace Hakoniwa.Core
             else {
                 Debug.Log("cpp_mode: None");
                 isim = SimulationControllerFactory.Get(null);
-                //RpcServer.StartServer(AssetConfigLoader.core_config.core_ipaddr, AssetConfigLoader.core_config.core_portno);
+                RpcServer.StartServer(AssetConfigLoader.core_config.core_ipaddr, AssetConfigLoader.core_config.core_portno);
                 SimulationController.Get().SetSimulationWorldTime(
                     this.maxDelayTime,
                     (long)(Time.fixedDeltaTime * 1000000f));
@@ -101,6 +101,7 @@ namespace Hakoniwa.Core
             var instance = Instantiate(p, pos, Quaternion.identity) as GameObject;
             instance.name = robo.roboname;
             instance.transform.parent = this.root.transform;
+            instance.transform.Rotate(new Vector3(robo.angle.X, robo.angle.Y, robo.angle.Z));
 
             IInsideAssetController ctrl = instance.GetComponentInChildren<IInsideAssetController>();
             ctrl.Initialize();

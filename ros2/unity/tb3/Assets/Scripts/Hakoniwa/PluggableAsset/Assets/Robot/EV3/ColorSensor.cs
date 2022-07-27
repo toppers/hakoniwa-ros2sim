@@ -1,15 +1,24 @@
-﻿using System.Collections;
+﻿using Hakoniwa.PluggableAsset.Assets.Robot.Parts;
+using Hakoniwa.PluggableAsset.Communication.Connector;
+using Hakoniwa.PluggableAsset.Communication.Pdu;
+using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Hakoniwa.PluggableAsset.Assets.Robot.EV3
 {
-    public class ColorSensor : MonoBehaviour, IRobotColorSensor
+    public class ColorSensor : MonoBehaviour, IRobotPartsSensor
     {
+        private string root_name;
+        private IPduWriter pdu_writer;
+        private PduIoConnector pdu_io;
+
+        public int colorSensorNo;
         public Camera dispCamera;
-        public float lightValue;
+        private float lightValue;
         private GameObject obj = null;
-        private Color rgb;
+        public Color rgb;
         private float rgb_r;
         private float rgb_g;
         private float rgb_b;
@@ -22,14 +31,22 @@ namespace Hakoniwa.PluggableAsset.Assets.Robot.EV3
         private ColorNumber[,,] color_array = new ColorNumber[3, 3, 3];
         private ColorNumber color_id = ColorNumber.COLOR_NONE;
 
-        public void Initialize(System.Object root)
+        public void Initialize(GameObject root)
         {
             if (this.obj != null)
             {
                 return;
             }
-            this.obj = (GameObject)root;
-            this.dispCamera = obj.GetComponentInChildren<Camera>();
+            this.obj = root;
+            this.root_name = string.Copy(this.obj.transform.name);
+            this.pdu_io = PduIoConnector.Get(this.root_name);
+            this.pdu_writer = this.pdu_io.GetWriter(this.root_name + "_ev3_sensorPdu");
+            if (this.pdu_writer == null)
+            {
+                throw new ArgumentException("can not found ev3_sensor pdu:" + this.root_name + "_ev3_sensorPdu");
+            }
+
+            this.dispCamera = this.GetComponentInChildren<Camera>();
             this.dispCamera.targetTexture = new RenderTexture(32, 32, 24, RenderTextureFormat.BGRA32);
             var tex = dispCamera.targetTexture;
             targetTexture = new Texture2D(tex.width, tex.height, TextureFormat.ARGB32, false);
@@ -85,7 +102,7 @@ namespace Hakoniwa.PluggableAsset.Assets.Robot.EV3
             return 2;
         }
 
-        public void UpdateSensorValues()
+        private void UpdateSensorValuesLocal()
         {
             var tex = dispCamera.targetTexture;
             // RenderTextureキャプチャ
@@ -145,7 +162,25 @@ namespace Hakoniwa.PluggableAsset.Assets.Robot.EV3
 
         public RosTopicMessageConfig[] getRosConfig()
         {
-            throw new System.NotImplementedException();
+            return null;
+        }
+
+        public bool isAttachedSpecificController()
+        {
+            return false;
+        }
+
+        public void UpdateSensorValues()
+        {
+            this.UpdateSensorValuesLocal();
+
+            this.pdu_writer.GetWriteOps().Refs("color_sensors")[this.colorSensorNo].SetData("reflect", (uint)(this.GetLightValue() * 100f));
+            ColorRGB color_sensor_rgb;
+            this.GetRgb(out color_sensor_rgb);
+            this.pdu_writer.GetWriteOps().Refs("color_sensors")[this.colorSensorNo].SetData("rgb_r", (uint)color_sensor_rgb.r);
+            this.pdu_writer.GetWriteOps().Refs("color_sensors")[this.colorSensorNo].SetData("rgb_g", (uint)color_sensor_rgb.g);
+            this.pdu_writer.GetWriteOps().Refs("color_sensors")[this.colorSensorNo].SetData("rgb_b", (uint)color_sensor_rgb.b);
+            this.pdu_writer.GetWriteOps().Refs("color_sensors")[this.colorSensorNo].SetData("color", (uint)this.GetColorId());
         }
     }
 }
