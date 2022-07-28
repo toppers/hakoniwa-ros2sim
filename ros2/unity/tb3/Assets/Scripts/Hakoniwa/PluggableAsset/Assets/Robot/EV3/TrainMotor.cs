@@ -14,7 +14,7 @@ namespace Hakoniwa.PluggableAsset.Assets.Robot.EV3
         private string root_name;
         private GameObject my_motor;
 
-        private float power_const = 500;
+        private float power_const = 10;
         private float rotation_angle_rate = 0.0f;
         private float motor_radius = 3.3f; //3.3cm
 

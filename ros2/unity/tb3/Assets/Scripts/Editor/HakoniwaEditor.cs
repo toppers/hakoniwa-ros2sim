@@ -41,12 +41,15 @@ public class HakoniwaEditor : EditorWindow
         int ret = 0;
         foreach (var root in hako_asset_roots)
         {
+            Debug.Log("asset_root:" + root.gameObject.name);
             var hako_env_root = root.GetComponent<IHakoEnv>();
+            Debug.Log("hako_env_root: " + hako_env_root);
             if ((hako_env_root != null) && hako_env_root.getRosConfig() != null)
             {
                 ret += hako_env_root.getRosConfig().Length;
             }
             var hako_robo_root = root.GetComponent<IRobotParts>();
+            Debug.Log("hako_robo_root: " + hako_robo_root);
             if ((hako_robo_root != null) && hako_robo_root.getRosConfig() != null)
             {
                 ret += hako_robo_root.getRosConfig().Length;
@@ -62,6 +65,7 @@ public class HakoniwaEditor : EditorWindow
         {
             if (e.GetComponent<IHakoEnv>() != null)
             {
+                Debug.Log("HakoEnv: " + e.name);
                 len += e.GetComponent<IHakoEnv>().getRosConfig().Length;
             }
         }
@@ -73,15 +77,21 @@ public class HakoniwaEditor : EditorWindow
             {
                 continue;
             }
+            var hako_robo_root = root.GetComponent<IRobotParts>();
             foreach (var asset in asset_parts)
             {
+                if (asset == hako_robo_root)
+                {
+                    continue;
+                }
                 if (asset.getRosConfig() != null)
                 {
+                    Debug.Log("IRobotParts: " + asset);
                     len += asset.getRosConfig().Length;
                 }
             }
         }
-
+        Debug.Log("field_num=" + (len + root_num));
         ros_topic_container.fields = new RosTopicMessageConfig[len + root_num];
     }
 
@@ -156,8 +166,8 @@ public class HakoniwaEditor : EditorWindow
     static void AssetsUpdate()
     {
         Init();
-        Debug.Log("assets");
         int root_num = GetHakoAssetRoots();
+        Debug.Log("assets root_num:" + root_num);
         GetHakoAssets(root_num);
         asset_num = 0;
 
