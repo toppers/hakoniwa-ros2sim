@@ -39,7 +39,7 @@ namespace Hakoniwa.PluggableAsset.Assets.Robot.EV3
         private float[] prev_angle = new float[2];  // 0: R, 1: L
         private float[] delta_angle = new float[2];  // 0: R, 1: L
         private float[] moving_distance = new float[2];  // 0: R, 1: L
-        private int motor_power = 500;
+        private int motor_power = 100000;
         private ParamScale scale;
         private Dictionary<string, UpdateDeviceCycle> device_update_cycle = new Dictionary<string, UpdateDeviceCycle>();
 
