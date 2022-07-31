@@ -21,12 +21,17 @@ void do_train_ctrl()
     color = ev3_color_sensor_get_color();
     if (need_stop == 0 && color == COLOR_RED) {
         need_stop = 1;
+        ev3_led_set_color(LED_RED);
         printf("STOP: RED\n");
     }
     if (need_stop) {
         do_stop();
+        if (ev3_touch_sensor_is_pressed(0)) {
+            need_stop = 0;
+        }
     }
     else {
+        ev3_led_set_color(LED_GREEN);
         do_move_foward(40);
     }
     return;
