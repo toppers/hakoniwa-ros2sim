@@ -119,8 +119,8 @@ namespace Hakoniwa.PluggableAsset.Assets.Robot.EV3
         }
         private void DoActuation()
         {
-            //var power = this.pdu_reader.GetReadOps().Refs("motors")[this.motorNo].GetDataInt32("power");
-            int power = 40;
+            var power = this.pdu_reader.GetReadOps().Refs("motors")[this.motorNo].GetDataInt32("power");
+            //int power = 40;
             for (int i = 0; i < 2; i++)
             {
                 string devname_actuator = "motor_actuator" + i.ToString();

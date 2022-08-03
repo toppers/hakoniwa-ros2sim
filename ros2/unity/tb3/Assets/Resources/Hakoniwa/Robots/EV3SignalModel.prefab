@@ -17588,6 +17588,7 @@ GameObject:
   - component: {fileID: 7026264184267014923}
   - component: {fileID: 7026264184267014920}
   - component: {fileID: 7026264184267014922}
+  - component: {fileID: 1068732495710483988}
   m_Layer: 0
   m_Name: MotorModel
   m_TagString: Untagged
@@ -17698,7 +17699,7 @@ HingeJoint:
     targetPosition: 0
   m_UseMotor: 1
   m_Motor:
-    targetVelocity: 100
+    targetVelocity: 0
     force: 1000
     freeSpin: 0
   m_UseLimits: 0
@@ -17728,6 +17729,21 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1068732495710483988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7026264184267014924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81683e482df8013489a64cfa933c2af2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  motorNo: 0
+  powerConst: 10
+  motorPower: 100
 --- !u!1 &7026264184269568922
 GameObject:
   m_ObjectHideFlags: 0

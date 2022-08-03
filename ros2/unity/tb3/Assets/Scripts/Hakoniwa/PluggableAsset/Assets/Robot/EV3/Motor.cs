@@ -171,7 +171,7 @@ namespace Hakoniwa.PluggableAsset.Assets.Robot.EV3
 
         public bool isAttachedSpecificController()
         {
-            return true;
+            return false;
         }
     }
 }

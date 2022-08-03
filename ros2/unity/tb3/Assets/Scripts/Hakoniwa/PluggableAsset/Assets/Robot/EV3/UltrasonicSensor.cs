@@ -59,6 +59,7 @@ namespace Hakoniwa.PluggableAsset.Assets.Robot.EV3
             RaycastHit hit;
             if (Physics.Raycast(transform.position, fwd, out hit, contact_distance))
             {
+                //Debug.Log("green");
                 if (is_debug)
                 {
                     //Debug.Log("deg=" + degree + " dist=" + hit.distance);
@@ -69,6 +70,8 @@ namespace Hakoniwa.PluggableAsset.Assets.Robot.EV3
             }
             else
             {
+                //Debug.Log("red");
+                Debug.DrawRay(this.transform.position, fwd * contact_distance, Color.red, 0.1f, false);
                 return contact_distance;
             }
         }
