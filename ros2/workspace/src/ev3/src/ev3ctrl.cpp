@@ -6,6 +6,7 @@
 #include "std_msgs/msg/string.hpp"
 #include "ev3com.hpp"
 #include "ev3ctrl_train.hpp"
+#include "ev3ctrl_signal.hpp"
 #include "ev3ctrl_base_practice.hpp"
 
 using namespace std::chrono_literals;
@@ -45,8 +46,13 @@ int main(int argc, char **argv) {
     if (strncmp("base_practice", ctrl_op, strlen("base_practice")) == 0) {
       do_base_practice();
     }
-    else {
+    else if (strncmp("train", ctrl_op, strlen("train")) == 0) {
+      //printf("train-mode\n");
       do_train_ctrl();
+    }
+    else {
+      //printf("signal-mode\n");
+      do_signal_ctrl();
     }
 
     ros_actuator_data.leds[0] = actuator_data.led;
