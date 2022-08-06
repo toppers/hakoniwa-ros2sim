@@ -21,7 +21,13 @@ find_package(rclcpp REQUIRED)
 find_package(ev3_msgs REQUIRED)
 find_package(std_msgs REQUIRED)
 
-add_executable(ev3_node src/ev3ctrl.cpp)
+add_executable(ev3_node 
+  src/ev3ctrl.cpp
+  src/ev3com.cpp
+  src/ev3ctrl_base_practice.cpp
+  src/ev3ctrl_train.cpp
+  src/ev3ctrl_signal.cpp
+)
 ament_target_dependencies(ev3_node rclcpp std_msgs ev3_msgs)
 
 install(TARGETS

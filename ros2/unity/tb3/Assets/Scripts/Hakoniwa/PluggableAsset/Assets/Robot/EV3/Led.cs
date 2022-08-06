@@ -50,11 +50,12 @@ namespace Hakoniwa.PluggableAsset.Assets.Robot.EV3
             //Debug.Log("color=" +color);
             rend.material.color = materials[(int)color].color;
         }
-
+        //public int debug_led_color = 0;
 
         public void DoControl()
         {
             int led_color = this.pdu_reader.GetReadOps().GetDataUInt8Array("leds")[0];
+            //int led_color = debug_led_color;
             this.SetLedColor((LedColor)(((led_color) & 0x3)));
 
         }
