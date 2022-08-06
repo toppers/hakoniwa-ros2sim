@@ -209,13 +209,18 @@ Each window in this video corresponds to the following.
 - Lower right: Terminal B
 - Left: Unity
 
-## Contributing
+## Additional resources
 
-Please let us know your comments and suggestions for improvement of the "Hakoniwa ROS Simulator" in the [GitHub Discussions](https://github.com/toppers/hakoniwa/discussions/categories/idea-request). We also welcome [Pull Requests](https://github.com/toppers/hakoniwa-ros2sim/pulls) for modification proposals.
+- [How to operate on the Native environment](/appendix/native.md)
+- [Version information and update history](/appendix/version.md)
 
 ## TODO
 
 - [ ] Provide examples of how SLAM and Nav2 work ([#19](https://github.com/toppers/hakoniwa-ros2sim/issues/19))
+
+## Contributing
+
+Please let us know your comments and suggestions for improvement of the "Hakoniwa ROS Simulator" in the [GitHub Discussions](https://github.com/toppers/hakoniwa/discussions/categories/idea-request). We also welcome [Pull Requests](https://github.com/toppers/hakoniwa-ros2sim/pulls) for modification proposals.
 
 ## Acknowledgments
 

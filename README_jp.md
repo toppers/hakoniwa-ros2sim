@@ -207,14 +207,18 @@ Unityのシミュレーション開始ボタンをクリックすると，以下
 - 右下：ターミナルB
 - 左：Unity
 
+## 追加情報
 
-## Contributing
-
-本リポジトリで公開している「箱庭 ROS シミュレータ」について，ご意見や改善の提案などをぜひ [こちらのGitHub Discussions](https://github.com/toppers/hakoniwa/discussions/categories/idea-request) でお知らせください．改修提案の [Pull Requests](https://github.com/toppers/hakoniwa-ros2sim/pulls) も歓迎いたします．
+- [ネイティブ環境での実行方法](/appendix/native.md)
+- [バージョン情報・更新履歴](/appendix/version.md)
 
 ## TODO
 
 - [ ] SLAMやNav2の動作例を示す ([#19](https://github.com/toppers/hakoniwa-ros2sim/issues/19))
+
+## Contributing
+
+本リポジトリで公開している「箱庭 ROS シミュレータ」について，ご意見や改善の提案などをぜひ [こちらのGitHub Discussions](https://github.com/toppers/hakoniwa/discussions/categories/idea-request) でお知らせください．改修提案の [Pull Requests](https://github.com/toppers/hakoniwa-ros2sim/pulls) も歓迎いたします．
 
 ## 謝辞
 
