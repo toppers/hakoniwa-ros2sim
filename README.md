@@ -217,8 +217,8 @@ Please let us know your comments and suggestions for improvement of the "Hakoniw
 
 - [ ] Provide examples of how SLAM and Nav2 work ([#19](https://github.com/toppers/hakoniwa-ros2sim/issues/19))
 
+## Acknowledgments
 
-## cknowledgments
 * We thank Associate Professor Akio YOSHIOKA and undergraduate students Ryoji SUGISAKI and Akemi KIMURA of Takarazuka University school of media art in Tokyo for their cooperation in designing the Unity package for TurtleBot3
 * TurtleBot3 Unity assets are based on data provided by Robotiz, Inc. We deeply appreciate their cooperation.
 

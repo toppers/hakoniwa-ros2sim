@@ -133,6 +133,7 @@ Each window in this video corresponds to the following.
 Please let us know your comments and suggestions for improvement of the "Hakoniwa ROS Simulator" in the GitHub Discussions](https://github.com/toppers/hakoniwa/discussions/categories/idea-request). We also welcome [Pull Requests](https://github.com/toppers/hakoniwa-ros2sim/pulls) for modification proposals.
 
 ## Acknowledgments
+
 * We thank Associate Professor Akio YOSHIOKA and undergraduate students Ryoji SUGISAKI and Akemi KIMURA of Takarazuka University school of media art in Tokyo for their cooperation in designing the Unity package for TurtleBot3
 * TurtleBot3 Unity assets are based on data provided by Robotiz, Inc. We deeply appreciate their cooperation.
 
