@@ -34,6 +34,7 @@ typedef enum {
   COLOR_RED,
   COLOR_WHITE,
   COLOR_BROWN,
+  TNUM_COLOR
 } colorid_t;
 
 typedef enum {

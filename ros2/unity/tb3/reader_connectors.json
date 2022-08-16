@@ -1,7 +1,12 @@
 [
   {
     "name": "reader_connector0", 
-    "pdu_name": "TB3RoboModel_cmd_velPdu", 
+    "pdu_name": "EV3TrainModel_ev3_actuatorPdu", 
+    "method_name": "ros_topic_io"
+  }, 
+  {
+    "name": "reader_connector1", 
+    "pdu_name": "EV3SignalModel_ev3_actuatorPdu", 
     "method_name": "ros_topic_io"
   }
 ]

@@ -1,42 +1,12 @@
 [
   {
     "name": "writer_connector0", 
-    "pdu_name": "TB3RoboModel_imuPdu", 
+    "pdu_name": "EV3TrainModel_ev3_sensorPdu", 
     "method_name": "ros_topic_io"
   }, 
   {
     "name": "writer_connector1", 
-    "pdu_name": "TB3RoboModel_odomPdu", 
-    "method_name": "ros_topic_io"
-  }, 
-  {
-    "name": "writer_connector2", 
-    "pdu_name": "TB3RoboModel_tfPdu", 
-    "method_name": "ros_topic_io"
-  }, 
-  {
-    "name": "writer_connector3", 
-    "pdu_name": "TB3RoboModel_joint_statesPdu", 
-    "method_name": "ros_topic_io"
-  }, 
-  {
-    "name": "writer_connector4", 
-    "pdu_name": "TB3RoboModel_imagePdu", 
-    "method_name": "ros_topic_io"
-  }, 
-  {
-    "name": "writer_connector5", 
-    "pdu_name": "TB3RoboModel_image/compressedPdu", 
-    "method_name": "ros_topic_io"
-  }, 
-  {
-    "name": "writer_connector6", 
-    "pdu_name": "TB3RoboModel_camera_infoPdu", 
-    "method_name": "ros_topic_io"
-  }, 
-  {
-    "name": "writer_connector7", 
-    "pdu_name": "TB3RoboModel_scanPdu", 
+    "pdu_name": "EV3SignalModel_ev3_sensorPdu", 
     "method_name": "ros_topic_io"
   }
 ]
