@@ -102,7 +102,6 @@ static const char* rotator_state_msg[TNUM_ROTATOR_STATE] = {
 };
 
 static rotator_state rs_state = RS_INIT;
-static rotator_state rs_state_old = TNUM_ROTATOR_STATE;
 static bool rs_is_entry = true;
 
 #define RS_ENTRY if(rs_is_entry){rs_is_entry=false;
@@ -148,11 +147,9 @@ void rotator_stop(void) {
 }
 
 void rotator_run(void) {
-    if( rs_state != rs_state_old ) {
+    if( rs_is_entry ) {
         msg_f(rotator_state_msg[rs_state], 3);
     }
-    rs_state_old = rs_state;
-
     switch(rs_state ) {
     case RS_INIT:
         RS_ENTRY
@@ -259,7 +256,6 @@ static const char* color_names[TNUM_COLOR] = {
 };
 
 static signal_display_state sd_state = SD_INIT;
-static signal_display_state sd_state_old = SD_INIT;
 static bool sd_is_entry = true;
 
 #define SD_ENTRY if(sd_is_entry){sd_is_entry=false;
@@ -314,15 +310,13 @@ void signal_display_init(void) {
     // ev3_sensor_config(reader_sensor_port, reader_sensor_type);
     // dly_tsk(50U * 1000U);
     sd_state = SD_INIT;
-    sd_state_old = SD_INIT;
     signal_operation = SOP_STOP;
 }
 
 void signal_display_run(void) {
-    if( sd_state != sd_state_old ) {
+    if( sd_is_entry ) {
         msg_f(signal_display_state_msg[sd_state], 2);
     }
-    sd_state_old = sd_state;
     colorid_t color = ev3_color_sensor_get_color();
     // åoâﬂÇÃêFÇñ≥éãÇµÇƒìsçáÇÃÇSêFÇ…äÒÇπÇÈ
     switch(color) {
@@ -429,7 +423,6 @@ static const char* block_signal_state_msg[TNUM_BLOCK_SIGNAL_STATE] = {
 };
 
 static block_signal_state bs_state = BS_INIT;
-static block_signal_state bs_state_old = TNUM_BLOCK_SIGNAL_STATE;
 static bool bs_is_entry = true;
 
 #define BS_ENTRY if(bs_is_entry){bs_is_entry=false;
@@ -456,10 +449,9 @@ void block_signal_init(void) {
 }
 
 void block_signal_run(void) {
-    if( bs_state != bs_state_old) {
+    if( bs_is_entry ) {
         msg_f(block_signal_state_msg[bs_state], 1);
     }
-    bs_state_old = bs_state;
 
     switch( bs_state ) {
     case BS_INIT:
