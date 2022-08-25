@@ -1,18 +1,20 @@
 [
   {
-    "name": "TB3RoboModel", 
+    "name": "EV3TrainModel", 
     "pdu_writer_names": [
-      "TB3RoboModel_imuPdu", 
-      "TB3RoboModel_odomPdu", 
-      "TB3RoboModel_tfPdu", 
-      "TB3RoboModel_joint_statesPdu", 
-      "TB3RoboModel_imagePdu", 
-      "TB3RoboModel_image/compressedPdu", 
-      "TB3RoboModel_camera_infoPdu", 
-      "TB3RoboModel_scanPdu"
+      "EV3TrainModel_ev3_sensorPdu"
     ], 
     "pdu_reader_names": [
-      "TB3RoboModel_cmd_velPdu"
+      "EV3TrainModel_ev3_actuatorPdu"
+    ]
+  }, 
+  {
+    "name": "EV3SignalModel", 
+    "pdu_writer_names": [
+      "EV3SignalModel_ev3_sensorPdu"
+    ], 
+    "pdu_reader_names": [
+      "EV3SignalModel_ev3_actuatorPdu"
     ]
   }
 ]
