@@ -20,7 +20,8 @@
     - ドキュメントの更新　など
 
 ## 更新履歴
-### v1.1.3 @ 2022/09/22
+
+### v1.1.3 @ 2022/10/03
 
 * add hakoniwa proxy for ros2 by @tmori in https://github.com/toppers/hakoniwa-ros2sim/pull/34
 * hakoniwa cpp core function is added by @tmori in https://github.com/toppers/hakoniwa-ros2sim/pull/36
@@ -28,6 +29,9 @@
 * Add EV3 Robot Model by @tmori in https://github.com/toppers/hakoniwa-ros2sim/pull/38
 * 電車モデルできました！ by @tmori in https://github.com/toppers/hakoniwa-ros2sim/pull/39
 * add camera mover on main camera by @tmori in https://github.com/toppers/hakoniwa-ros2sim/pull/40 
+
+- 箱庭アセットとバージョン (commit hash) 情報
+    - [hakoniwa-core](https://github.com/toppers/hakoniwa-core) / sha: [c60ec37e95e3b33e4f09881525cd3eabbea1f781](https://github.com/toppers/hakoniwa-core/tree/c60ec37e95e3b33e4f09881525cd3eabbea1f781)
 
 ### v1.1.2 @ 2022/05/14
 
