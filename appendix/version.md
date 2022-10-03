@@ -23,6 +23,15 @@ Each version number is updated according to the following rules.
 
 ## Update History
 
+### v1.1.3 @ 2022/09/22
+
+* add hakoniwa proxy for ros2 by @tmori in https://github.com/toppers/hakoniwa-ros2sim/pull/34
+* hakoniwa cpp core function is added by @tmori in https://github.com/toppers/hakoniwa-ros2sim/pull/36
+* Englishization of README by @urashima0429 in https://github.com/toppers/hakoniwa-ros2sim/pull/37
+* Add EV3 Robot Model by @tmori in https://github.com/toppers/hakoniwa-ros2sim/pull/38
+* Add Train & Signal Model by @tmori in https://github.com/toppers/hakoniwa-ros2sim/pull/39
+* add camera mover on main camera by @tmori in https://github.com/toppers/hakoniwa-ros2sim/pull/40
+
 ### v1.1.2 @ 2022/05/14
 
 * add robot arm stick parts for general purpose (fix #25) by @tmori in https://github.com/toppers/hakoniwa-ros2sim/pull/26
