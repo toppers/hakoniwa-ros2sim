@@ -49,17 +49,19 @@ If the following command outputs the same result in the terminal of WSL2, it has
 $ which docker
 /usr/bin/docker
 $ service --status-all |& grep docker
- [ + ]  docker   # または " [ - ]  docker "
+ [ + ]  docker   # or " [ - ]  docker "
 $ service docker status
- * Docker is running   # または " * Docker is not running "
+ * Docker is running   # or " * Docker is not running "
 ```
 
-Since the Docker Engine installation procedure is a bit complicated, we summarized it in [`docker/install-docker.bash`](/docker/install-docker.bash) in this repository (see [Install Docker Engine on Ubuntu | Docker Documentation](https://docs.docker.com/engine/install/ubuntu/)").  
-Execute as follows.
+Since the Docker Engine installation procedure is a bit complicated, we summarized it in [`docker/install-docker.bash` in "toppersjp/hakoniwa-single_robot" repository](https://github.com/toppers/hakoniwa-single_robot/blob/main/docker/install-docker.bash) by referring the official manual. If you have any trouble to execute this script, please follow the official manual to install Docker.  
+[Install Docker Engine on Ubuntu | Docker Documentation](https://docs.docker.com/engine/install/ubuntu/)
 
+Execute as follows to install Docker with our script.
 
 ```
-bash utils/install-docker.bash
+wget https://raw.githubusercontent.com/toppers/hakoniwa-single_robot/main/docker/install-docker.bash
+bash install-docker.bash
 ```
 
 If the `service docker status` is ` * Docker is not running `, start Docker.
@@ -218,7 +220,7 @@ Please let us know your comments and suggestions for improvement of the "Hakoniw
 - [ ] Provide examples of how SLAM and Nav2 work ([#19](https://github.com/toppers/hakoniwa-ros2sim/issues/19))
 
 
-## cknowledgments
+## Acknowledgments
 * We thank Associate Professor Akio YOSHIOKA and undergraduate students Ryoji SUGISAKI and Akemi KIMURA of Takarazuka University school of media art in Tokyo for their cooperation in designing the Unity package for TurtleBot3
 * TurtleBot3 Unity assets are based on data provided by Robotiz, Inc. We deeply appreciate their cooperation.
 
