@@ -126,7 +126,7 @@ bash docker/run.bash <port>
 ### 起動した dockerコンテナ上で箱庭のROS環境をインストール
 
 ```
-# bash hako-install.bash opt all
+bash hako-install.bash opt all
 ```
 
 ### Unity プロジェクトを開く
