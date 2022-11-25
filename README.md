@@ -131,7 +131,7 @@ bash docker/run.bash <port>
 ### Install the Hakoniwa ROS environment on the launched docker container
 
 ```
-# bash hako-install.bash opt all
+bash hako-install.bash opt all
 ```
 
 ### Open Unity project
