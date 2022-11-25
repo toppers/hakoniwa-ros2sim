@@ -20,13 +20,13 @@ Please execute under the Windows file system (under `/mnt/c/`), not under the WS
 
 ### Clone this repository
 
-The latest version is **v1.1.3**.
+The latest version is **v1.1.4**.
 See also "[version information/update history](/appendix/version.md)" (the version number corresponds to [tag/release in Git/GitHub](https://github.com/toppers/hakoniwa-ros2sim/releases) and [Docker Hub tag number](https://hub.docker.com/r/toppersjp/hakoniwa-ros2sim/tags).
 
 Clone this repository with the following command in the terminal.
 
 ```
-git clone --recursive -b v1.1.3 https://github.com/toppers/hakoniwa-ros2sim.git
+git clone --recursive -b v1.1.4 https://github.com/toppers/hakoniwa-ros2sim.git
 ```
 
 ### Install Docker Engine

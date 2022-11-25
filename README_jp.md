@@ -20,13 +20,13 @@ Windows 環境では，操作は全てWSL2/Linuxのシェル上で行います�
 
 ### 本リポジトリのclone
 
-現在の最新版は **v1.1.3** です．
+現在の最新版は **v1.1.4** です．
 「[バージョン情報・更新履歴](/appendix/version.md)」も参照してください（バージョン番号は[Git/GitHubのtag/release](https://github.com/toppers/hakoniwa-ros2sim/releases)および[Docker Hubのtag番号](https://hub.docker.com/r/toppersjp/hakoniwa-ros2sim/tags)に対応しています）
 
 ターミナルで下記を実行して本リポジトリをcloneしてください．
 
 ```
-git clone --recursive -b v1.1.3 https://github.com/toppers/hakoniwa-ros2sim.git
+git clone --recursive -b v1.1.4 https://github.com/toppers/hakoniwa-ros2sim.git
 ```
 
 ### Docker 環境

@@ -23,6 +23,11 @@ Each version number is updated according to the following rules.
 
 ## Update History
 
+### v1.1.4 @ 2022/11/25
+
+* Fix json files by by s-hosoai in https://github.com/toppers/hakoniwa-ros2sim/pull/45
+* mod instruction to install docker by the script onto hakoniwa-single_robot repository by @takasehideki in https://github.com/toppers/hakoniwa-ros2sim/pull/44
+
 ### v1.1.3 @ 2022/10/03
 
 * add hakoniwa proxy for ros2 by @tmori in https://github.com/toppers/hakoniwa-ros2sim/pull/34
