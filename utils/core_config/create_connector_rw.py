@@ -70,34 +70,33 @@ for e in ros_topics['fields']:
 		container.append(entry)
 
 if custom != None:
+	reader_custom_index = 0
+	writer_custom_index = 0
 	for e in custom['robots']:
 		if rw_type == 'r':
-			custom_index = 0
 			for p in e['udp_pdu_readers']:
 				entry = OrderedDict()
-				entry['name'] = 'custom_reader_connector_' + str(custom_index)
+				entry['name'] = 'custom_reader_connector_' + str(reader_custom_index)
 				entry['pdu_name'] = hakoniwa_utils.get_custom_pdu_name(p)
 				entry['method_name'] = hakoniwa_utils.get_custom_udp_reader_method_name(e)
-				custom_index = custom_index + 1
+				reader_custom_index = reader_custom_index + 1
 				container.append(entry)
 		elif rw_type == 'w':
-			custom_index = 0
 			for p in e['udp_pdu_writers']:
 				entry = OrderedDict()
-				entry['name'] = 'custom_writer_connector_' + str(custom_index)
+				entry['name'] = 'custom_writer_connector_' + str(writer_custom_index)
 				entry['pdu_name'] = hakoniwa_utils.get_custom_pdu_name(p)
 				entry['method_name'] = hakoniwa_utils.get_custom_udp_writer_method_name(e)
-				custom_index = custom_index + 1
+				writer_custom_index = writer_custom_index + 1
 				container.append(entry)
 		else:
 			#NOTICE: must be same size read and write!!
-			custom_index = 0
 			for p in e['udp_pdu_readers']:
 				entry = OrderedDict()
 				entry['outside_asset_name'] = hakoniwa_utils.get_custom_asset_name(e)
-				entry['reader_connector_name'] = 'custom_reader_connector_' + str(custom_index)
-				entry['writer_connector_name'] = 'custom_writer_connector_' + str(custom_index)
-				custom_index = custom_index + 1
+				entry['reader_connector_name'] = 'custom_reader_connector_' + str(reader_custom_index)
+				entry['writer_connector_name'] = 'custom_writer_connector_' + str(reader_custom_index)
+				reader_custom_index = reader_custom_index + 1
 				container.append(entry)
 
 with open(out_dir + '/' + out_filename, mode='wt') as out_file:
