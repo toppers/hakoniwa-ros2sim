@@ -137,7 +137,14 @@ namespace Hakoniwa.Core
             if (AssetConfigLoader.core_config.cpp_mode != null) {
                 Debug.Log("cpp_mode:" + AssetConfigLoader.core_config.cpp_mode);
                 Debug.Log("OnApplicationQuit:enter");
-                HakoCppWrapper.asset_unregister(new StringBuilder(AssetConfigLoader.core_config.cpp_asset_name));
+                if (AssetConfigLoader.core_config.cpp_asset_name.Contains("Rpc"))
+                {
+                    //nothing to do.
+                }
+                else
+                {
+                    HakoCppWrapper.asset_unregister(new StringBuilder(AssetConfigLoader.core_config.cpp_asset_name));
+                }
             }
         }
     }
