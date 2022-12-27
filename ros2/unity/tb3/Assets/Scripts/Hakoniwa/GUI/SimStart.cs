@@ -39,52 +39,36 @@ namespace Hakoniwa.GUI
         {
             ISimulationController simulator = WorldController.Get();
             var state = simulator.GetState();
-#if false
-            if (cmd_status == SimCommandStatus.Stop)
+            if (AssetConfigLoader.core_config.cpp_mode != null)
             {
-                if (state == SimulationState.Running)
-                {
-                    my_btn.interactable = true;
-                }
-            }
-            else if (cmd_status == SimCommandStatus.Reset)
-            {
-                if (state == SimulationState.Stopped)
-                {
-                    my_btn.interactable = true;
-                }
-            }
-            else if (cmd_status == SimCommandStatus.Start)
-            {
-                int count = simulator.asset_mgr.RefOutsideAssetList().Count;
-                if ((count > 0) && (state == SimulationState.Stopped))
-                {
-                    my_btn.interactable = true;
-                }
-            }
-#else
-            //button enabler
-            int count = simulator.RefOutsideAssetListCount();
-            //int count = 0;
-            if (count == 0)
-            {
-                if (AssetConfigLoader.core_config.outside_assets == null)
-                {
-                    my_btn.interactable = true;
-                }
-                else
-                {
-                    my_btn.interactable = false;
-                }
-            }
-            else if ((state != SimulationState.Running) && (state != SimulationState.Stopped))
-            {
-                my_btn.interactable = false;
-                return;
+                my_btn.interactable = true;
             }
             else
             {
-                my_btn.interactable = true;
+                //button enabler
+                int count = simulator.RefOutsideAssetListCount();
+                //int count = 0;
+                if (count == 0)
+                {
+                    if (AssetConfigLoader.core_config.outside_assets == null)
+                    {
+                        my_btn.interactable = true;
+                    }
+                    else
+                    {
+                        my_btn.interactable = false;
+                    }
+                }
+                else if ((state != SimulationState.Running) && (state != SimulationState.Stopped))
+                {
+                    my_btn.interactable = false;
+                    return;
+                }
+                else
+                {
+                    my_btn.interactable = true;
+                }
+
             }
             //cmd status changer
             switch (cmd_status)
@@ -114,7 +98,6 @@ namespace Hakoniwa.GUI
                 default:
                     break;
             }
-#endif
         }
         public void OnButtonClick()
         {

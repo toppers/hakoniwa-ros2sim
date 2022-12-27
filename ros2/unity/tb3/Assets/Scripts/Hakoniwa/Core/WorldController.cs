@@ -137,7 +137,7 @@ namespace Hakoniwa.Core
             if (AssetConfigLoader.core_config.cpp_mode != null) {
                 Debug.Log("cpp_mode:" + AssetConfigLoader.core_config.cpp_mode);
                 Debug.Log("OnApplicationQuit:enter");
-                if (AssetConfigLoader.core_config.cpp_asset_name.Contains("Rpc"))
+                if (AssetConfigLoader.core_config.cpp_mode.Equals("asset_rpc"))
                 {
                     //nothing to do.
                 }
