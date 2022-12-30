@@ -58,5 +58,9 @@
   {
     "pdu_type_name": "time", 
     "pdu_data_field_path": "../../ros_json/builtin_interfaces/Time.json"
+  }, 
+  {
+    "pdu_type_name": "HakoniwaSimTime", 
+    "pdu_data_field_path": "./HakoniwaSimTime.json"
   }
 ]

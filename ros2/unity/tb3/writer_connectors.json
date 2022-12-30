@@ -1,12 +1,7 @@
 [
   {
-    "name": "writer_connector0", 
-    "pdu_name": "EV3TrainModel_ev3_sensorPdu", 
-    "method_name": "ros_topic_io"
-  }, 
-  {
-    "name": "writer_connector1", 
-    "pdu_name": "EV3SignalModel_ev3_sensorPdu", 
-    "method_name": "ros_topic_io"
+    "name": "custom_writer_connector_0", 
+    "pdu_name": "EV3RoboModel_ev3_sensorPdu", 
+    "method_name": "EV3RoboModelRpcWriter"
   }
 ]

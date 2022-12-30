@@ -1,16 +1,8 @@
 [
   {
-    "name": "EV3TrainModel_ev3_sensorPdu", 
-    "class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.ROS.RosTopicPduWriter", 
-    "conv_class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.ROS.TB3.RosTopicPduWriterConverter", 
-    "topic_message_name": "EV3TrainModel_ev3_sensor", 
-    "pdu_config_name": "ev3_msgs/Ev3PduSensor"
-  }, 
-  {
-    "name": "EV3SignalModel_ev3_sensorPdu", 
-    "class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.ROS.RosTopicPduWriter", 
-    "conv_class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.ROS.TB3.RosTopicPduWriterConverter", 
-    "topic_message_name": "EV3SignalModel_ev3_sensor", 
+    "name": "EV3RoboModel_ev3_sensorPdu", 
+    "class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.Raw.RawPduWriter", 
+    "conv_class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.Raw.RawPduWriterConverter", 
     "pdu_config_name": "ev3_msgs/Ev3PduSensor"
   }
 ]

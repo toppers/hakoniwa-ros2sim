@@ -1,20 +1,11 @@
 [
   {
-    "name": "EV3TrainModel", 
-    "pdu_writer_names": [
-      "EV3TrainModel_ev3_sensorPdu"
-    ], 
+    "name": "EV3RoboModel", 
     "pdu_reader_names": [
-      "EV3TrainModel_ev3_actuatorPdu"
-    ]
-  }, 
-  {
-    "name": "EV3SignalModel", 
-    "pdu_writer_names": [
-      "EV3SignalModel_ev3_sensorPdu"
+      "EV3RoboModel_ev3_actuatorPdu"
     ], 
-    "pdu_reader_names": [
-      "EV3SignalModel_ev3_actuatorPdu"
+    "pdu_writer_names": [
+      "EV3RoboModel_ev3_sensorPdu"
     ]
   }
 ]
