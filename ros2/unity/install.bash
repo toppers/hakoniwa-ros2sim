@@ -18,7 +18,7 @@ then
 	echo "Plugin is already installed."
 else
 	wget https://github.com/toppers/hakoniwa-ros2sim/releases/download/v1.0.0/Plugin.tar.gz
-	wget https://github.com/toppers/hakoniwa-core/releases/download/v1.1.0/Hakoniwa.dll
+	wget https://github.com/toppers/hakoniwa-core/releases/download/v2.0.0/Hakoniwa.dll
 	tar xzvf Plugin.tar.gz
 	rm -f Plugin/Hakoniwa.dll
 	mv Hakoniwa.dll Plugin/
