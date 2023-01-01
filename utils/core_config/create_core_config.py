@@ -6,24 +6,36 @@ import glob
 import re
 from collections import OrderedDict
 
-if len(sys.argv) != 5:
-	print "Usage: " + sys.argv[0] + " <ros_topic_path> <ros_topic_file> <ipaddr> <out_dir>"
+if len(sys.argv) != 7:
+	print "Usage: " + sys.argv[0] + " <ros_topic_path> <ros_topic_file> <ipaddr1> <ipaddr2> <is_asset> <out_dir>"
 	sys.exit()
 
 
 ros_topic_path=sys.argv[1]
 in_file=sys.argv[2]
-ipaddr=sys.argv[3]
-out_dir=sys.argv[4]
+ipaddr1=sys.argv[3]
+ipaddr2=sys.argv[4]
+is_asset=sys.argv[5]
+out_dir=sys.argv[6]
 
 file = open(in_file)
 ros_topics = json.load(file)
 
 out_data = OrderedDict()
 
-out_data['core_ipaddr'] = ipaddr
+if is_asset == "True":
+	out_data['core_ipaddr'] = ipaddr2
+	out_data['asset_ipaddr'] = ipaddr1
+	out_data['cpp_mode'] = 'asset_rpc'
+	out_data['cpp_asset_name'] = 'UnityAssetRpc'
+	out_data['pdu_udp_portno_asset'] = 54003
+else:
+	out_data['core_ipaddr'] = ipaddr1
+
 out_data['core_portno'] = 50051
 out_data['asset_timeout'] = 3
+out_data['pdu_bin_offset_package_dir'] = './offset'
+
 out_data['inside_assets_path'] = './inside_assets.json'
 
 if ros_topics['robot_num'] == ros_topics['ros_robot_num']:
@@ -41,6 +53,7 @@ else:
 	out_data['ros_topic_method_path'] = './ros_topic_method.json'
 
 out_data['udp_methods_path'] = './udp_methods.json'
+out_data['rpc_methods_path'] = './rpc_methods.json'
 out_data['mmap_methods_path'] = './mmap_methods.json'
 out_data['reader_connectors_path'] = './reader_connectors.json'
 out_data['writer_connectors_path'] = './writer_connectors.json'

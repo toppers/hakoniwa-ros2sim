@@ -24,7 +24,10 @@ container = list()
 for robo in custom['robots']:
 	entry = OrderedDict()
 	entry['name'] = hakoniwa_utils.get_custom_asset_name(robo)
-	entry['class_name'] = robo['udp_proxy']['class_name']
+	if robo.get('udp_proxy') != None:
+		entry['class_name'] = robo['udp_proxy']['class_name']
+	elif robo.get('rpc_proxy') != None:
+		entry['class_name'] = robo['rpc_proxy']['class_name']
 	container.append(entry)
 
 with open(out_dir + '/' + out_filename, mode='wt') as out_file:

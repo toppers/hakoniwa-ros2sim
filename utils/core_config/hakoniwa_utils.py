@@ -38,7 +38,12 @@ def get_pdu_name(e):
 	return e['topic_message_name'] + 'Pdu'
 
 def get_custom_asset_name(e):
-	return e['udp_proxy']['name']
+    if e.get('udp_proxy') != None:
+        return e['udp_proxy']['name']
+    elif e.get('rpc_proxy') != None:
+        return e['rpc_proxy']['name']
+    else:
+    	return None
 	#return 'Athrill'
 	# For now, the name is Athrill only.
 	# The below name will be accepted when the single-robot 
@@ -53,6 +58,12 @@ def get_custom_udp_reader_method_name(e):
 
 def get_custom_udp_writer_method_name(e):
 	return e['name'] + 'UdpWriter'
+
+def get_custom_rpc_reader_method_name(e):
+	return e['name'] + 'RpcReader'
+
+def get_custom_rpc_writer_method_name(e):
+	return e['name'] + 'RpcWriter'
 
 def get_pdu_type_name(e):
 	return e['topic_type_name']

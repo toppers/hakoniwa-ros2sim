@@ -74,30 +74,57 @@ if custom != None:
 	writer_custom_index = 0
 	for e in custom['robots']:
 		if rw_type == 'r':
-			for p in e['udp_pdu_readers']:
-				entry = OrderedDict()
-				entry['name'] = 'custom_reader_connector_' + str(reader_custom_index)
-				entry['pdu_name'] = hakoniwa_utils.get_custom_pdu_name(p)
-				entry['method_name'] = hakoniwa_utils.get_custom_udp_reader_method_name(e)
-				reader_custom_index = reader_custom_index + 1
-				container.append(entry)
+			if e.get('udp_pdu_readers') != None:
+				for p in e['udp_pdu_readers']:
+					entry = OrderedDict()
+					entry['name'] = 'custom_reader_connector_' + str(reader_custom_index)
+					entry['pdu_name'] = hakoniwa_utils.get_custom_pdu_name(p)
+					entry['method_name'] = hakoniwa_utils.get_custom_udp_reader_method_name(e)
+					reader_custom_index = reader_custom_index + 1
+					container.append(entry)
+			if e.get('rpc_pdu_readers') != None:
+				for p in e['rpc_pdu_readers']:
+					entry = OrderedDict()
+					entry['name'] = 'custom_reader_connector_' + str(reader_custom_index)
+					entry['pdu_name'] = hakoniwa_utils.get_custom_pdu_name(p)
+					entry['method_name'] = hakoniwa_utils.get_custom_rpc_reader_method_name(e)
+					reader_custom_index = reader_custom_index + 1
+					container.append(entry)
 		elif rw_type == 'w':
-			for p in e['udp_pdu_writers']:
-				entry = OrderedDict()
-				entry['name'] = 'custom_writer_connector_' + str(writer_custom_index)
-				entry['pdu_name'] = hakoniwa_utils.get_custom_pdu_name(p)
-				entry['method_name'] = hakoniwa_utils.get_custom_udp_writer_method_name(e)
-				writer_custom_index = writer_custom_index + 1
-				container.append(entry)
+			if e.get('udp_pdu_writers') != None:
+				for p in e['udp_pdu_writers']:
+					entry = OrderedDict()
+					entry['name'] = 'custom_writer_connector_' + str(writer_custom_index)
+					entry['pdu_name'] = hakoniwa_utils.get_custom_pdu_name(p)
+					entry['method_name'] = hakoniwa_utils.get_custom_udp_writer_method_name(e)
+					writer_custom_index = writer_custom_index + 1
+					container.append(entry)
+			if e.get('rpc_pdu_writers') != None:
+				for p in e['rpc_pdu_writers']:
+					entry = OrderedDict()
+					entry['name'] = 'custom_writer_connector_' + str(writer_custom_index)
+					entry['pdu_name'] = hakoniwa_utils.get_custom_pdu_name(p)
+					entry['method_name'] = hakoniwa_utils.get_custom_rpc_writer_method_name(e)
+					writer_custom_index = writer_custom_index + 1
+					container.append(entry)
 		else:
 			#NOTICE: must be same size read and write!!
-			for p in e['udp_pdu_readers']:
-				entry = OrderedDict()
-				entry['outside_asset_name'] = hakoniwa_utils.get_custom_asset_name(e)
-				entry['reader_connector_name'] = 'custom_reader_connector_' + str(reader_custom_index)
-				entry['writer_connector_name'] = 'custom_writer_connector_' + str(reader_custom_index)
-				reader_custom_index = reader_custom_index + 1
-				container.append(entry)
+			if e.get('udp_pdu_readers') != None:
+				for p in e['udp_pdu_readers']:
+					entry = OrderedDict()
+					entry['outside_asset_name'] = hakoniwa_utils.get_custom_asset_name(e)
+					entry['reader_connector_name'] = 'custom_reader_connector_' + str(reader_custom_index)
+					entry['writer_connector_name'] = 'custom_writer_connector_' + str(reader_custom_index)
+					reader_custom_index = reader_custom_index + 1
+					container.append(entry)
+			if e.get('rpc_pdu_readers') != None:
+				for p in e['rpc_pdu_readers']:
+					entry = OrderedDict()
+					entry['outside_asset_name'] = "None"
+					entry['reader_connector_name'] = 'custom_reader_connector_' + str(reader_custom_index)
+					entry['writer_connector_name'] = 'custom_writer_connector_' + str(reader_custom_index)
+					reader_custom_index = reader_custom_index + 1
+					container.append(entry)
 
 with open(out_dir + '/' + out_filename, mode='wt') as out_file:
   json.dump(container, out_file, ensure_ascii=False, indent=2)

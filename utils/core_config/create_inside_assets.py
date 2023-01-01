@@ -48,12 +48,21 @@ if custom != None:
 	for e in custom['robots']:
 		entry = OrderedDict()
 		entry['name'] = e['name']
-		entry['pdu_reader_names'] = list()
-		for e_list_entry in e['udp_pdu_readers']:
-			entry['pdu_reader_names'].append(hakoniwa_utils.get_custom_pdu_name(e_list_entry))
-		entry['pdu_writer_names'] = list()
-		for e_list_entry in e['udp_pdu_writers']:
-			entry['pdu_writer_names'].append(hakoniwa_utils.get_custom_pdu_name(e_list_entry))
+		if e.get('udp_pdu_readers') != None:
+			entry['pdu_reader_names'] = list()
+			for e_list_entry in e['udp_pdu_readers']:
+				entry['pdu_reader_names'].append(hakoniwa_utils.get_custom_pdu_name(e_list_entry))
+			entry['pdu_writer_names'] = list()
+			for e_list_entry in e['udp_pdu_writers']:
+				entry['pdu_writer_names'].append(hakoniwa_utils.get_custom_pdu_name(e_list_entry))
+		if e.get('rpc_pdu_readers') != None:
+			entry['pdu_reader_names'] = list()
+			for e_list_entry in e['rpc_pdu_readers']:
+				entry['pdu_reader_names'].append(hakoniwa_utils.get_custom_pdu_name(e_list_entry))
+			entry['pdu_writer_names'] = list()
+			for e_list_entry in e['rpc_pdu_writers']:
+				entry['pdu_writer_names'].append(hakoniwa_utils.get_custom_pdu_name(e_list_entry))
+
 		container.append(entry)
 
 with open(out_dir + '/' + out_filename, mode='wt') as out_file:

@@ -57,25 +57,47 @@ if custom != None:
 	for e in custom['robots']:
 		entry = OrderedDict()
 		if rw_type == 'r':
-			for e_list_entry in e['udp_pdu_readers']:
-				entry['name'] = hakoniwa_utils.get_custom_pdu_name(e_list_entry)
-				entry['class_name'] = e_list_entry['class_name']
-				entry['conv_class_name'] = e_list_entry['conv_class_name']
-				if len(e_list_entry['class_path']) > 0:
-					entry['path'] = e_list_entry['class_path']
-				if (len(e_list_entry['conv_class_path']) > 0):
-					entry['conv_path'] = e_list_entry['conv_class_path']
-				entry['pdu_config_name'] = e_list_entry['type']
+			if e.get('udp_pdu_readers') != None:
+				for e_list_entry in e['udp_pdu_readers']:
+					entry['name'] = hakoniwa_utils.get_custom_pdu_name(e_list_entry)
+					entry['class_name'] = e_list_entry['class_name']
+					entry['conv_class_name'] = e_list_entry['conv_class_name']
+					if len(e_list_entry['class_path']) > 0:
+						entry['path'] = e_list_entry['class_path']
+					if (len(e_list_entry['conv_class_path']) > 0):
+						entry['conv_path'] = e_list_entry['conv_class_path']
+					entry['pdu_config_name'] = e_list_entry['type']
+			if e.get('rpc_pdu_readers') != None:
+				for e_list_entry in e['rpc_pdu_readers']:
+					entry['name'] = hakoniwa_utils.get_custom_pdu_name(e_list_entry)
+					entry['class_name'] = e_list_entry['class_name']
+					entry['conv_class_name'] = e_list_entry['conv_class_name']
+					if len(e_list_entry['class_path']) > 0:
+						entry['path'] = e_list_entry['class_path']
+					if (len(e_list_entry['conv_class_path']) > 0):
+						entry['conv_path'] = e_list_entry['conv_class_path']
+					entry['pdu_config_name'] = e_list_entry['type']
 		else:
-			for e_list_entry in e['udp_pdu_writers']:
-				entry['name'] = hakoniwa_utils.get_custom_pdu_name(e_list_entry)
-				entry['class_name'] = e_list_entry['class_name']
-				entry['conv_class_name'] = e_list_entry['conv_class_name']
-				if len(e_list_entry['class_path']) > 0:
-					entry['path'] = e_list_entry['class_path']
-				if (len(e_list_entry['conv_class_path']) > 0):
-					entry['conv_path'] = e_list_entry['conv_class_path']
-				entry['pdu_config_name'] = e_list_entry['type']
+			if e.get('udp_pdu_writers') != None:
+				for e_list_entry in e['udp_pdu_writers']:
+					entry['name'] = hakoniwa_utils.get_custom_pdu_name(e_list_entry)
+					entry['class_name'] = e_list_entry['class_name']
+					entry['conv_class_name'] = e_list_entry['conv_class_name']
+					if len(e_list_entry['class_path']) > 0:
+						entry['path'] = e_list_entry['class_path']
+					if (len(e_list_entry['conv_class_path']) > 0):
+						entry['conv_path'] = e_list_entry['conv_class_path']
+					entry['pdu_config_name'] = e_list_entry['type']
+			if e.get('rpc_pdu_writers') != None:
+				for e_list_entry in e['rpc_pdu_writers']:
+					entry['name'] = hakoniwa_utils.get_custom_pdu_name(e_list_entry)
+					entry['class_name'] = e_list_entry['class_name']
+					entry['conv_class_name'] = e_list_entry['conv_class_name']
+					if len(e_list_entry['class_path']) > 0:
+						entry['path'] = e_list_entry['class_path']
+					if (len(e_list_entry['conv_class_path']) > 0):
+						entry['conv_path'] = e_list_entry['conv_class_path']
+					entry['pdu_config_name'] = e_list_entry['type']
 		container.append(entry)
 
 with open(out_dir + '/' + out_filename, mode='wt') as out_file:

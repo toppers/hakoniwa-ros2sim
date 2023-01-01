@@ -12,6 +12,8 @@ then
 	OPT=${2}
 fi
 
+export UNITY_IS_ASSET="True"
+
 CURDIR=`pwd`
 
 cd ../..
