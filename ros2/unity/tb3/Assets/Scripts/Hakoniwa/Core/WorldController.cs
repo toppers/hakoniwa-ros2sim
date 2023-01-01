@@ -71,7 +71,6 @@ namespace Hakoniwa.Core
 
             iasset = isim.GetAssetManager();
             isim.RegisterEnvironmentOperation(new UnityEnvironmentOperation());
-            isim.SaveEnvironment();
 
             try
             {
@@ -86,6 +85,7 @@ namespace Hakoniwa.Core
                     this.Login(e);
                 }
             }
+            isim.SaveEnvironment();
             isim.SetInsideWorldSimulator(new UnitySimulator());
             Physics.autoSimulation = false;
         }
