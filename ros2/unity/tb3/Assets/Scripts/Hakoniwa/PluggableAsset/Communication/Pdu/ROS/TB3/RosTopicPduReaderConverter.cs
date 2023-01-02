@@ -115,18 +115,6 @@ namespace Hakoniwa.PluggableAsset.Communication.Pdu.ROS.TB3
                 ConvertToPdu(ros_topic_data, dst.GetWriteOps());
                 return;
             }
-            if (ros_pdu_reader.GetTypeName().Equals("ev3_msgs/Ev3PduSensor"))
-            {
-                var ros_topic_data = ros_topic.GetTopicData() as Ev3PduSensorMsg;
-                ConvertToPdu(ros_topic_data, dst.GetWriteOps());
-                return;
-            }
-            if (ros_pdu_reader.GetTypeName().Equals("ev3_msgs/Ev3PduActuator"))
-            {
-                var ros_topic_data = ros_topic.GetTopicData() as Ev3PduActuatorMsg;
-                ConvertToPdu(ros_topic_data, dst.GetWriteOps());
-                return;
-            }
             throw new InvalidCastException("Can not find ros message type:" + ros_pdu_reader.GetTypeName());
 
         }

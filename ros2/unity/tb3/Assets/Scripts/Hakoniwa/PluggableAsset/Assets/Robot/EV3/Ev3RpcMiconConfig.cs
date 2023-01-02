@@ -41,10 +41,16 @@ namespace Hakoniwa.PluggableAsset.Assets.Robot.EV3
     [System.Serializable]
     public class Ev3MiconRpcConfigSettingsContainer
     {
-        public string name;
+        public string name = "micon_setting";
         public Ev3MiconConfigRpcProxy rpc_proxy;
-        public Ev3MiconConfigRpcPduReader[] rpc_pdu_readers;
-        public Ev3MiconConfigRpcPduWriter[] rpc_pdu_writers;
+        public Ev3MiconConfigRpcPduReader[] rpc_pdu_readers =
+        {
+            new Ev3MiconConfigRpcPduReader()
+        };
+        public Ev3MiconConfigRpcPduWriter[] rpc_pdu_writers =
+        {
+            new Ev3MiconConfigRpcPduWriter()
+        };
     }
     public class Ev3RpcMiconConfig : MonoBehaviour, IMiconSettings
     {

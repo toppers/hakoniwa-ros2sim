@@ -67,7 +67,7 @@
       "hash": "c27f00c6cf750d2d0564349b3039d19aa3925e7c"
     },
     "com.unity.services.core": {
-      "version": "1.4.2",
+      "version": "1.4.0",
       "depth": 1,
       "source": "registry",
       "dependencies": {

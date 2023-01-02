@@ -125,18 +125,6 @@ namespace Hakoniwa.PluggableAsset.Communication.Pdu.ROS.TB3
                 ConvertToMessage(src, ros_topic);
                 return ros_topic;
             }
-            if (type.Equals("ev3_msgs/Ev3PduSensor"))
-            {
-            	Ev3PduSensorMsg ros_topic = new Ev3PduSensorMsg();
-                ConvertToMessage(src, ros_topic);
-                return ros_topic;
-            }
-            if (type.Equals("ev3_msgs/Ev3PduActuator"))
-            {
-            	Ev3PduActuatorMsg ros_topic = new Ev3PduActuatorMsg();
-                ConvertToMessage(src, ros_topic);
-                return ros_topic;
-            }
             throw new InvalidCastException("Can not find ros message type:" + type);
         }
         

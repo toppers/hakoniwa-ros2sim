@@ -1,6 +1,6 @@
 [
   {
-    "name": "EV3RoboModel_ev3_sensorPdu", 
+    "name": "Ev3TransportModel_ev3_sensorPdu", 
     "class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.Raw.RawPduWriter", 
     "conv_class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.Raw.RawPduWriterConverter", 
     "pdu_config_name": "ev3_msgs/Ev3PduSensor"

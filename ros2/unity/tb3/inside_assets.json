@@ -1,11 +1,11 @@
 [
   {
-    "name": "EV3RoboModel", 
+    "name": "Ev3TransportModel", 
     "pdu_reader_names": [
-      "EV3RoboModel_ev3_actuatorPdu"
+      "Ev3TransportModel_ev3_actuatorPdu"
     ], 
     "pdu_writer_names": [
-      "EV3RoboModel_ev3_sensorPdu"
+      "Ev3TransportModel_ev3_sensorPdu"
     ]
   }
 ]
