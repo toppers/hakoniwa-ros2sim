@@ -67,13 +67,11 @@
       "hash": "c27f00c6cf750d2d0564349b3039d19aa3925e7c"
     },
     "com.unity.services.core": {
-      "version": "1.4.0",
+      "version": "1.0.1",
       "depth": 1,
       "source": "registry",
       "dependencies": {
-        "com.unity.modules.unitywebrequest": "1.0.0",
-        "com.unity.nuget.newtonsoft-json": "3.0.2",
-        "com.unity.modules.androidjni": "1.0.0"
+        "com.unity.modules.unitywebrequest": "1.0.0"
       },
       "url": "https://packages.unity.com"
     },
