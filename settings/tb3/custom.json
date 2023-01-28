@@ -1,0 +1,37 @@
+{
+  "robots": [
+    {
+      "name": "Ev3TransportModel",
+      "rpc_proxy": {
+        "name": "Athrill",
+        "class_name": "Hakoniwa.PluggableAsset.Assets.Micon.EV3.Ev3MiconAssetController"
+      },
+      "rpc_pdu_readers": [
+        {
+          "type": "ev3_msgs/Ev3PduActuator",
+          "org_name": "ev3_actuator",
+          "name": "Ev3TransportModel_ev3_actuator",
+          "class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.Raw.RawPduReader",
+          "class_path": "",
+          "conv_class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.Raw.RawPduReaderConverter",
+          "conv_class_path": "",
+          "channel_id": 0,
+          "pdu_size": 1024
+        }
+      ],
+      "rpc_pdu_writers": [
+        {
+          "type": "ev3_msgs/Ev3PduSensor",
+          "org_name": "ev3_sensor",
+          "name": "Ev3TransportModel_ev3_sensor",
+          "class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.Raw.RawPduWriter",
+          "class_path": "",
+          "conv_class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.Raw.RawPduWriterConverter",
+          "conv_class_path": "",
+          "channel_id": 1,
+          "pdu_size": 1024
+        }
+      ]
+    }
+  ]
+}
