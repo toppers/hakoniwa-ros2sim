@@ -393,7 +393,7 @@ LightProbeGroup:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1244492266}
-  m_Enabled: 0
+  m_Enabled: 1
   m_SourcePositions:
   - {x: 1, y: 1, z: 1}
   - {x: 1, y: 1, z: -1}
@@ -621,7 +621,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1475249563}
   m_LocalRotation: {x: 0.8886563, y: -0.05521258, z: 0.2615973, w: 0.37257007}
-  m_LocalPosition: {x: -7.322207, y: 2.3875751, z: 1.9432764}
+  m_LocalPosition: {x: -31.5, y: 20.7, z: 10.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -635,7 +635,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1475249563}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
