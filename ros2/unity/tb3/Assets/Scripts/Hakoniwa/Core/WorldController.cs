@@ -1,4 +1,7 @@
-﻿using Hakoniwa.Core.Rpc;
+﻿#if NO_USE_GRPC
+#else
+using Hakoniwa.Core.Rpc;
+#endif
 using Hakoniwa.Core.Simulation;
 using Hakoniwa.Core.Simulation.Environment;
 using Hakoniwa.Core.Utils;
@@ -60,12 +63,16 @@ namespace Hakoniwa.Core
                 isim = SimulationControllerFactory.Get(AssetConfigLoader.core_config.cpp_asset_name);
             }
             else {
+#if NO_USE_GRPC
+                throw new NotSupportedException("ERROR: asset_rpc is not supported..");
+#else
                 Debug.Log("cpp_mode: None");
                 isim = SimulationControllerFactory.Get(null);
                 RpcServer.StartServer(AssetConfigLoader.core_config.core_ipaddr, AssetConfigLoader.core_config.core_portno);
                 SimulationController.Get().SetSimulationWorldTime(
                     this.maxDelayTime,
                     (long)(Time.fixedDeltaTime * 1000000f));
+#endif
             }
             Debug.Log("HakoniwaCore START");
 
