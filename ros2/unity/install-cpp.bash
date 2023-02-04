@@ -10,11 +10,32 @@ else
 	LIBNAME=libshakoc.so
 fi
 
-if [ -f Plugin/${LIBNAME} ]
+if [ -d Plugin ]
 then
 	:
 else
-	wget https://github.com/toppers/hakoniwa-core/releases/download/v1.1.0/${LIBNAME}
-	mv ${LIBNAME} Plugin/
+	mkdir Plugin
 fi
 
+wget https://github.com/toppers/hakoniwa-core/releases/download/v2.0.0/Hakoniwa_NoGRPC.dll
+wget https://github.com/toppers/hakoniwa-core/releases/download/v2.0.0/${LIBNAME}
+mv Hakoniwa_NoGRPC.dll Plugin/
+mv ${LIBNAME} Plugin/
+
+if [ -d Model ]
+then
+	:
+	echo "Model is already installed."
+else
+	wget https://github.com/toppers/hakoniwa-ros2sim/releases/download/v1.0.0/Model.tar.gz
+	tar xzvf Model.tar.gz
+	rm -f Model.tar.gz
+fi
+
+if [ -d Resources/Hakoniwa/Robots ]
+then
+	echo "Resources is already installed."
+else
+	mkdir -p Resources/Hakoniwa/Robots
+	cp -p Prefabs/Robots/TB3RoboModel.prefab*  Resources/Hakoniwa/Robots/
+fi
