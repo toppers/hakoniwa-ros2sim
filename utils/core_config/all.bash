@@ -79,6 +79,9 @@ then
 	echo "####Creating rpc_methods"
 	python2 utils/core_config/create_rpc_methods.py  		"${CUSTOM_FILE_PATH}" 	"${CORE_IPADDR}"	"${OUT_DIR}"
 
+	echo "####Creating shm_methods"
+	python2 utils/core_config/create_shm_methods.py  		"${CUSTOM_FILE_PATH}" 	"${CORE_IPADDR}"	"${OUT_DIR}"
+
 	if [ -f ${PROXY_CONFIG_FILE_PATH} ]
 	then
 		echo "####Creating proxy_param"

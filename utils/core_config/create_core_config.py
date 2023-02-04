@@ -23,25 +23,26 @@ ros_topics = json.load(file)
 
 out_data = OrderedDict()
 
-if is_asset == "True":
+if is_asset == "YES_RPC_MODE":
 	out_data['core_ipaddr'] = ipaddr2
 	out_data['asset_ipaddr'] = ipaddr1
 	out_data['cpp_mode'] = 'asset_rpc'
 	out_data['cpp_asset_name'] = 'UnityAssetRpc'
 	out_data['pdu_udp_portno_asset'] = 54003
+	out_data['core_portno'] = 50051
+elif is_asset == "YES_DIRECT_MODE":
+	out_data['cpp_mode'] = 'asset'
+	out_data['cpp_asset_name'] = 'UnityAsset'
 else:
 	out_data['core_ipaddr'] = ipaddr1
+	out_data['core_portno'] = 50051
 
-out_data['core_portno'] = 50051
 out_data['asset_timeout'] = 3
 out_data['pdu_bin_offset_package_dir'] = './offset'
 
 out_data['inside_assets_path'] = './inside_assets.json'
 
-if ros_topics['robot_num'] == ros_topics['ros_robot_num']:
-    out_data['outside_assets_path'] = None
-else:
-    out_data['outside_assets_path'] = './outside_assets.json'
+out_data['outside_assets_path'] = None
 
 out_data['pdu_writers_path'] = './pdu_writers_config.json'
 out_data['pdu_readers_path'] = './pdu_readers_config.json'
@@ -54,6 +55,7 @@ else:
 
 out_data['udp_methods_path'] = './udp_methods.json'
 out_data['rpc_methods_path'] = './rpc_methods.json'
+out_data['shm_methods_path'] = './shm_methods.json'
 out_data['mmap_methods_path'] = './mmap_methods.json'
 out_data['reader_connectors_path'] = './reader_connectors.json'
 out_data['writer_connectors_path'] = './writer_connectors.json'

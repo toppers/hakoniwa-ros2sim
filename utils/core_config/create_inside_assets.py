@@ -62,6 +62,13 @@ if custom != None:
 			entry['pdu_writer_names'] = list()
 			for e_list_entry in e['rpc_pdu_writers']:
 				entry['pdu_writer_names'].append(hakoniwa_utils.get_custom_pdu_name(e_list_entry))
+		if e.get('shm_pdu_readers') != None:
+			entry['pdu_reader_names'] = list()
+			for e_list_entry in e['shm_pdu_readers']:
+				entry['pdu_reader_names'].append(hakoniwa_utils.get_custom_pdu_name(e_list_entry))
+			entry['pdu_writer_names'] = list()
+			for e_list_entry in e['shm_pdu_writers']:
+				entry['pdu_writer_names'].append(hakoniwa_utils.get_custom_pdu_name(e_list_entry))
 
 		container.append(entry)
 

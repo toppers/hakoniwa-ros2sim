@@ -24,12 +24,14 @@ CURDIR=`pwd`
 cd ../..
 if [ ${HAKO_CPP} = "True" ]
 then
+	export UNITY_IS_ASSET="YES_DIRECT_MODE"
 	bash utils/create_ros2unity_info.bash ros2 ros2/unity/tb3 settings/tb3 msg
 	bash utils/create_ros2unity_info.bash ros2 ros2/unity/tb3 settings/tb3 json
 	bash utils/create_ros2unity_info.bash ros2 ros2/unity/tb3 settings/tb3 config
 	cd ros2/unity
 	bash install-cpp.bash
 else
+	export UNITY_IS_ASSET="YES_RPC_MODE"
 	if [ ${OS_TYPE} = "Mac" ]
 	then
 		bash utils/create_ros2unity_info.bash ros2 ros2/unity/tb3 settings/tb3 ${OPT}

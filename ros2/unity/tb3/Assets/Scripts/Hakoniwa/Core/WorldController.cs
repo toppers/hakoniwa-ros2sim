@@ -1,4 +1,5 @@
-﻿#if NO_USE_GRPC
+﻿#define NO_USE_GRPC
+#if NO_USE_GRPC
 #else
 using Hakoniwa.Core.Rpc;
 #endif
