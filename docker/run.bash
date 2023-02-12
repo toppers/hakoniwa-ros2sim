@@ -7,6 +7,7 @@ DOCKER_IMAGE=${IMAGE_NAME}:${IMAGE_TAG}
 
 
 OS_TYPE=`bash utils/detect_os_type.bash`
+ARCH_TYPE=`uname -m`
 
 if [ ${OS_TYPE} != "Mac" ]
 then
@@ -50,5 +51,6 @@ docker run -v ${HAKONIWA_TOP_DIR}:/root/workspace/hakoniwa-ros2sim \
 	-e CORE_IPADDR=${IPADDR} \
 	-e ROS_UNITY_IPADDR=${IPADDR} \
 	-e OS_TYPE=${OS_TYPE} \
+	-e ARCH_TYPE=${ARCH_TYPE} \
 	--name hakoniwa-ros-sim ${DOCKER_IMAGE} 
 fi
