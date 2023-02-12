@@ -31506,7 +31506,7 @@ MonoBehaviour:
       conv_class_name: Hakoniwa.PluggableAsset.Communication.Pdu.Raw.RawPduReaderConverter
       conv_class_path: 
       channel_id: 0
-      pdu_size: 1024
+      pdu_size: 196
     rpc_pdu_writers:
     - type: ev3_msgs/Ev3PduSensor
       org_name: ev3_sensor
@@ -31516,7 +31516,7 @@ MonoBehaviour:
       conv_class_name: Hakoniwa.PluggableAsset.Communication.Pdu.Raw.RawPduWriterConverter
       conv_class_path: 
       channel_id: 1
-      pdu_size: 1024
+      pdu_size: 248
 --- !u!1 &1089219172357210040
 GameObject:
   m_ObjectHideFlags: 0
