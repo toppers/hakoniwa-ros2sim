@@ -1,0 +1,11 @@
+single:struct:header:std_msgs/Header:0:136
+single:primitive:height:uint32:136:4
+single:primitive:width:uint32:140:4
+single:primitive:distortion_model:string:144:128
+array:primitive:d:float64:272:40:5
+array:primitive:k:float64:312:72:9
+array:primitive:r:float64:384:72:9
+array:primitive:p:float64:456:96:12
+single:primitive:binning_x:uint32:552:4
+single:primitive:binning_y:uint32:556:4
+single:struct:roi:RegionOfInterest:560:20
