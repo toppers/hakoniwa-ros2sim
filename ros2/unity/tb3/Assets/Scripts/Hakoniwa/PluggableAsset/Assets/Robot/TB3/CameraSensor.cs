@@ -60,7 +60,13 @@ namespace Hakoniwa.PluggableAsset.Assets.Robot.TB3
                 {
                     throw new ArgumentException("can not found image pdu:" + this.root_name + "_image" + "/" + "compressedPdu");
                 }
-
+                for (int i = 0; i < 3; i++)
+                {
+                    this.Scan();
+                    this.UpdateSensorData(this.pdu[i].GetWriteOps().Ref(null));
+                }
+                Debug.Log("raw_bytes=" + raw_bytes.Length);
+                Debug.Log("jpg_bytes=" + jpg_bytes.Length);
             }
         }
 

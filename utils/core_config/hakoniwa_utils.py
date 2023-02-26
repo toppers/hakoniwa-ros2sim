@@ -59,17 +59,17 @@ def get_custom_udp_reader_method_name(e):
 def get_custom_udp_writer_method_name(e):
 	return e['name'] + 'UdpWriter'
 
-def get_custom_rpc_reader_method_name(e):
-	return e['name'] + 'RpcReader'
+def get_custom_rpc_reader_method_name(e, p):
+	return e['name'] + 'RpcReader' + str(p['channel_id'])
 
-def get_custom_rpc_writer_method_name(e):
-	return e['name'] + 'RpcWriter'
+def get_custom_rpc_writer_method_name(e, p):
+	return e['name'] + 'RpcWriter' + str(p['channel_id'])
 
-def get_custom_shm_reader_method_name(e):
-	return e['name'] + 'ShmReader'
+def get_custom_shm_reader_method_name(e, p):
+	return e['name'] + 'ShmReader' + str(p['channel_id'])
 
-def get_custom_shm_writer_method_name(e):
-	return e['name'] + 'ShmWriter'
+def get_custom_shm_writer_method_name(e, p):
+	return e['name'] + 'ShmWriter' + str(p['channel_id'])
 
 def get_pdu_type_name(e):
 	return e['topic_type_name']

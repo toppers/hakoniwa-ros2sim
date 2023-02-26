@@ -38,6 +38,7 @@ namespace Hakoniwa.PluggableAsset.Assets.Robot.TB3
                 this.sensor = this.gameObject;
                 this.init_angle = this.sensor.transform.localRotation;
                 this.distances = new float[max_count];
+                UpdateSensorValues();
 
             }
         }
