@@ -1709,7 +1709,7 @@ MonoBehaviour:
       conv_class_name: Hakoniwa.PluggableAsset.Communication.Pdu.Raw.RawPduWriterConverter
       conv_class_path: 
       channel_id: 5
-      pdu_size: 1229080
+      pdu_size: 1024280
     - type: sensor_msgs/CompressedImage
       org_name: image/compressed
       name: 
@@ -1718,7 +1718,7 @@ MonoBehaviour:
       conv_class_name: Hakoniwa.PluggableAsset.Communication.Pdu.Raw.RawPduWriterConverter
       conv_class_path: 
       channel_id: 6
-      pdu_size: 1229064
+      pdu_size: 102664
     - type: sensor_msgs/CameraInfo
       org_name: camera_info
       name: 
