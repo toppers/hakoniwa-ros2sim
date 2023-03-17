@@ -18,6 +18,7 @@ namespace Hakoniwa.PluggableAsset.Assets.Robot.TB3
         public string conv_class_path = null;
         public int channel_id = 0;
         public int pdu_size = 1024;
+        public string method_type = "UDP";
         public TB3MiconConfigPduReader(string type, string org_name, string class_name, string conv_class_name, int channel_id, int pdu_size)
         {
             this.type = type;

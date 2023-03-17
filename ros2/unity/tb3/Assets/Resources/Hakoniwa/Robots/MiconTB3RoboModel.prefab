@@ -1664,6 +1664,7 @@ MonoBehaviour:
       conv_class_path: 
       channel_id: 0
       pdu_size: 48
+      method_type: UDP
     rpc_pdu_writers:
     - type: sensor_msgs/JointState
       org_name: joint_states
