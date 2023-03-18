@@ -29,7 +29,9 @@ for robo in custom['robots']:
         entry['asset_name'] = 'UnityAssetRpc'
         entry['channel_id'] = p['channel_id']
         entry['pdu_size'] = p['pdu_size']
-        entry['method_type'] = p['method_type']
+        
+        if p.get('method_type') != None:
+          entry['method_type'] = p['method_type']
         entry['is_read'] = True
         container.append(entry)
     if robo.get('rpc_pdu_writers') != None:
@@ -39,8 +41,10 @@ for robo in custom['robots']:
         entry['asset_name'] = 'UnityAssetRpc'
         entry['channel_id'] = p['channel_id']
         entry['pdu_size'] = p['pdu_size']
-        entry['write_cycle'] = p['write_cycle']
-        entry['method_type'] = p['method_type']
+        if p.get('write_cycle') != None:
+          entry['write_cycle'] = p['write_cycle']
+        if p.get('method_type') != None:
+          entry['method_type'] = p['method_type']
         entry['is_read'] = False
         container.append(entry)
 
