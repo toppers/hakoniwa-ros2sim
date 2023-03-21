@@ -26,7 +26,7 @@ for robo in custom['robots']:
       for p in robo['rpc_pdu_readers']:
         entry = OrderedDict()
         entry['method_name'] = hakoniwa_utils.get_custom_rpc_reader_method_name(robo, p)
-        entry['asset_name'] = 'UnityAssetRpc'
+        entry['asset_name'] = robo['name']
         entry['channel_id'] = p['channel_id']
         entry['pdu_size'] = p['pdu_size']
         
@@ -38,7 +38,7 @@ for robo in custom['robots']:
       for p in robo['rpc_pdu_writers']:
         entry = OrderedDict()
         entry['method_name'] = hakoniwa_utils.get_custom_rpc_writer_method_name(robo, p)
-        entry['asset_name'] = 'UnityAssetRpc'
+        entry['asset_name'] = robo['name']
         entry['channel_id'] = p['channel_id']
         entry['pdu_size'] = p['pdu_size']
         if p.get('write_cycle') != None:
