@@ -1,0 +1,5 @@
+single:struct:header:std_msgs/Header:0:136
+array:primitive:name:string:136:256:2
+array:primitive:position:float64:392:16:2
+array:primitive:velocity:float64:408:16:2
+array:primitive:effort:float64:424:16:2

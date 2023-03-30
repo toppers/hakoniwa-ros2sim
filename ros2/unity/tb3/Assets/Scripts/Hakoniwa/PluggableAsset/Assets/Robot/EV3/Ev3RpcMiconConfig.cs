@@ -37,6 +37,8 @@ namespace Hakoniwa.PluggableAsset.Assets.Robot.EV3
         public string conv_class_path = null;
         public int channel_id = 1;
         public int pdu_size = 1024;
+        public int write_cycle = 1;
+        public string method_type = "UDP";
     }
     [System.Serializable]
     public class Ev3MiconRpcConfigSettingsContainer

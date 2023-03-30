@@ -25,8 +25,8 @@ for robo in custom['robots']:
     if robo.get('shm_pdu_readers') != None:
       for p in robo['shm_pdu_readers']:
         entry = OrderedDict()
-        entry['method_name'] = hakoniwa_utils.get_custom_shm_reader_method_name(robo)
-        entry['asset_name'] = 'UnityAsset'
+        entry['method_name'] = hakoniwa_utils.get_custom_shm_reader_method_name(robo, p)
+        entry['asset_name'] = robo['name']
         entry['channel_id'] = p['channel_id']
         entry['iosize'] = p['pdu_size']
         entry['is_read'] = True
@@ -34,8 +34,8 @@ for robo in custom['robots']:
     if robo.get('shm_pdu_writers') != None:
       for p in robo['shm_pdu_writers']:
         entry = OrderedDict()
-        entry['method_name'] = hakoniwa_utils.get_custom_shm_writer_method_name(robo)
-        entry['asset_name'] = 'UnityAsset'
+        entry['method_name'] = hakoniwa_utils.get_custom_shm_writer_method_name(robo, p)
+        entry['asset_name'] = robo['name']
         entry['channel_id'] = p['channel_id']
         entry['iosize'] = p['pdu_size']
         entry['is_read'] = False

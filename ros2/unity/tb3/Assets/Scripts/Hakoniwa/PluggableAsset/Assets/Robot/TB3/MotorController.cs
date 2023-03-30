@@ -106,6 +106,7 @@ namespace Hakoniwa.PluggableAsset.Assets.Robot.TB3
                         this.device_update_cycle[devname_sensor] = new UpdateDeviceCycle(update_cycle);
                     }
                 }
+                PublishJointStates();
             }
             else
             {

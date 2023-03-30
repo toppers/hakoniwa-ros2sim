@@ -55,10 +55,10 @@ for e in ros_topics['fields']:
 
 if custom != None:
 	for e in custom['robots']:
-		entry = OrderedDict()
 		if rw_type == 'r':
 			if e.get('udp_pdu_readers') != None:
 				for e_list_entry in e['udp_pdu_readers']:
+					entry = OrderedDict()
 					entry['name'] = hakoniwa_utils.get_custom_pdu_name(e_list_entry)
 					entry['class_name'] = e_list_entry['class_name']
 					entry['conv_class_name'] = e_list_entry['conv_class_name']
@@ -67,8 +67,10 @@ if custom != None:
 					if (len(e_list_entry['conv_class_path']) > 0):
 						entry['conv_path'] = e_list_entry['conv_class_path']
 					entry['pdu_config_name'] = e_list_entry['type']
+					container.append(entry)
 			if e.get('rpc_pdu_readers') != None:
 				for e_list_entry in e['rpc_pdu_readers']:
+					entry = OrderedDict()
 					entry['name'] = hakoniwa_utils.get_custom_pdu_name(e_list_entry)
 					entry['class_name'] = e_list_entry['class_name']
 					entry['conv_class_name'] = e_list_entry['conv_class_name']
@@ -77,8 +79,10 @@ if custom != None:
 					if (len(e_list_entry['conv_class_path']) > 0):
 						entry['conv_path'] = e_list_entry['conv_class_path']
 					entry['pdu_config_name'] = e_list_entry['type']
+					container.append(entry)
 			if e.get('shm_pdu_readers') != None:
 				for e_list_entry in e['shm_pdu_readers']:
+					entry = OrderedDict()
 					entry['name'] = hakoniwa_utils.get_custom_pdu_name(e_list_entry)
 					entry['class_name'] = e_list_entry['class_name']
 					entry['conv_class_name'] = e_list_entry['conv_class_name']
@@ -87,9 +91,11 @@ if custom != None:
 					if (len(e_list_entry['conv_class_path']) > 0):
 						entry['conv_path'] = e_list_entry['conv_class_path']
 					entry['pdu_config_name'] = e_list_entry['type']
+					container.append(entry)
 		else:
 			if e.get('udp_pdu_writers') != None:
 				for e_list_entry in e['udp_pdu_writers']:
+					entry = OrderedDict()
 					entry['name'] = hakoniwa_utils.get_custom_pdu_name(e_list_entry)
 					entry['class_name'] = e_list_entry['class_name']
 					entry['conv_class_name'] = e_list_entry['conv_class_name']
@@ -98,8 +104,10 @@ if custom != None:
 					if (len(e_list_entry['conv_class_path']) > 0):
 						entry['conv_path'] = e_list_entry['conv_class_path']
 					entry['pdu_config_name'] = e_list_entry['type']
+					container.append(entry)
 			if e.get('rpc_pdu_writers') != None:
 				for e_list_entry in e['rpc_pdu_writers']:
+					entry = OrderedDict()
 					entry['name'] = hakoniwa_utils.get_custom_pdu_name(e_list_entry)
 					entry['class_name'] = e_list_entry['class_name']
 					entry['conv_class_name'] = e_list_entry['conv_class_name']
@@ -108,8 +116,10 @@ if custom != None:
 					if (len(e_list_entry['conv_class_path']) > 0):
 						entry['conv_path'] = e_list_entry['conv_class_path']
 					entry['pdu_config_name'] = e_list_entry['type']
+					container.append(entry)
 			if e.get('shm_pdu_writers') != None:
 				for e_list_entry in e['shm_pdu_writers']:
+					entry = OrderedDict()
 					entry['name'] = hakoniwa_utils.get_custom_pdu_name(e_list_entry)
 					entry['class_name'] = e_list_entry['class_name']
 					entry['conv_class_name'] = e_list_entry['conv_class_name']
@@ -118,7 +128,7 @@ if custom != None:
 					if (len(e_list_entry['conv_class_path']) > 0):
 						entry['conv_path'] = e_list_entry['conv_class_path']
 					entry['pdu_config_name'] = e_list_entry['type']
-		container.append(entry)
+					container.append(entry)
 
 with open(out_dir + '/' + out_filename, mode='wt') as out_file:
   json.dump(container, out_file, ensure_ascii=False, indent=2)
