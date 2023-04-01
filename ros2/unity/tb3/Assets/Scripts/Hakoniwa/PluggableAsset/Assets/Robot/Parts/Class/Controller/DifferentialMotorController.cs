@@ -13,7 +13,7 @@ namespace Hakoniwa.PluggableAsset.Assets.Robot.Parts
         MotorType_Right,
         MotorType_Num
     }
-    public class DifferentialMotorController : MonoBehaviour, IRobotPartsController
+    public class DifferentialMotorController : MonoBehaviour, IRobotPartsController, IRobotPartsConfig
     {
         private GameObject root;
         private string root_name;
@@ -102,7 +102,23 @@ namespace Hakoniwa.PluggableAsset.Assets.Robot.Parts
                 motors[(int)MotorType.MotorType_Left].SetTargetVelicty((float)(target_velocity - (steering_sensitivity * target_rotation_angle_rate * motor_interval_distance / 2)));
             }
         }
-
+        public IoMethod io_method = IoMethod.RPC;
+        public CommMethod comm_method = CommMethod.UDP;
+        public RoboPartsConfigData[] GetRoboPartsConfig()
+        {
+            RoboPartsConfigData[] configs = new RoboPartsConfigData[1];
+            configs[0] = new RoboPartsConfigData();
+            configs[0].io_dir = IoDir.READ;
+            configs[0].io_method = this.io_method;
+            configs[0].value.org_name = this.topic_name;
+            configs[0].value.type = this.topic_type;
+            configs[0].value.class_name = ConstantValues.pdu_reader_class;
+            configs[0].value.conv_class_name = ConstantValues.conv_pdu_reader_class;
+            configs[0].value.pdu_size = ConstantValues.Twist_pdu_size;
+            configs[0].value.write_cycle = this.update_cycle;
+            configs[0].value.method_type = this.comm_method.ToString();
+            return configs;
+        }
     }
 }
 
