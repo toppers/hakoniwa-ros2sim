@@ -55,14 +55,14 @@ if custom != None:
 			entry['pdu_writer_names'] = list()
 			for e_list_entry in e['udp_pdu_writers']:
 				entry['pdu_writer_names'].append(hakoniwa_utils.get_custom_pdu_name(e_list_entry))
-		if e.get('rpc_pdu_readers') != None:
+		if e.get('rpc_pdu_readers') != None and len(e['rpc_pdu_readers']) > 0:
 			entry['pdu_reader_names'] = list()
 			for e_list_entry in e['rpc_pdu_readers']:
 				entry['pdu_reader_names'].append(hakoniwa_utils.get_custom_pdu_name(e_list_entry))
 			entry['pdu_writer_names'] = list()
 			for e_list_entry in e['rpc_pdu_writers']:
 				entry['pdu_writer_names'].append(hakoniwa_utils.get_custom_pdu_name(e_list_entry))
-		if e.get('shm_pdu_readers') != None:
+		if e.get('shm_pdu_readers') != None and len(e['shm_pdu_readers']) > 0:
 			entry['pdu_reader_names'] = list()
 			for e_list_entry in e['shm_pdu_readers']:
 				entry['pdu_reader_names'].append(hakoniwa_utils.get_custom_pdu_name(e_list_entry))
