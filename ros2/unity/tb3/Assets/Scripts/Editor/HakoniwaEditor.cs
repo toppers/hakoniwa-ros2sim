@@ -8,6 +8,13 @@ using System;
 using Newtonsoft.Json.Linq;
 using Hakoniwa.PluggableAsset.Assets.Robot.Parts;
 
+[System.Serializable]
+class HakoniwaPathSettings
+{
+    public string hakoniwa_base;
+    public string settings;
+}
+
 public class HakoniwaEditor : EditorWindow
 {
     private static int asset_num;
@@ -17,6 +24,16 @@ public class HakoniwaEditor : EditorWindow
     private static LoginRobot login_robots;
     private static JArray micon_settings_json_array = new JArray();
     private static JObject micon_settings_json = new JObject();
+    private static HakoniwaPathSettings path;
+
+    static void LoadPath()
+    {
+        string jsonString = File.ReadAllText("./hakoniwa_path.json");
+        path = JsonConvert.DeserializeObject<HakoniwaPathSettings>(jsonString);
+        Debug.Log("hakoniwa_base path=" + path.hakoniwa_base);
+        Debug.Log("settings path=" + path.settings);
+    }
+
     static void Init()
     {
         asset_num = 0;
@@ -166,6 +183,7 @@ public class HakoniwaEditor : EditorWindow
     static void AssetsUpdate()
     {
         Init();
+        LoadPath();
         int root_num = GetHakoAssetRoots();
         Debug.Log("assets root_num:" + root_num);
         GetHakoAssets(root_num);
@@ -182,29 +200,31 @@ public class HakoniwaEditor : EditorWindow
         Debug.Log("json:" + ConvertToJson(ros_topic_container));
         try
         {
-            File.Delete("../../../settings/tb3/PhotonLoginRobot.json");
+            File.Delete(path.settings + "/PhotonLoginRobot.json");
         }
         catch (Exception)
         {
 
         }
         AssetConfigLoader.SaveJsonFile<LoginRobot>("../../../settings/tb3/LoginRobot.json", login_robots);
-        File.WriteAllText("../../../settings/tb3/RosTopics.json", ConvertToJson(ros_topic_container));
+        File.WriteAllText(path.settings + "/RosTopics.json", ConvertToJson(ros_topic_container));
 
         if (micon_settings_json_array.Count > 0)
         {
             micon_settings_json.Add(new JProperty("robots", micon_settings_json_array));
-            File.WriteAllText("../../../settings/tb3/custom.json", micon_settings_json.ToString());
+            File.WriteAllText(path.settings + "/custom.json", micon_settings_json.ToString());
+            File.WriteAllText(path.hakoniwa_base + "/custom.json", micon_settings_json.ToString());
         }
         else
         {
-            File.Delete("../../../settings/tb3/custom.json");
+            File.Delete(path.settings + "tb3/custom.json");
         }
     }
     [MenuItem("Window/Hakoniwa/GeneratePhoton")]
     static void PhotonAssetsUpdate()
     {
         Debug.Log("assets");
+        LoadPath();
         int root_num = GetHakoAssetRoots();
         GetHakoAssets(root_num);
         asset_num = 0;
