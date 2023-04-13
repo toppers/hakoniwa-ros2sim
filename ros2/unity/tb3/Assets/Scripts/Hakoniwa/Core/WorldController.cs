@@ -105,13 +105,39 @@ namespace Hakoniwa.Core
             {
                 throw new InvalidDataException("ERROR: path is not found:" + path);
             }
+            IInsideAssetController ctrl = null;
             Vector3 pos = new Vector3(robo.pos.X, robo.pos.Y, robo.pos.Z);
-            var instance = Instantiate(p, pos, Quaternion.identity) as GameObject;
-            instance.name = robo.roboname;
-            instance.transform.parent = this.root.transform;
-            instance.transform.Rotate(new Vector3(robo.angle.X, robo.angle.Y, robo.angle.Z));
+            var articulationbodies = p.GetComponentsInChildren<ArticulationBody>();
+            if ((articulationbodies != null) && articulationbodies.Length > 0)
+            {
+                var dir = Quaternion.Euler(robo.angle.X, robo.angle.Y, robo.angle.Z) * Vector3.forward;
+                Quaternion qangle = Quaternion.LookRotation(dir);
+                foreach (var articulationBody in articulationbodies)
+                {
+                    if (articulationBody.isRoot)
+                    {
+                        var instance = Instantiate(p, pos, qangle) as GameObject;
+                        articulationBody.velocity = Vector3.zero;
+                        articulationBody.angularVelocity = Vector3.zero;
+                        articulationBody.TeleportRoot(pos, qangle);
+                        instance.name = robo.roboname;
+                        instance.transform.parent = this.root.transform;
 
-            IInsideAssetController ctrl = instance.GetComponentInChildren<IInsideAssetController>();
+                        ctrl = instance.GetComponentInChildren<IInsideAssetController>();
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                var instance = Instantiate(p, pos, Quaternion.identity) as GameObject;
+                //RigidBody
+                instance.transform.Rotate(new Vector3(robo.angle.X, robo.angle.Y, robo.angle.Z));
+                instance.name = robo.roboname;
+                instance.transform.parent = this.root.transform;
+
+                ctrl = instance.GetComponentInChildren<IInsideAssetController>();
+            }
             ctrl.Initialize();
             AssetConfigLoader.AddInsideAsset(ctrl);
             iasset.RegisterInsideAsset(robo.roboname);
