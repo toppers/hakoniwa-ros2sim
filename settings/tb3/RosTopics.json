@@ -4,26 +4,33 @@
   "hakoenv_num": 0,
   "fields": [
     {
-      "topic_message_name": "Ev3TransportModel_ev3_sensor",
-      "topic_type_name": "ev3_msgs/Ev3PduSensor",
-      "robot_name": "Ev3TransportModel",
+      "topic_message_name": "SampleRobo_camera_image_jpg",
+      "topic_type_name": "sensor_msgs/CompressedImage",
+      "robot_name": "SampleRobo",
       "sub": false,
       "pub_option": {
-        "cycle_scale": 1,
+        "cycle_scale": 100,
         "latch": false,
         "queue_size": 1
       }
     },
     {
-      "topic_message_name": "Ev3TransportModel_ev3_actuator",
-      "topic_type_name": "ev3_msgs/Ev3PduActuator",
-      "robot_name": "Ev3TransportModel",
-      "sub": true,
+      "topic_message_name": "SampleRobo_scan",
+      "topic_type_name": "sensor_msgs/LaserScan",
+      "robot_name": "SampleRobo",
+      "sub": false,
       "pub_option": {
-        "cycle_scale": 1,
+        "cycle_scale": 10,
         "latch": false,
         "queue_size": 1
       }
+    },
+    {
+      "topic_message_name": "SampleRobo_cmd_vel",
+      "topic_type_name": "geometry_msgs/Twist",
+      "robot_name": "SampleRobo",
+      "sub": true,
+      "pub_option": null
     }
   ]
 }

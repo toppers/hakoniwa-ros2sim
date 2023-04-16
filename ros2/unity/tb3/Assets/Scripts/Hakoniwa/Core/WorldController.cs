@@ -117,6 +117,7 @@ namespace Hakoniwa.Core
                     if (articulationBody.isRoot)
                     {
                         var instance = Instantiate(p, pos, qangle) as GameObject;
+                        //var instance = Instantiate(p, pos, Quaternion.identity) as GameObject;
                         articulationBody.velocity = Vector3.zero;
                         articulationBody.angularVelocity = Vector3.zero;
                         articulationBody.TeleportRoot(pos, qangle);

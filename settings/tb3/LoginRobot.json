@@ -1,16 +1,16 @@
 {
   "robos": [
     {
-      "roboname": "Ev3TransportModel",
-      "robotype": "Ev3TransportModel",
+      "roboname": "SampleRobo",
+      "robotype": "SampleRobo",
       "pos": {
-        "X": 5.70965767,
-        "Y": 2.96869,
-        "Z": -3.1696322
+        "X": 0.0,
+        "Y": 3.58,
+        "Z": 28.7899971
       },
       "angle": {
         "X": 0.0,
-        "Y": 0.0,
+        "Y": 90.0,
         "Z": 0.0
       }
     }

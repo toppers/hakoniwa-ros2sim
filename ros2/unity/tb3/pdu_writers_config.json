@@ -1,8 +1,14 @@
 [
   {
-    "name": "Ev3TransportModel_ev3_sensorPdu", 
+    "name": "SampleRobo_camera_image_jpgPdu", 
     "class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.Raw.RawPduWriter", 
     "conv_class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.Raw.RawPduWriterConverter", 
-    "pdu_config_name": "ev3_msgs/Ev3PduSensor"
+    "pdu_config_name": "sensor_msgs/CompressedImage"
+  }, 
+  {
+    "name": "SampleRobo_scanPdu", 
+    "class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.Raw.RawPduWriter", 
+    "conv_class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.Raw.RawPduWriterConverter", 
+    "pdu_config_name": "sensor_msgs/LaserScan"
   }
 ]
