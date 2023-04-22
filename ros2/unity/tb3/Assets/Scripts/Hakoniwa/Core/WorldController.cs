@@ -178,7 +178,7 @@ namespace Hakoniwa.Core
                 }
                 else
                 {
-                    HakoCppWrapper.asset_unregister(new StringBuilder(AssetConfigLoader.core_config.cpp_asset_name));
+                    HakoCppWrapper.asset_unregister(AssetConfigLoader.core_config.cpp_asset_name);
                 }
             }
         }

@@ -1,46 +1,39 @@
 {
   "robots": [
     {
-      "name": "SampleRobo",
+      "name": "Ev3TransportModel",
+      "rpc_proxy": {
+        "name": "Athrill",
+        "class_name": "Hakoniwa.PluggableAsset.Assets.Micon.EV3.Ev3MiconAssetController"
+      },
       "rpc_pdu_readers": [
         {
-          "type": "geometry_msgs/Twist",
-          "org_name": "cmd_vel",
-          "name": "SampleRobo_cmd_vel",
+          "type": "ev3_msgs/Ev3PduActuator",
+          "org_name": "ev3_actuator",
+          "name": "Ev3TransportModel_ev3_actuator",
           "class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.Raw.RawPduReader",
+          "class_path": "",
           "conv_class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.Raw.RawPduReaderConverter",
-          "channel_id": 2,
-          "pdu_size": 48,
-          "write_cycle": 1,
-          "method_type": "UDP"
+          "conv_class_path": "",
+          "channel_id": 0,
+          "pdu_size": 196
         }
       ],
       "rpc_pdu_writers": [
         {
-          "type": "sensor_msgs/CompressedImage",
-          "org_name": "camera_image_jpg",
-          "name": "SampleRobo_camera_image_jpg",
+          "type": "ev3_msgs/Ev3PduSensor",
+          "org_name": "ev3_sensor",
+          "name": "Ev3TransportModel_ev3_sensor",
           "class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.Raw.RawPduWriter",
+          "class_path": "",
           "conv_class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.Raw.RawPduWriterConverter",
-          "channel_id": 0,
-          "pdu_size": 1229064,
-          "write_cycle": 100,
-          "method_type": "MQTT"
-        },
-        {
-          "type": "sensor_msgs/LaserScan",
-          "org_name": "scan",
-          "name": "SampleRobo_scan",
-          "class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.Raw.RawPduWriter",
-          "conv_class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.Raw.RawPduWriterConverter",
+          "conv_class_path": "",
           "channel_id": 1,
-          "pdu_size": 3044,
-          "write_cycle": 10,
-          "method_type": "MQTT"
+          "pdu_size": 248,
+          "write_cycle": 1,
+          "method_type": "UDP"
         }
-      ],
-      "shm_pdu_readers": [],
-      "shm_pdu_writers": []
+      ]
     }
   ]
 }

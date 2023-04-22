@@ -17,14 +17,14 @@ else
 	mkdir Plugin
 fi
 
-wget https://github.com/toppers/hakoniwa-core/releases/download/v2.0.0/Hakoniwa_NoGRPC.dll
+wget https://github.com/toppers/hakoniwa-core/releases/download/v2.2.0/Hakoniwa_NoGRPC.dll
 echo ARCH_TYPE = ${ARCH_TYPE}
 if [ ${ARCH_TYPE} = "arm64" ]
 then
-	wget https://github.com/toppers/hakoniwa-core-cpp-client/releases/download/v1.0.1/libshakoc.${ARCH_TYPE}.dylib
+	wget https://github.com/toppers/hakoniwa-core-cpp-client/releases/download/v1.0.2/libshakoc.${ARCH_TYPE}.dylib
 	mv libshakoc.${ARCH_TYPE}.dylib ${LIBNAME}
 else
-	wget https://github.com/toppers/hakoniwa-core/releases/download/v2.0.0/${LIBNAME}
+	wget https://github.com/toppers/hakoniwa-core-cpp-client/releases/download/v1.0.2/${LIBNAME}
 fi
 mv Hakoniwa_NoGRPC.dll Plugin/
 mv ${LIBNAME} Plugin/
