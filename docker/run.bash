@@ -31,7 +31,7 @@ then
 		exit 1
 	fi
 	ETHER=${1}
-	IPADDR=`ifconfig | grep -A1 ${ETHER} | grep netmask | awk '{print $2}'`
+	IPADDR=`ifconfig ${ETHER} | grep netmask | awk '{print $2}'`
 else
 	IPADDR="127.0.0.1"
 fi
