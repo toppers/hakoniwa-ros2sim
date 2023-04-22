@@ -1,51 +1,59 @@
 [
   {
-    "pdu_type_name": "builtin_interfaces/Time", 
-    "pdu_data_field_path": "../../ros_json/builtin_interfaces/Time.json"
+    "pdu_type_name": "ev3_msgs/Ev3PduActuator", 
+    "pdu_data_field_path": "../../ros_json/ev3_msgs/Ev3PduActuator.json"
   }, 
   {
-    "pdu_type_name": "Time", 
-    "pdu_data_field_path": "../../ros_json/builtin_interfaces/Time.json"
+    "pdu_type_name": "Ev3PduActuator", 
+    "pdu_data_field_path": "../../ros_json/ev3_msgs/Ev3PduActuator.json"
   }, 
   {
-    "pdu_type_name": "geometry_msgs/Twist", 
-    "pdu_data_field_path": "../../ros_json/geometry_msgs/Twist.json"
+    "pdu_type_name": "ev3_msgs/Ev3PduActuatorHeader", 
+    "pdu_data_field_path": "../../ros_json/ev3_msgs/Ev3PduActuatorHeader.json"
   }, 
   {
-    "pdu_type_name": "Twist", 
-    "pdu_data_field_path": "../../ros_json/geometry_msgs/Twist.json"
+    "pdu_type_name": "Ev3PduActuatorHeader", 
+    "pdu_data_field_path": "../../ros_json/ev3_msgs/Ev3PduActuatorHeader.json"
   }, 
   {
-    "pdu_type_name": "geometry_msgs/Vector3", 
-    "pdu_data_field_path": "../../ros_json/geometry_msgs/Vector3.json"
+    "pdu_type_name": "ev3_msgs/Ev3PduColorSensor", 
+    "pdu_data_field_path": "../../ros_json/ev3_msgs/Ev3PduColorSensor.json"
   }, 
   {
-    "pdu_type_name": "Vector3", 
-    "pdu_data_field_path": "../../ros_json/geometry_msgs/Vector3.json"
+    "pdu_type_name": "Ev3PduColorSensor", 
+    "pdu_data_field_path": "../../ros_json/ev3_msgs/Ev3PduColorSensor.json"
   }, 
   {
-    "pdu_type_name": "sensor_msgs/CompressedImage", 
-    "pdu_data_field_path": "../../ros_json/sensor_msgs/CompressedImage.json"
+    "pdu_type_name": "ev3_msgs/Ev3PduMotor", 
+    "pdu_data_field_path": "../../ros_json/ev3_msgs/Ev3PduMotor.json"
   }, 
   {
-    "pdu_type_name": "CompressedImage", 
-    "pdu_data_field_path": "../../ros_json/sensor_msgs/CompressedImage.json"
+    "pdu_type_name": "Ev3PduMotor", 
+    "pdu_data_field_path": "../../ros_json/ev3_msgs/Ev3PduMotor.json"
   }, 
   {
-    "pdu_type_name": "sensor_msgs/LaserScan", 
-    "pdu_data_field_path": "../../ros_json/sensor_msgs/LaserScan.json"
+    "pdu_type_name": "ev3_msgs/Ev3PduSensor", 
+    "pdu_data_field_path": "../../ros_json/ev3_msgs/Ev3PduSensor.json"
   }, 
   {
-    "pdu_type_name": "LaserScan", 
-    "pdu_data_field_path": "../../ros_json/sensor_msgs/LaserScan.json"
+    "pdu_type_name": "Ev3PduSensor", 
+    "pdu_data_field_path": "../../ros_json/ev3_msgs/Ev3PduSensor.json"
   }, 
   {
-    "pdu_type_name": "std_msgs/Header", 
-    "pdu_data_field_path": "../../ros_json/std_msgs/Header.json"
+    "pdu_type_name": "ev3_msgs/Ev3PduSensorHeader", 
+    "pdu_data_field_path": "../../ros_json/ev3_msgs/Ev3PduSensorHeader.json"
   }, 
   {
-    "pdu_type_name": "Header", 
-    "pdu_data_field_path": "../../ros_json/std_msgs/Header.json"
+    "pdu_type_name": "Ev3PduSensorHeader", 
+    "pdu_data_field_path": "../../ros_json/ev3_msgs/Ev3PduSensorHeader.json"
+  }, 
+  {
+    "pdu_type_name": "ev3_msgs/Ev3PduTouchSensor", 
+    "pdu_data_field_path": "../../ros_json/ev3_msgs/Ev3PduTouchSensor.json"
+  }, 
+  {
+    "pdu_type_name": "Ev3PduTouchSensor", 
+    "pdu_data_field_path": "../../ros_json/ev3_msgs/Ev3PduTouchSensor.json"
   }, 
   {
     "pdu_type_name": "time", 

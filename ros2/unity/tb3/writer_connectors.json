@@ -1,12 +1,7 @@
 [
   {
     "name": "custom_writer_connector_0", 
-    "pdu_name": "SampleRobo_camera_image_jpgPdu", 
-    "method_name": "SampleRoboRpcWriter0"
-  }, 
-  {
-    "name": "custom_writer_connector_1", 
-    "pdu_name": "SampleRobo_scanPdu", 
-    "method_name": "SampleRoboRpcWriter1"
+    "pdu_name": "Ev3TransportModel_ev3_sensorPdu", 
+    "method_name": "Ev3TransportModelRpcWriter1"
   }
 ]

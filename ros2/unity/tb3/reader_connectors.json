@@ -1,7 +1,7 @@
 [
   {
     "name": "custom_reader_connector_0", 
-    "pdu_name": "SampleRobo_cmd_velPdu", 
-    "method_name": "SampleRoboRpcReader2"
+    "pdu_name": "Ev3TransportModel_ev3_actuatorPdu", 
+    "method_name": "Ev3TransportModelRpcReader0"
   }
 ]

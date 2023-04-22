@@ -1,12 +1,11 @@
 [
   {
-    "name": "SampleRobo", 
+    "name": "Ev3TransportModel", 
     "pdu_reader_names": [
-      "SampleRobo_cmd_velPdu"
+      "Ev3TransportModel_ev3_actuatorPdu"
     ], 
     "pdu_writer_names": [
-      "SampleRobo_camera_image_jpgPdu", 
-      "SampleRobo_scanPdu"
+      "Ev3TransportModel_ev3_sensorPdu"
     ]
   }
 ]

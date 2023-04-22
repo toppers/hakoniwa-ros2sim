@@ -1,8 +1,8 @@
 [
   {
-    "name": "SampleRobo_cmd_velPdu", 
+    "name": "Ev3TransportModel_ev3_actuatorPdu", 
     "class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.Raw.RawPduReader", 
     "conv_class_name": "Hakoniwa.PluggableAsset.Communication.Pdu.Raw.RawPduReaderConverter", 
-    "pdu_config_name": "geometry_msgs/Twist"
+    "pdu_config_name": "ev3_msgs/Ev3PduActuator"
   }
 ]

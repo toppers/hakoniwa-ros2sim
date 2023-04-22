@@ -1,28 +1,18 @@
 [
   {
-    "method_name": "SampleRoboRpcReader2", 
-    "asset_name": "SampleRobo", 
-    "channel_id": 2, 
-    "pdu_size": 48, 
-    "method_type": "UDP", 
+    "method_name": "Ev3TransportModelRpcReader0", 
+    "asset_name": "Ev3TransportModel", 
+    "channel_id": 0, 
+    "pdu_size": 196, 
     "is_read": true
   }, 
   {
-    "method_name": "SampleRoboRpcWriter0", 
-    "asset_name": "SampleRobo", 
-    "channel_id": 0, 
-    "pdu_size": 1229064, 
-    "write_cycle": 100, 
-    "method_type": "MQTT", 
-    "is_read": false
-  }, 
-  {
-    "method_name": "SampleRoboRpcWriter1", 
-    "asset_name": "SampleRobo", 
+    "method_name": "Ev3TransportModelRpcWriter1", 
+    "asset_name": "Ev3TransportModel", 
     "channel_id": 1, 
-    "pdu_size": 3044, 
-    "write_cycle": 10, 
-    "method_type": "MQTT", 
+    "pdu_size": 248, 
+    "write_cycle": 1, 
+    "method_type": "UDP", 
     "is_read": false
   }
 ]

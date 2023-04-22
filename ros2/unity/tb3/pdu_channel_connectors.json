@@ -6,9 +6,5 @@
   {
     "outside_asset_name": "None", 
     "writer_connector_name": "custom_writer_connector_0"
-  }, 
-  {
-    "outside_asset_name": "None", 
-    "writer_connector_name": "custom_writer_connector_1"
   }
 ]
