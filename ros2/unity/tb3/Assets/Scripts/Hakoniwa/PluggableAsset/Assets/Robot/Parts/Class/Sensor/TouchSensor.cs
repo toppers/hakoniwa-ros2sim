@@ -9,7 +9,7 @@ using System;
 
 namespace Hakoniwa.PluggableAsset.Assets.Robot.Parts
 {
-    public class TouchSensor : MonoBehaviour, IRobotPartsSensor
+    public class TouchSensor : MonoBehaviour, IRobotPartsSensor, IRobotPartsConfig
     {
         private GameObject root;
         private GameObject sensor;
@@ -94,6 +94,23 @@ namespace Hakoniwa.PluggableAsset.Assets.Robot.Parts
             }
             this.isTouched = false;
             Debug.Log("EXIT:" + t.gameObject.name);
+        }
+        public IoMethod io_method = IoMethod.RPC;
+        public CommMethod comm_method = CommMethod.UDP;
+        public RoboPartsConfigData[] GetRoboPartsConfig()
+        {
+            RoboPartsConfigData[] configs = new RoboPartsConfigData[1];
+            configs[0] = new RoboPartsConfigData();
+            configs[0].io_dir = IoDir.WRITE;
+            configs[0].io_method = this.io_method;
+            configs[0].value.org_name = this.topic_name;
+            configs[0].value.type = this.topic_type;
+            configs[0].value.class_name = ConstantValues.pdu_writer_class;
+            configs[0].value.conv_class_name = ConstantValues.conv_pdu_writer_class;
+            configs[0].value.pdu_size = ConstantValues.Bool_pdu_size;
+            configs[0].value.write_cycle = this.update_cycle;
+            configs[0].value.method_type = this.comm_method.ToString();
+            return configs;
         }
     }
 }

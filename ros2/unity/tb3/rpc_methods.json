@@ -1,16 +1,18 @@
 [
   {
-    "method_name": "Ev3TransportModelRpcReader", 
-    "asset_name": "UnityAssetRpc", 
+    "method_name": "Ev3TransportModelRpcReader0", 
+    "asset_name": "Ev3TransportModel", 
     "channel_id": 0, 
     "pdu_size": 196, 
     "is_read": true
   }, 
   {
-    "method_name": "Ev3TransportModelRpcWriter", 
-    "asset_name": "UnityAssetRpc", 
+    "method_name": "Ev3TransportModelRpcWriter1", 
+    "asset_name": "Ev3TransportModel", 
     "channel_id": 1, 
     "pdu_size": 248, 
+    "write_cycle": 1, 
+    "method_type": "UDP", 
     "is_read": false
   }
 ]

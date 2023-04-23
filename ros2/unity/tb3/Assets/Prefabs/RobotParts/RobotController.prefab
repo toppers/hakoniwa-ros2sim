@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2930808178309154897}
   - component: {fileID: 2930808178309154896}
+  - component: {fileID: 5613933213249627517}
   m_Layer: 0
   m_Name: RobotController
   m_TagString: HakoAssetRoot
@@ -44,3 +45,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc1a27297493faa4f8f35964824d02f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5613933213249627517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2930808178309154898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ec87c01825ccf0428b814d4ebd64448, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  on: 1

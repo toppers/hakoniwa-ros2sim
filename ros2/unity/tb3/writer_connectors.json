@@ -2,6 +2,6 @@
   {
     "name": "custom_writer_connector_0", 
     "pdu_name": "Ev3TransportModel_ev3_sensorPdu", 
-    "method_name": "Ev3TransportModelRpcWriter"
+    "method_name": "Ev3TransportModelRpcWriter1"
   }
 ]
