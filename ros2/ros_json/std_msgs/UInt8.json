@@ -1,8 +1,0 @@
-{
-  "fields": [
-    {
-      "type": "uint8", 
-      "name": "data"
-    }
-  ]
-}

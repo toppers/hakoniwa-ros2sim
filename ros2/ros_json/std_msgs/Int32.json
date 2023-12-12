@@ -1,8 +1,0 @@
-{
-  "fields": [
-    {
-      "type": "int32", 
-      "name": "data"
-    }
-  ]
-}

@@ -1,8 +1,0 @@
-{
-  "fields": [
-    {
-      "type": "Point32[]", 
-      "name": "points"
-    }
-  ]
-}
