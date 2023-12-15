@@ -7,3 +7,6 @@
 [submodule "hakoniwa-ros2pdu"]
 	path = hakoniwa-ros2pdu
 	url = https://github.com/toppers/hakoniwa-ros2pdu.git
+[submodule "hakoniwa-unity-tb3model"]
+	path = hakoniwa-unity-tb3model
+	url = https://github.com/toppers/hakoniwa-unity-tb3model.git
