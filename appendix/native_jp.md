@@ -15,11 +15,11 @@
 
 ## PC環境の準備
 
-### ROS 2 Foxy のインストール
+### ROS 2 Humble のインストール
 
-次のページに従って ROS 2 Foxy をインストールしてください．
+次のページに従って ROS 2 Humble をインストールしてください．
 
-https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html
+https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html
 
 ### 箱庭環境のインストール
 

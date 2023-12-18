@@ -15,11 +15,11 @@ This page shows how to use the system in native Linux environment (including WSL
 
 ## Preparations
 
-### Install ROS 2 Foxy
+### Install ROS 2 Humble
 
-Follow the next page to install ROS 2 Foxy.
+Follow the next page to install ROS 2 Humble.
 
-https://docs.ros.org/en/foxy/Installation/Ubuntu-Install-Debians.html
+https://docs.ros.org/en/humble/Installation/Ubuntu-Install-Debians.html
 
 ### Install Hakoniwa Environment
 
