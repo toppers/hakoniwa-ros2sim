@@ -10,8 +10,7 @@
 
 ## 想定する PC 環境
 
-* Windows 環境: Windows 10/11 with Ubuntu 20.04 LTS on WSL2/WSLg
-* Linux 環境: Ubuntu 20.04 LTS
+* Linux 環境: Ubuntu 22.04 LTS
 
 ## PC環境の準備
 
